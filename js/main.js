@@ -53,6 +53,10 @@
   // Contact form: prototype only — never pretend it was sent.
   var form = document.querySelector('[data-inquiry]');
   if (form) {
+    // Preselect the topic when arriving from a starting-engagement link (?type=...)
+    var want = new URLSearchParams(window.location.search).get('type');
+    var sel = form.querySelector('select[name="engagement"]');
+    if (want && sel) { Array.prototype.forEach.call(sel.options, function (o) { if (o.text === want) sel.value = o.value; }); }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var note = form.querySelector('[data-inquiry-note]');
@@ -67,8 +71,11 @@
       var d = new FormData(form);
       var body = 'Name: ' + d.get('name') + '\nEmail: ' + d.get('email') + '\nOrganization: ' + (d.get('organization') || '-') +
         '\nEngagement: ' + d.get('engagement') + '\n\n' + d.get('description');
-      var href = 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent('Project inquiry — ' + d.get('engagement')) + '&body=' + encodeURIComponent(body);
+      var topic = d.get('engagement');
+      var subject = topic && topic !== 'Not sure yet' ? 'Project inquiry — ' + topic : 'Project inquiry';
+      var href = 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       if (note) { note.hidden = false; note.querySelector('a').setAttribute('href', href); }
+      window.location.href = href;
     });
   }
 })();

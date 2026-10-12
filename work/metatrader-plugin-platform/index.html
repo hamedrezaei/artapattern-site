@@ -16,8 +16,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=ee51a6d0">
-<link rel="stylesheet" href="/css/site.css?v=ee51a6d0">
+<link rel="stylesheet" href="/css/components.css?v=74f4d64e">
+<link rel="stylesheet" href="/css/site.css?v=74f4d64e">
 </head>
 <body>
 <div class="ap">
@@ -53,12 +53,15 @@
 <main id="main">
 <section class="cs-hero">
  <div class="wrap" style="display:grid;gap:24px">
-  <a class="ap-link" href="/work/" style="font-size:14px"><span aria-hidden="true">←</span> All case studies</a>
+  <a class="ap-link" href="/work/" style="font-size:14px"><span aria-hidden="true">←</span> All work</a>
   <p class="ap-eyebrow">Case study 01 · Platform Architecture / Trading Infrastructure · 2025 – 2026</p>
   <h1 class="h1" style="max-width:20ch">MetaTrader Plugin Management Platform</h1>
   <p class="lead">Independently architected and delivered a plugin management and licensing platform, connecting backend services, administrative interfaces, and customer-side runtime components.</p>
   <dl class="ap-facts" style="--cols:4;margin:16px 0 0">
 <div><dt>Domain</dt><dd>Forex brokerage systems</dd></div><div><dt>Role</dt><dd>Architect &amp; sole engineer</dd></div><div><dt>Type</dt><dd>Greenfield, concept to V1</dd></div><div><dt>Stack</dt><dd>.NET · React · MetaTrader</dd></div>  </dl>
+  <div class="glance" aria-label="At a glance">
+<div><h2 class="glance__k">Challenge</h2><p>Configuration and licensing for plugins running on customer-side infrastructure had to be managed centrally, with one engineer owning the whole system.</p></div><div><h2 class="glance__k">Key decision</h2><p>A desired-state control plane: the backend records what each runtime should look like; runtimes report status and converge on it.</p></div><div><h2 class="glance__k">Result</h2><p>Delivered from concept to a released V1: .NET services, React administration, runtime integration, licensing and automated tests.</p></div>  </div>
+  <p class="attribution">These examples reflect Hamed Rezaei&#39;s professional experience before founding ArtaPattern. They are not presented as ArtaPattern client engagements. Diagrams are conceptual and exclude confidential implementation details.</p>
  </div>
 </section>
 
@@ -66,7 +69,7 @@
  <div class="wrap cs-body">
   <nav class="ap-toc" aria-label="Case study sections">
    <h4>Contents</h4>
-<a href="#overview" aria-current="true">1. Project Overview</a><a href="#context">2. Engineering Context</a><a href="#problem">3. Problem &amp; Constraints</a><a href="#approach">4. Architecture Approach</a><a href="#decisions">5. Key Decisions</a><a href="#delivery">6. Implementation &amp; Delivery</a><a href="#challenges">7. Technical Challenges</a><a href="#lessons">8. Lessons Learned</a><a href="#tech">9. Technologies</a><a href="#related">10. Related Services</a>  </nav>
+<a href="#overview" aria-current="true">1. Project Overview</a><a href="#context">2. Engineering Context</a><a href="#problem">3. Problem &amp; Constraints</a><a href="#approach">4. Architecture Approach</a><a href="#decisions">5. Key Decisions</a><a href="#delivery">6. Implementation &amp; Delivery</a><a href="#tech">7. Technologies</a><a href="#related">8. Related Services</a>  </nav>
   <div>
    <section class="cs-section" id="overview">
     <span class="mono">01 / Project overview</span>
@@ -105,34 +108,24 @@
     <h2 class="h2">Implementation &amp; delivery</h2>
     <ol class="ap-flow" style="--steps:4;margin-top:8px">
 <li><span class="ap-flow__n">01</span><h4>Model</h4><p>Domain and data model.</p></li><li><span class="ap-flow__n">02</span><h4>Build</h4><p>.NET services and React admin.</p></li><li><span class="ap-flow__n">03</span><h4>Integrate</h4><p>Runtime and worker integration.</p></li><li><span class="ap-flow__n">04</span><h4>Release</h4><p>Tests, evidence, V1.</p></li>    </ol>
-<p>OpenAI Codex was used across discovery, planning, TDD, implementation, review and regression verification, with every change reviewed before release.</p>   </section>
+<p>OpenAI Codex supported discovery, planning, test-driven implementation, review and regression verification; changes were reviewed by an engineer before release.</p>   </section>
 
-   <section class="cs-section" id="challenges">
-    <span class="mono">07 / Technical challenges</span>
-    <h2 class="h2">Technical challenges</h2>
-    <p class="placeholder">Detailed write-up in preparation. Specifics are published only where they can be shared without confidential client information.</p>
-   </section>
 
-   <section class="cs-section" id="lessons">
-    <span class="mono">08 / Lessons learned</span>
-    <h2 class="h2">Lessons learned</h2>
-    <p class="placeholder">In preparation. Outcomes are stated only when they have been measured and can be shared.</p>
-   </section>
 
    <section class="cs-section" id="tech">
-    <span class="mono">09 / Technologies</span>
+    <span class="mono">07 / Technologies</span>
     <ul class="ap-tags"><li class="ap-tag">C#</li><li class="ap-tag">.NET</li><li class="ap-tag">React</li><li class="ap-tag">MetaTrader MT4/MT5</li><li class="ap-tag">Licensing</li><li class="ap-tag">Desired-State Architecture</li><li class="ap-tag">Automated Testing</li><li class="ap-tag">OpenAI Codex</li></ul>
    </section>
 
    <section class="cs-section" id="related">
-    <span class="mono">10 / Related services</span>
+    <span class="mono">08 / Related services &amp; experience</span>
     <div class="grid-2" style="gap:24px">
-<a class="ap-card" href="/services/#greenfield" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 01</span><h3>Greenfield Architecture &amp; Project Kickoff</h3></a><a class="ap-card" href="/services/#fintech" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 06</span><h3>FinTech &amp; Trading Systems Engineering</h3></a>    </div>
+<a class="ap-card" href="/services/#platform" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 02</span><h3>Backend &amp; Platform Architecture</h3></a><a class="ap-card" href="/services/#fintech" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">DOMAIN EXPERIENCE</span><h3>FinTech &amp; Trading Systems</h3></a>    </div>
    </section>
 
    <nav aria-label="More case studies" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--text)">
     <a href="/work/" style="text-decoration:none;display:grid;gap:6px"><span class="mono muted">← INDEX</span><span style="font-weight:600">All case studies</span></a>
-    <a href="/work/metatrader-dealing-desk-plugin/" style="text-decoration:none;display:grid;gap:6px;text-align:right"><span class="mono muted">NEXT →</span><span style="font-weight:600">MetaTrader Dealing Desk Plugin</span></a>
+    <a href="/work/enterprise-platform-modernization/" style="text-decoration:none;display:grid;gap:6px;text-align:right"><span class="mono muted">NEXT →</span><span style="font-weight:600">Enterprise Platform Modernization</span></a>
    </nav>
   </div>
  </div>
@@ -166,6 +159,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=ee51a6d0" defer></script>
+<script src="/js/main.js?v=74f4d64e" defer></script>
 </body>
 </html>

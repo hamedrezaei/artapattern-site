@@ -79,6 +79,7 @@
 .ap-mobile-nav { display: none; border-bottom: 1px solid var(--line); background: var(--surface); padding: var(--space-2) var(--space-6) var(--space-6); }
 .ap-mobile-nav a { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 17px; font-weight: 500; text-decoration: none; color: var(--text); }
 .ap-mobile-nav .ap-btn { width: 100%; margin-top: var(--space-6); }
+.ap-mobile-nav a.ap-btn--primary { color: var(--on-action); border-bottom: 0; justify-content: center; }
 .ap-mobile-nav.is-open { display: block; }
 @media (max-width: 899px) { .ap-nav { display: none; } .ap-menu-btn { display: inline-flex; } .ap-header__inner { padding: 0 var(--space-4); } }
 

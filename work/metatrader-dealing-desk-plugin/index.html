@@ -16,8 +16,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=ee51a6d0">
-<link rel="stylesheet" href="/css/site.css?v=ee51a6d0">
+<link rel="stylesheet" href="/css/components.css?v=74f4d64e">
+<link rel="stylesheet" href="/css/site.css?v=74f4d64e">
 </head>
 <body>
 <div class="ap">
@@ -53,12 +53,13 @@
 <main id="main">
 <section class="cs-hero">
  <div class="wrap" style="display:grid;gap:24px">
-  <a class="ap-link" href="/work/" style="font-size:14px"><span aria-hidden="true">←</span> All case studies</a>
-  <p class="ap-eyebrow">Case study 02 · C++ / FinTech / Trading Systems · 2025 – 2026</p>
+  <a class="ap-link" href="/work/" style="font-size:14px"><span aria-hidden="true">←</span> All work</a>
+  <p class="ap-eyebrow">Case study 03 · C++ / FinTech / Trading Systems · 2025 – 2026</p>
   <h1 class="h1" style="max-width:20ch">MetaTrader Dealing Desk Plugin</h1>
   <p class="lead">Designed and implemented a MetaTrader Dealing Desk plugin with broker-oriented slippage management functionality.</p>
   <dl class="ap-facts" style="--cols:4;margin:16px 0 0">
 <div><dt>Domain</dt><dd>Forex brokerage</dd></div><div><dt>Role</dt><dd>Designer &amp; developer</dd></div><div><dt>Type</dt><dd>Server-side plugin</dd></div><div><dt>Stack</dt><dd>C++ · MT4/MT5</dd></div>  </dl>
+  <p class="attribution">These examples reflect Hamed Rezaei&#39;s professional experience before founding ArtaPattern. They are not presented as ArtaPattern client engagements. Diagrams are conceptual and exclude confidential implementation details.</p>
  </div>
 </section>
 
@@ -66,7 +67,7 @@
  <div class="wrap cs-body">
   <nav class="ap-toc" aria-label="Case study sections">
    <h4>Contents</h4>
-<a href="#overview" aria-current="true">1. Project Overview</a><a href="#context">2. Engineering Context</a><a href="#problem">3. Problem &amp; Constraints</a><a href="#approach">4. Architecture Approach</a><a href="#decisions">5. Key Decisions</a><a href="#delivery">6. Implementation &amp; Delivery</a><a href="#challenges">7. Technical Challenges</a><a href="#lessons">8. Lessons Learned</a><a href="#tech">9. Technologies</a><a href="#related">10. Related Services</a>  </nav>
+<a href="#overview" aria-current="true">1. Project Overview</a><a href="#context">2. Engineering Context</a><a href="#problem">3. Problem &amp; Constraints</a><a href="#approach">4. Architecture Approach</a><a href="#decisions">5. Key Decisions</a><a href="#delivery">6. Implementation &amp; Delivery</a><a href="#tech">7. Technologies</a><a href="#related">8. Related Services</a>  </nav>
   <div>
    <section class="cs-section" id="overview">
     <span class="mono">01 / Project overview</span>
@@ -84,7 +85,7 @@
    <section class="cs-section" id="problem">
     <span class="mono">03 / Problem &amp; constraints</span>
     <h2 class="h2">Problem &amp; constraints</h2>
-    <ul class="list-check" style="font-size:17px;line-height:28px"><li>The plugin runs inside the MetaTrader server and must integrate with both MT4 and MT5.</li><li>Slippage behavior had to be configurable by the broker.</li><li>Architecture, implementation, configuration, debugging and testing were owned by one engineer.</li></ul>
+    <ul class="list-check" style="font-size:17px;line-height:28px"><li>The plugin runs inside the MetaTrader server process, so correctness comes before features.</li><li>It had to integrate with both MT4 and MT5.</li><li>Slippage behavior had to be configurable by the broker.</li><li>Architecture, implementation, configuration, debugging and testing were owned by one engineer.</li></ul>
    </section>
 
    <section class="cs-section" id="approach">
@@ -97,7 +98,7 @@
    <section class="cs-section" id="decisions">
     <span class="mono">05 / Key engineering decisions</span>
     <h2 class="h2">Key engineering decisions</h2>
-    <div><div class="ap-decision"><span class="ap-decision__id">DECISION 01</span><div><h4>Keep rules configurable</h4><p>Slippage behavior is driven by broker configuration rather than hard-coded values.</p></div></div><div class="ap-decision"><span class="ap-decision__id">DECISION 02</span><div><h4>Test before integration</h4><p>Behavior was verified before connecting the plugin to MT4/MT5 servers.</p></div></div></div>
+    <div><div class="ap-decision"><span class="ap-decision__id">DECISION 01</span><div><h4>Keep rules configurable</h4><p>Slippage behavior is driven by broker configuration rather than hard-coded values, so policy changes do not require a new build.</p></div></div><div class="ap-decision"><span class="ap-decision__id">DECISION 02</span><div><h4>Test before integration</h4><p>Behavior was verified before connecting the plugin to MT4/MT5 servers, because a defect inside the server affects order handling directly.</p></div></div><div class="ap-decision"><span class="ap-decision__id">DECISION 03</span><div><h4>Keep the engineering boundary clear</h4><p>I owned architecture, implementation, configuration, debugging, testing and MT4/MT5 integration; the slippage policy itself remains the broker&#39;s decision.</p></div></div></div>
    </section>
 
    <section class="cs-section" id="delivery">
@@ -107,32 +108,22 @@
 <li><span class="ap-flow__n">01</span><h4>Design</h4><p>Plugin architecture.</p></li><li><span class="ap-flow__n">02</span><h4>Implement</h4><p>C++ and configuration.</p></li><li><span class="ap-flow__n">03</span><h4>Test</h4><p>Debugging and verification.</p></li><li><span class="ap-flow__n">04</span><h4>Integrate</h4><p>MT4 / MT5.</p></li>    </ol>
    </section>
 
-   <section class="cs-section" id="challenges">
-    <span class="mono">07 / Technical challenges</span>
-    <h2 class="h2">Technical challenges</h2>
-    <p class="placeholder">Detailed write-up in preparation. Specifics are published only where they can be shared without confidential client information.</p>
-   </section>
 
-   <section class="cs-section" id="lessons">
-    <span class="mono">08 / Lessons learned</span>
-    <h2 class="h2">Lessons learned</h2>
-    <p class="placeholder">In preparation. Outcomes are stated only when they have been measured and can be shared.</p>
-   </section>
 
    <section class="cs-section" id="tech">
-    <span class="mono">09 / Technologies</span>
+    <span class="mono">07 / Technologies</span>
     <ul class="ap-tags"><li class="ap-tag">C++</li><li class="ap-tag">MetaTrader MT4/MT5</li><li class="ap-tag">Plugin Architecture</li><li class="ap-tag">Slippage Management</li><li class="ap-tag">Testing</li></ul>
    </section>
 
    <section class="cs-section" id="related">
-    <span class="mono">10 / Related services</span>
+    <span class="mono">08 / Related services &amp; experience</span>
     <div class="grid-2" style="gap:24px">
-<a class="ap-card" href="/services/#fintech" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 06</span><h3>FinTech &amp; Trading Systems Engineering</h3></a><a class="ap-card" href="/services/#reliability" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 04</span><h3>Backend Performance &amp; Production Reliability</h3></a>    </div>
+<a class="ap-card" href="/services/#fintech" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">DOMAIN EXPERIENCE</span><h3>FinTech &amp; Trading Systems</h3></a><a class="ap-card" href="/services/#reliability" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 05</span><h3>Backend Performance &amp; Production Reliability</h3></a>    </div>
    </section>
 
    <nav aria-label="More case studies" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--text)">
     <a href="/work/" style="text-decoration:none;display:grid;gap:6px"><span class="mono muted">← INDEX</span><span style="font-weight:600">All case studies</span></a>
-    <a href="/work/enterprise-platform-modernization/" style="text-decoration:none;display:grid;gap:6px;text-align:right"><span class="mono muted">NEXT →</span><span style="font-weight:600">Enterprise Platform Modernization</span></a>
+    <a href="/work/municipal-services-portal/" style="text-decoration:none;display:grid;gap:6px;text-align:right"><span class="mono muted">NEXT →</span><span style="font-weight:600">Municipal Services Portal &amp; Violation Commission</span></a>
    </nav>
   </div>
  </div>
@@ -166,6 +157,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=ee51a6d0" defer></script>
+<script src="/js/main.js?v=74f4d64e" defer></script>
 </body>
 </html>

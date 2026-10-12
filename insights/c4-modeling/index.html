@@ -17,8 +17,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=ee51a6d0">
-<link rel="stylesheet" href="/css/site.css?v=ee51a6d0">
+<link rel="stylesheet" href="/css/components.css?v=74f4d64e">
+<link rel="stylesheet" href="/css/site.css?v=74f4d64e">
 </head>
 <body>
 <div class="ap">
@@ -71,6 +71,7 @@
    <a href="#why" aria-current="true">Why start with context</a>
    <a href="#containers">Containers before components</a>
    <a href="#decisions">Diagrams and decisions</a>
+   <a href="#example">A worked decision</a>
    <a href="#stop">When to stop drawing</a>
   </nav>
   <article class="ap-prose">
@@ -98,6 +99,17 @@ builder.Services.<span class="k">AddHangfireServer</span>();</pre>
    <h2 id="decisions">Diagrams and decisions</h2>
    <p>Every arrow worth drawing usually hides a decision worth recording. Pair the container view with short Architecture Decision Records: context, options, the choice, and what would make you revisit it.</p>
    <blockquote>Clarity is a deliverable. Trade-offs are part of the work.</blockquote>
+   <h2 id="example">A worked decision</h2>
+   <p>Take the background worker above. On the container diagram it is either a box inside the web application or a box of its own, and the choice is worth writing down:</p>
+   <div class="adr">
+    <div class="adr__row"><span>Context</span><p>Reports and synchronization jobs run for minutes and must survive web deployments. The team is small and runs a single SQL Server.</p></div>
+    <div class="adr__row"><span>Options</span><p>(A) Run Hangfire inside the web application. (B) Run a separate worker service that shares the same Hangfire storage.</p></div>
+    <div class="adr__row"><span>Decision</span><p>Option B. Long jobs no longer compete with web requests for resources, and the web application can be redeployed without interrupting them.</p></div>
+    <div class="adr__row"><span>Trade-off</span><p>One more deployable to build, monitor and version, and job code must stay compatible with both hosts during a release.</p></div>
+    <div class="adr__row"><span>Revisit if</span><p>Job volume stays low and the second deployable costs more attention than it saves.</p></div>
+   </div>
+   <p>The diagram makes the question visible; the record keeps the reasoning after the people in the room have moved on.</p>
+   <p class="ap-hint">Illustrative example, not a client system.</p>
    <h2 id="stop">When to stop drawing</h2>
    <p>Component diagrams are useful for the parts of the system that are changing or misunderstood. Elsewhere, the code and the tests are the more accurate documentation.</p>
   </article>
@@ -143,6 +155,6 @@ builder.Services.<span class="k">AddHangfireServer</span>();</pre>
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=ee51a6d0" defer></script>
+<script src="/js/main.js?v=74f4d64e" defer></script>
 </body>
 </html>
