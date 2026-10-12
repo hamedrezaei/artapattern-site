@@ -34,7 +34,7 @@
     var items = document.querySelectorAll('[data-filter-item="' + name + '"]');
     var empty = document.querySelector('[data-filter-empty="' + name + '"]');
     var count = document.querySelector('[data-filter-count="' + name + '"]');
-    var unit = ((count && count.getAttribute('data-filter-unit')) || 'planned note|planned notes').split('|');
+    var unit = ((count && count.getAttribute('data-filter-unit')) || 'note|notes').split('|');
     group.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-filter]');
       if (!b) return;

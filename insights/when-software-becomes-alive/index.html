@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Does a Software Idea Become Alive? First Scenario, Modular Monolith &amp; Evolutionary Architecture · ArtaPattern</title>
+<meta name="description" content="A software idea becomes real when its first meaningful scenario works for someone who needs it. How much architecture to do first, why a modular monolith is a practical start, and how to leave room to evolve.">
+<meta name="author" content="Hamed Rezaei">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><link rel="canonical" href="https://artapattern.com/insights/when-software-becomes-alive/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ArtaPattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="When Does a Software Idea Become Alive? First Scenario, Modular Monolith &amp; Evolutionary Architecture · ArtaPattern">
+<meta property="og:description" content="A software idea becomes real when its first meaningful scenario works for someone who needs it. How much architecture to do first, why a modular monolith is a practical start, and how to leave room to evolve.">
+<meta property="og:url" content="https://artapattern.com/insights/when-software-becomes-alive/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When Does a Software Idea Become Alive? First Scenario, Modular Monolith &amp; Evolutionary Architecture · ArtaPattern">
+<meta name="twitter:description" content="A software idea becomes real when its first meaningful scenario works for someone who needs it. How much architecture to do first, why a modular monolith is a practical start, and how to leave room to evolve.">
+<meta name="twitter:image" content="https://artapattern.com/img/og.jpg">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=6c828a59">
+<link rel="stylesheet" href="/css/site.css?v=6c828a59">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"When Does a Software Idea Become Alive?","item":"https://artapattern.com/insights/when-software-becomes-alive/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"When Does a Software Idea Become Alive?","description":"A software idea becomes real when its first meaningful scenario works for someone who needs it. How much architecture to do first, why a modular monolith is a practical start, and how to leave room to evolve.","datePublished":"2026-10-13","dateModified":"2026-10-13","url":"https://artapattern.com/insights/when-software-becomes-alive/","mainEntityOfPage":"https://artapattern.com/insights/when-software-becomes-alive/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"keywords":"software architecture, system design, domain-driven design, evolutionary architecture, modular monolith, TDD, C4 model"}</script>
+</head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<header class="wrap" style="padding-top:72px;padding-bottom:48px;display:grid;gap:20px;max-width:1008px">
+ <nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/insights/">Engineering Notes</a> <span aria-hidden="true">/</span> <span aria-current="page">Software Architecture</span></nav>
+ <div class="ap-article-card__meta"><span class="ap-badge">Software Architecture</span><span><time datetime="2026-10-13">October 13, 2026</time></span><span>·</span><span>5 min read</span></div>
+ <h1 class="h1" style="font-size:clamp(34px,5vw,52px);line-height:1.1">When Does a Software Idea Become Alive?</h1>
+ <p class="lead">An idea starts becoming real when its first meaningful scenario works for someone who needs it. How much architecture that first scenario needs, and why it should leave room to evolve.</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px"><a href="/about/" style="font-weight:600;color:var(--text)">Hamed Rezaei</a><span class="muted">Software Architect &amp; Senior .NET Backend Engineer</span><span class="muted">·</span><a class="muted" href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">Also shared on LinkedIn</a></div>
+</header>
+
+<section style="padding-bottom:96px">
+ <div class="wrap cs-body">
+  <nav class="ap-toc" aria-label="On this page">
+   <h4>On this page</h4>
+   <a href="#scenario" aria-current="true">A small, complete scenario</a>
+   <a href="#uncertainty">Reduce uncertainty first</a>
+   <a href="#first">The first end-to-end scenario</a>
+   <a href="#birth">A meaningful beginning</a>
+   <a href="#mvp">Not yet an MVP</a>
+   <a href="#evolve">Room to evolve</a>
+  </nav>
+  <article class="ap-prose">
+   <p>Over the years, I've spent a lot of time thinking about how software projects should begin.</p>
+   <p>An architecture diagram doesn't make a system alive. Neither does a well-structured codebase. For me, an idea starts becoming real when <strong>its first meaningful scenario works for someone who needs it.</strong></p>
+
+   <h2 id="scenario">A small, complete scenario</h2>
+   <p>Think of a user requesting an operation. The system accepts the request, tracks its progress, handles failures, and lets the user verify the outcome, even if the connection is interrupted.</p>
+   <figure class="ap-diagram seq" style="margin:32px 0;padding-top:44px" aria-labelledby="seq-cap">
+    <span class="ap-diagram__label">Sequence · first meaningful scenario</span>
+    <div class="seq__grid" role="list">
+     <div class="seq__actor" style="grid-column:1">User</div><div class="seq__actor" style="grid-column:2">API</div><div class="seq__actor" style="grid-column:3">Worker</div>
+     <div class="seq__msg" role="listitem" style="grid-column:1/3"><span>1 · Request an operation</span></div>
+     <div class="seq__msg seq__msg--back" role="listitem" style="grid-column:1/3"><span>2 · Accepted, with an operation id</span></div>
+     <div class="seq__msg" role="listitem" style="grid-column:2/4"><span>3 · Process in the background</span></div>
+     <div class="seq__self" role="listitem" style="grid-column:3"><span>4 · Track progress, retry on failure</span></div>
+     <div class="seq__gap" role="listitem" style="grid-column:1/4"><span>connection interrupted</span></div>
+     <div class="seq__msg" role="listitem" style="grid-column:1/3"><span>5 · Check status by id</span></div>
+     <div class="seq__msg seq__msg--back" role="listitem" style="grid-column:1/3"><span>6 · Outcome: succeeded, or failed with a reason</span></div>
+    </div>
+    <figcaption id="seq-cap" class="ap-hint" style="margin-top:16px">Small, but complete: the request is accepted, progress is tracked, failures are handled, and the user can verify the outcome later. Illustrative example.</figcaption>
+   </figure>
+   <p>It's a small scenario, but it's complete. And that's where I like to start.</p>
+
+   <h2 id="uncertainty">Reduce uncertainty before writing code</h2>
+   <p>Before implementation, I want to understand <strong>who the consumer is, what problem we're solving, and where the system boundaries are.</strong></p>
+   <p><a href="/insights/c4-modeling/">C4</a> helps clarify system boundaries and interactions. DDD helps identify business rules and ownership. Sometimes a simple sequence diagram is enough to expose an important assumption.</p>
+   <blockquote>The point isn't to produce diagrams. It's to reduce uncertainty before writing code.</blockquote>
+
+   <h2 id="first">The first end-to-end scenario</h2>
+   <p>Then comes the first end-to-end scenario.</p>
+   <p>I bring a TDD mindset to it: think about observable behavior, acceptance criteria, and failure cases before implementation. When TDD fits, tests can drive the implementation itself.</p>
+   <p>Once that scenario works and can be tested, we have a working behavior to build upon.</p>
+
+   <h2 id="birth">A meaningful beginning</h2>
+   <p>I think of it like birth. A newborn doesn't have every capability yet, but has the foundations to grow. An early software system should be designed with that same idea in mind.</p>
+   <p>We don't need every future feature, or microservices from day one. A well-structured <strong>modular monolith</strong> can be a practical starting point, keeping boundaries clear without premature distributed-system complexity. SOLID principles help keep responsibilities focused and future changes manageable.</p>
+   <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="mono-cap">
+    <span class="ap-diagram__label">Modular monolith · one deployable, clear boundaries</span>
+    <div class="ap-boundary" style="background:var(--surface)"><span class="ap-boundary__name">one deployable application</span>
+     <div class="mono-mods">
+      <div class="ap-node ap-node--accent"><span class="ap-node__title">Requests</span><span class="ap-node__meta">accepts and validates</span></div>
+      <div class="ap-node"><span class="ap-node__title">Processing</span><span class="ap-node__meta">runs and retries</span></div>
+      <div class="ap-node"><span class="ap-node__title">Tracking</span><span class="ap-node__meta">status and outcome</span></div>
+     </div>
+    </div>
+    <figcaption id="mono-cap" class="ap-hint" style="margin-top:16px">Modules own their data and talk through explicit interfaces, so a boundary can later move, or a module can become a service, for a real reason. Illustrative example.</figcaption>
+   </figure>
+
+   <h2 id="mvp">A first scenario is not yet an MVP</h2>
+   <p>The first working scenario isn't necessarily an MVP, though. An MVP needs to deliver enough value to be useful. Releasing it to production also requires appropriate testing, security, failure handling, deployment, and observability.</p>
+   <p><strong>Minimal scope shouldn't mean ignoring what makes software reliable.</strong></p>
+   <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="life-cap">
+    <span class="ap-diagram__label">From idea to an evolving system</span>
+    <ol class="ap-flow" style="--steps:5;margin-top:8px">
+     <li><span class="ap-flow__n">01</span><h4>Understand</h4><p>Consumer, problem, boundaries. C4, DDD, a sequence diagram.</p></li>
+     <li><span class="ap-flow__n">02</span><h4>First scenario</h4><p>End to end, tested, failure cases included.</p></li>
+     <li><span class="ap-flow__n">03</span><h4>MVP</h4><p>Enough value to be useful.</p></li>
+     <li><span class="ap-flow__n">04</span><h4>Production</h4><p>Testing, security, failure handling, deployment, observability.</p></li>
+     <li><span class="ap-flow__n">05</span><h4>Real usage</h4><p>New scenarios challenge the assumptions.</p></li>
+    </ol>
+    <p class="life-loop"><span aria-hidden="true">↺</span> Refactor, move a boundary, or keep the design: then the next scenario.</p>
+    <figcaption id="life-cap" class="ap-hint" style="margin-top:8px">The loop matters more than predicting the final architecture.</figcaption>
+   </figure>
+
+   <h2 id="evolve">Room to evolve</h2>
+   <p>After release, real usage challenges our assumptions. New scenarios reveal coupling, unclear responsibilities, or gaps in our understanding of the domain.</p>
+   <p>Sometimes we refactor or change a boundary. Sometimes the design is good enough.</p>
+   <p>I've become less interested in predicting the final architecture and more interested in making sure we can change it for the right reasons.</p>
+   <blockquote>A software system doesn't need to be fully grown on day one. It needs a meaningful beginning, a foundation appropriate to its risks, and room to evolve.</blockquote>
+   <p><strong>How much architecture is enough before building the first real scenario?</strong> I'd like to hear how you decide. <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">Join the conversation on LinkedIn</a>, or <a href="/contact/">tell me about the system you're starting</a>.</p>
+   <ul class="ap-tags" style="margin-top:32px"><li class="ap-tag">Software Architecture</li><li class="ap-tag">System Design</li><li class="ap-tag">Domain-Driven Design</li><li class="ap-tag">Evolutionary Architecture</li><li class="ap-tag">Modular Monolith</li><li class="ap-tag">TDD</li></ul>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="rel-title">
+ <div class="wrap stack-12">
+  <h2 class="h2" id="rel-title">Related</h2>
+  <div class="grid-3">
+   <a class="ap-card ap-article-card" href="/insights/c4-modeling/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Draft</span><span>Software Architecture</span></div><h3>C4 Modeling as a Starting Point for Software Architecture</h3></a>
+   <a class="ap-card ap-article-card" href="/services/software-architecture-consulting/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Service</span><span>Architecture</span></div><h3>Software Architecture &amp; System Design Consulting</h3></a>
+   <div class="ap-card" style="justify-content:space-between"><p style="color:var(--text)">Starting a new system and want a meaningful first scenario?</p><a class="ap-btn ap-btn--primary" href="/contact/?type=System%20Design">Discuss Your Challenge</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — specialties" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Specialties</span>
+<a href="/services/metatrader-plugin-development/">MetaTrader Plugin Development</a><a href="/services/gis-software-development/">GIS Software Development</a><a href="/services/software-architecture-consulting/">Software Architecture Consulting</a><a href="/services/dotnet-modernization/">.NET Modernization</a>    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=6c828a59" defer></script>
+</body>
+</html>
