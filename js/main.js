@@ -1,5 +1,21 @@
 /* ArtaPattern — small progressive enhancements. Everything works without JS. */
 (function () {
+  // Analytics events (GoatCounter, cookieless). No-ops when the counter is not loaded (local builds, blockers).
+  function track(name, title) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: title || name, event: true }); } catch (e) {}
+  }
+  window.apTrack = track;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var from = window.location.pathname;
+    if (href.indexOf('/contact/') === 0) track('cta-contact' + from, 'Contact CTA clicked on ' + from);
+    else if (a.classList.contains('latest')) track('latest-note-click', 'Latest note card clicked');
+    else if (href.indexOf('mailto:') === 0) track('mailto' + from, 'Email link clicked on ' + from);
+    else if (href.indexOf('linkedin.com') > -1) track('linkedin' + from, 'LinkedIn link clicked on ' + from);
+  });
+
   // Mobile menu
   var btn = document.querySelector('[data-menu]');
   var nav = document.getElementById('mobile-nav');
@@ -65,6 +81,7 @@
     var sending = false;
 
     function mailtoFallback(d) {
+      track('inquiry-fallback-mailto', 'Inquiry fell back to email draft');
       var body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nOrganization: ' + (d.organization || '-') +
         '\nTopic: ' + d.engagement + '\n\n' + d.description;
       var subject = d.engagement && d.engagement !== 'Not sure yet' ? 'Project inquiry — ' + d.engagement : 'Project inquiry';
@@ -104,6 +121,7 @@
           if (res && res.ok) {
             form.querySelectorAll('input:not([type=hidden]), textarea').forEach(function (el) { el.value = ''; });
             if (ok) { ok.hidden = false; ok.setAttribute('tabindex', '-1'); ok.focus(); }
+            track('inquiry-sent', 'Inquiry sent: ' + (d.engagement || 'unknown'));
           } else { mailtoFallback(d); }
         })
         .catch(function () { mailtoFallback(d); })
