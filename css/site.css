@@ -406,3 +406,7 @@ body { margin: 0; background: var(--surface); }
 .latest .ap-arrow { display: inline-block; transition: transform .15s ease; }
 @media (prefers-reduced-motion: reduce) { .latest, .latest .ap-arrow { transition: none; } .latest:hover { transform: none; } }
 @media (max-width: 599px) { .latest { padding: 14px 16px; } .latest__title { font-size: 17px; line-height: 24px; } .latest__dek { display: none; } }
+
+/* Home panel: AI row */
+.xp__card--ai { border-color: rgba(232,201,160,.45); background: linear-gradient(135deg, rgba(232,201,160,.10), rgba(232,201,160,0) 70%); }
+.xp__card--ai:hover, .xp__card--ai:focus-visible { border-color: var(--gold-light); }

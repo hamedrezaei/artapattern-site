@@ -8,6 +8,7 @@ Past work shown on the site is Hamed Rezaei's professional experience before fou
 - [MetaTrader Plugin Development for Forex Brokers](https://artapattern.com/services/metatrader-plugin-development/): Independent MetaTrader plugin developer for forex brokers: MT4/MT5 server plugins in C++, dealing desk and slippage logic, plugin licensing platforms and .NET broker backends.
 - [GIS & WebGIS Software Development](https://artapattern.com/services/gis-software-development/): GIS software development with .NET, Python and Android: WebGIS applications, spatial queries in SQL Server and PostgreSQL, field apps with offline maps, and ArcGIS, ArcEngine and AutoCAD integrations.
 - [Software Architecture & System Design Consulting](https://artapattern.com/services/software-architecture-consulting/): Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.
+- [Agent-Based Systems & AI Integration](https://artapattern.com/services/ai-agent-systems/): Architecture and backend engineering for agent-based AI systems: tool and API design, MCP servers, permissions and approval gates, audit trails, long-running operations and integration with .NET backends.
 - [.NET Modernization & Backend Reliability](https://artapattern.com/services/dotnet-modernization/): Modernize existing .NET systems without rewriting everything: incremental .NET Framework to modern .NET migration, architecture review, SQL Server performance and backend reliability.
 
 ## Starting engagements
@@ -86,6 +87,29 @@ Q: Do you only advise, or also build?
 A: Both. I stay hands-on: I independently architected and delivered a MetaTrader plugin management platform from concept to V1.
 Q: Which technologies do you work with?
 A: Mainly C#/.NET, ASP.NET Core, EF Core, SQL Server and PostgreSQL, with DDD, CQRS, modular and distributed architectures.
+
+## Agent-Based Systems & AI Integration
+LLM agents become useful when they can act on real systems. I design the architecture and backend that let them do it safely: tools, permissions, approvals, audit trails and operations that survive failure.
+
+- Agent architecture: Which decisions the agent makes, which tools it may call, how context flows, and where a human approves.
+- Tool APIs and MCP servers: Narrow, well-typed tools over your existing systems, exposed through function calling or the Model Context Protocol.
+- Guardrails and audit: Permissions per tool, approval gates for irreversible actions, and an audit trail of every call and outcome.
+- Reliable operations: Long-running and retryable operations with status tracking, so a dropped connection or a failed step does not leave the system in an unknown state.
+- Evaluation and observability: Test scenarios for agent behavior, tracing of tool calls, and metrics that show whether the agent is actually helping.
+- Integration with .NET backends: Agents connected to ASP.NET Core services, SQL Server or PostgreSQL data, and background processing you already run.
+
+Boundary: Not foundation-model training or machine-learning research.
+
+Q: What does an agent-based system need beyond the model?
+A: Well-defined tools over your systems, permission checks per tool, human approval for irreversible actions, idempotent and retryable operations, an audit trail, and evaluation. Those parts decide whether an agent is safe to use in production.
+Q: Can AI agents work with our existing .NET backend?
+A: Yes. The usual approach is to expose narrow tools over your existing services, through function calling or an MCP server, instead of giving the agent direct database access.
+Q: Do you build MCP servers?
+A: Yes. I design and build Model Context Protocol servers and tool APIs that let agents use your systems with explicit permissions and logging.
+Q: Where should an agent project start?
+A: With one meaningful scenario: a single task the agent completes end to end, with its tools, guardrails and failure handling in place. A System Design engagement covers that first scenario.
+Q: Do you use AI in your own delivery?
+A: Yes. I use AI coding agents across discovery, planning, test-driven implementation, review and regression verification, with an engineer reviewing changes before they merge.
 
 ## .NET Modernization & Backend Reliability
 Improve existing .NET systems without rewriting everything: incremental migration from .NET Framework, less complexity, and backend performance and reliability problems investigated to their cause.
