@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Notes · ArtaPattern</title>
+<meta name="description" content="Practical notes on software architecture, modernization, distributed systems and AI-assisted engineering.">
+<link rel="canonical" href="https://artapattern.com/insights/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Engineering Notes · ArtaPattern">
+<meta property="og:description" content="Practical notes on software architecture, modernization, distributed systems and AI-assisted engineering.">
+<meta property="og:url" content="https://artapattern.com/insights/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=9bd1e7d7">
+<link rel="stylesheet" href="/css/site.css?v=9bd1e7d7">
+</head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<section class="page-head">
+ <div class="wrap">
+  <p class="ap-eyebrow">Insights</p>
+  <h1 class="h1">Engineering Notes</h1>
+  <p class="lead">Thoughts and practical lessons on software architecture, system modernization, distributed systems, and AI-assisted engineering. The notes below are planned; each will be published here with its date and reading time.</p>
+ </div>
+</section>
+
+<section class="section" style="padding-top:48px">
+ <div class="wrap" style="display:grid;gap:48px">
+  <article class="feature" aria-labelledby="feat-title">
+   <div class="feature__body">
+    <div class="ap-article-card__meta"><span class="ap-badge">Featured · Planned</span><span>Software Architecture</span></div>
+    <h2 class="h2" id="feat-title">C4 Modeling as a Starting Point for Software Architecture</h2>
+    <p class="lead" style="font-size:17px;line-height:28px">Why context and container views come before technology choices — and how a small set of diagrams keeps architecture conversations grounded.</p>
+    <div><a class="ap-link" href="/insights/c4-modeling/">Read the draft preview <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+   <div class="feature__art" role="img" aria-label="Conceptual: C4 levels — context, containers, components, code">
+    <div style="display:grid;gap:10px;width:100%;max-width:300px;font-family:var(--font-mono);font-size:11px">
+     <div style="border:1px solid var(--gold-light);color:var(--on-navy);padding:18px 14px">1 · CONTEXT</div>
+     <div style="border:1px solid var(--on-navy-muted);color:var(--on-navy);padding:14px;margin-left:24px">2 · CONTAINERS</div>
+     <div style="border:1px solid var(--on-navy-muted);color:var(--on-navy-muted);padding:10px 14px;margin-left:48px">3 · COMPONENTS</div>
+     <div style="border:1px dashed var(--on-navy-muted);color:var(--on-navy-muted);padding:8px 14px;margin-left:72px">4 · CODE</div>
+    </div>
+   </div>
+  </article>
+
+  <div style="display:grid;gap:24px">
+   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+    <h2 class="h3">All notes</h2>
+    <span class="mono muted" data-filter-count="notes" aria-live="polite">3 planned notes</span>
+   </div>
+   <div class="ap-filter" role="group" aria-label="Filter by topic" data-filter-group="notes">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+<button type="button" data-filter="architecture" aria-pressed="false">Software Architecture</button><button type="button" data-filter="ddd" aria-pressed="false">Domain-Driven Design</button><button type="button" data-filter="modernization" aria-pressed="false">System Modernization</button><button type="button" data-filter="distributed" aria-pressed="false">Distributed Systems</button><button type="button" data-filter="backend" aria-pressed="false">Backend Engineering</button><button type="button" data-filter="ai" aria-pressed="false">AI-Native Engineering</button><button type="button" data-filter="leadership" aria-pressed="false">Engineering Leadership</button>   </div>
+   <div class="grid-3" style="gap:40px 24px">
+    <article class="ap-card ap-article-card" data-filter-item="notes" data-tags="architecture">
+     <div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>Software Architecture</span></div>
+     <h3><a href="/insights/c4-modeling/" style="text-decoration:none">C4 Modeling as a Starting Point for Software Architecture</a></h3>
+     <p>Why context and container views come before technology choices.</p>
+     <span class="mono muted" style="margin-top:4px">Reading time on publish</span>
+    </article>
+    <article class="ap-card ap-article-card" data-filter-item="notes" data-tags="modernization">
+     <div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>System Modernization</span></div>
+     <h3>Greenfield vs. Brownfield: Different Problems, Different Engineering Decisions</h3>
+     <p>How constraints change when a system already runs the business.</p>
+     <span class="mono muted" style="margin-top:4px">Reading time on publish</span>
+    </article>
+    <article class="ap-card ap-article-card" data-filter-item="notes" data-tags="ai">
+     <div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>AI-Native Engineering</span></div>
+     <h3>Building Reliable AI-Assisted Software Delivery Workflows</h3>
+     <p>Approval gates, TDD and verification around coding agents.</p>
+     <span class="mono muted" style="margin-top:4px">Reading time on publish</span>
+    </article>
+   </div>
+   <p class="placeholder" data-filter-empty="notes" hidden>No notes in this topic yet.</p>
+  </div>
+ </div>
+</section>
+
+<section class="section section--paper">
+ <div class="wrap split" style="align-items:center">
+  <header class="ap-section-head">
+   <p class="ap-eyebrow">Follow along</p>
+   <h2>New notes are shared on LinkedIn</h2>
+  </header>
+  <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="ap-btn ap-btn--secondary" href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">Connect on LinkedIn</a><a class="ap-btn ap-btn--primary" href="/contact/">Discuss a Project <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=9bd1e7d7" defer></script>
+</body>
+</html>

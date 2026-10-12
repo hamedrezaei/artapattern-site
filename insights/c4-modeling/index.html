@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draft: C4 Modeling as a Starting Point for Software Architecture · ArtaPattern</title>
+<meta name="description" content="Draft preview of a planned engineering note on C4 modeling.">
+<link rel="canonical" href="https://artapattern.com/insights/c4-modeling/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Draft: C4 Modeling as a Starting Point for Software Architecture · ArtaPattern">
+<meta property="og:description" content="Draft preview of a planned engineering note on C4 modeling.">
+<meta property="og:url" content="https://artapattern.com/insights/c4-modeling/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=9bd1e7d7">
+<link rel="stylesheet" href="/css/site.css?v=9bd1e7d7">
+</head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<div style="background:var(--surface-paper);border-bottom:1px solid var(--line)">
+ <div class="wrap" style="padding-top:12px;padding-bottom:12px;font-size:14px;color:var(--text-muted)"><strong style="color:var(--text)">Draft preview.</strong> This note is planned and not yet published; the full version will replace this draft.</div>
+</div>
+
+<header class="wrap" style="padding-top:72px;padding-bottom:48px;display:grid;gap:20px;max-width:1008px">
+ <a class="ap-link" href="/insights/" style="font-size:14px"><span aria-hidden="true">←</span> Engineering Notes</a>
+ <div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>Software Architecture</span><span>·</span><span>Reading time on publish</span></div>
+ <h1 class="h1" style="font-size:clamp(34px,5vw,48px);line-height:1.12">C4 Modeling as a Starting Point for Software Architecture</h1>
+ <p class="lead">Why context and container views come before technology choices — and how a small set of diagrams keeps architecture conversations grounded.</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line);font-size:14px"><span style="font-weight:600">Hamed Rezaei</span><span class="muted">Software Engineer &amp; Architecture Consultant</span></div>
+</header>
+
+<section style="padding-bottom:96px">
+ <div class="wrap cs-body">
+  <nav class="ap-toc" aria-label="On this page">
+   <h4>On this page</h4>
+   <a href="#why" aria-current="true">Why start with context</a>
+   <a href="#containers">Containers before components</a>
+   <a href="#decisions">Diagrams and decisions</a>
+   <a href="#stop">When to stop drawing</a>
+  </nav>
+  <article class="ap-prose">
+   <h2 id="why" style="margin-top:0">Why start with context</h2>
+   <p>A context diagram names the people and systems around yours before any technology is chosen. It turns the system boundary into a decision rather than an accident, and it gives business and engineering stakeholders one picture they can both correct.</p>
+   <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-label="Illustrative context diagram">
+    <span class="ap-diagram__label">C4 · Context · example</span>
+    <div class="diag-c4">
+     <div class="ap-node"><span class="ap-node__title">Customer</span><span class="ap-node__meta">person</span></div>
+     <div class="wire-h" aria-hidden="true"></div>
+     <div class="ap-node ap-node--accent" style="padding:16px"><span class="ap-node__title">Ordering system</span><span class="ap-node__meta">system in scope</span></div>
+     <div class="wire-h wire-h--dash" aria-hidden="true"></div>
+     <div class="ap-node"><span class="ap-node__title">Payment provider</span><span class="ap-node__meta">external</span></div>
+    </div>
+    <figcaption class="ap-hint" style="margin-top:16px">Illustrative example, not a client system.</figcaption>
+   </figure>
+   <h2 id="containers">Containers before components</h2>
+   <p>The container view shows the deployable pieces and how they talk. It is the level where most early trade-offs live: one service or several, a queue or a direct call, which data store owns what.</p>
+   <div class="ap-code">
+    <div class="ap-code__bar"><span>Program.cs</span><span>C#</span></div>
+    <pre><span class="c">// a background worker is a container decision, not an implementation detail</span>
+builder.Services.<span class="k">AddHangfire</span>(cfg =&gt; cfg.UseSqlServerStorage(connectionString));
+builder.Services.<span class="k">AddHangfireServer</span>();</pre>
+   </div>
+   <h2 id="decisions">Diagrams and decisions</h2>
+   <p>Every arrow worth drawing usually hides a decision worth recording. Pair the container view with short Architecture Decision Records: context, options, the choice, and what would make you revisit it.</p>
+   <blockquote>Clarity is a deliverable. Trade-offs are part of the work.</blockquote>
+   <h2 id="stop">When to stop drawing</h2>
+   <p>Component diagrams are useful for the parts of the system that are changing or misunderstood. Elsewhere, the code and the tests are the more accurate documentation.</p>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="rel-title">
+ <div class="wrap stack-12">
+  <h2 class="h2" id="rel-title">Related notes</h2>
+  <div class="grid-3">
+   <article class="ap-card ap-article-card"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>System Modernization</span></div><h3>Greenfield vs. Brownfield: Different Problems, Different Engineering Decisions</h3></article>
+   <article class="ap-card ap-article-card"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Planned</span><span>AI-Native Engineering</span></div><h3>Building Reliable AI-Assisted Software Delivery Workflows</h3></article>
+   <div class="ap-card" style="justify-content:space-between"><p style="color:var(--text)">Need help applying this to your system?</p><a class="ap-btn ap-btn--primary" href="/contact/">Discuss a Project</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=9bd1e7d7" defer></script>
+</body>
+</html>

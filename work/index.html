@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Selected Engineering Case Studies · ArtaPattern</title>
+<meta name="description" content="Case studies in trading infrastructure, platform architecture and enterprise modernization.">
+<link rel="canonical" href="https://artapattern.com/work/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work — Selected Engineering Case Studies · ArtaPattern">
+<meta property="og:description" content="Case studies in trading infrastructure, platform architecture and enterprise modernization.">
+<meta property="og:url" content="https://artapattern.com/work/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=9bd1e7d7">
+<link rel="stylesheet" href="/css/site.css?v=9bd1e7d7">
+</head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/" aria-current="page">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/" aria-current="page">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<section class="page-head">
+ <div class="wrap">
+  <p class="ap-eyebrow">Case studies</p>
+  <h1 class="h1">Selected Engineering Work</h1>
+  <p class="lead">Real-world experience designing, modernizing, and delivering production systems. Diagrams are conceptual and non-confidential; client names and outcomes are shared only with permission.</p>
+ </div>
+</section>
+
+<section class="section" style="padding-top:48px" aria-label="Case study index">
+ <div class="wrap" style="display:grid;gap:32px">
+  <div class="ap-filter" role="group" aria-label="Filter by domain" data-filter-group="work">
+   <button type="button" data-filter="all" aria-pressed="true">All work</button>
+   <button type="button" data-filter="trading" aria-pressed="false">Trading infrastructure</button>
+   <button type="button" data-filter="enterprise" aria-pressed="false">Enterprise systems</button>
+  </div>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="trading">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 01</span>
+    <span class="ap-case-card__cat">Platform Architecture / Trading Infrastructure</span>
+    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-plugin-platform/" style="text-decoration:none">MetaTrader Plugin Management Platform</a></h2>
+    <ul class="ap-tags"><li class="ap-tag">.NET</li><li class="ap-tag">React</li><li class="ap-tag">Licensing</li><li class="ap-tag">Desired-State Architecture</li><li class="ap-tag">Automated Verification</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">Broker-side MetaTrader plugins needed central configuration, licensing and a reliable way to keep customer-side runtime components in sync.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Sole architect and engineer from concept to V1: domain and data modeling, .NET services, React administration, runtime/worker integration, licensing, automated tests and release.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">A backend control plane separated from customer-side runtimes; runtimes converge on a desired state for configuration and licensing.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/metatrader-plugin-platform/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="enterprise">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 02</span>
+    <span class="ap-case-card__cat">Brownfield Modernization / Enterprise Systems</span>
+    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/enterprise-platform-modernization/" style="text-decoration:none">Enterprise Platform Modernization</a></h2>
+    <ul class="ap-tags"><li class="ap-tag">.NET Framework → .NET 7</li><li class="ap-tag">SQL Server</li><li class="ap-tag">PostgreSQL</li><li class="ap-tag">WebGIS</li><li class="ap-tag">Workflows</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">A municipal automation platform of more than ten interconnected subsystems had to keep running while parts of it moved to a modern .NET stack.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Senior developer and team lead: led modernization of five related subsystems, developed five complex subsystems, and coordinated development, support and stakeholder requirements.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">Incremental migration subsystem by subsystem; SQL Server procedures, triggers and spatial queries optimized; synchronization with PostgreSQL maintained.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/enterprise-platform-modernization/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="trading">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 03</span>
+    <span class="ap-case-card__cat">C++ / FinTech / Trading Systems</span>
+    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-dealing-desk-plugin/" style="text-decoration:none">MetaTrader Dealing Desk Plugin</a></h2>
+    <ul class="ap-tags"><li class="ap-tag">C++</li><li class="ap-tag">MT4/MT5</li><li class="ap-tag">Plugin Architecture</li><li class="ap-tag">Slippage Management</li><li class="ap-tag">Testing</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">A broker needed dealing-desk behavior with configurable slippage management running inside the MetaTrader server.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Independently designed and developed the plugin: architecture, implementation, configuration, debugging, testing and MT4/MT5 integration.</p></div>
+    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">A server-side plugin applying broker-defined slippage rules within the trading server&#39;s plugin interface.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/metatrader-dealing-desk-plugin/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="more-title">
+ <div class="wrap split">
+  <header class="ap-section-head">
+   <p class="ap-eyebrow">Additional engineering work</p>
+   <h2 id="more-title">Other Work Across the Stack</h2>
+   <p>Shorter engagements and contributions, described without client detail.</p>
+  </header>
+  <div>
+<div class="ap-decision"><span class="ap-decision__id">BLOCKCHAIN R&amp;D</span><div><h4>BSC / BEP-20 transaction service</h4><p>R&amp;D using DDD; established a test environment and implemented the architecture through the application layer before handoff.</p></div></div><div class="ap-decision"><span class="ap-decision__id">ANALYSIS</span><div><h4>TRON payment system review</h4><p>Documented an existing system&#39;s architecture with C4, supported deployment, identified security concerns and resolved selected defects.</p></div></div><div class="ap-decision"><span class="ap-decision__id">CRM</span><div><h4>ABP-based broker CRM</h4><p>Architecture investigation, backend debugging, Hangfire issue resolution and SQL reporting maintenance.</p></div></div><div class="ap-decision"><span class="ap-decision__id">PUBLIC SECTOR</span><div><h4>Municipal services portal</h4><p>Online payments, request workflows, property maps, financial calculations, reporting and digital signatures.</p></div></div>  </div>
+ </div>
+</section>
+
+<section style="padding:64px 0 96px">
+ <div class="wrap">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--text);padding-top:32px">
+   <p class="h3" style="max-width:32ch">Working on something similar? Let's look at the constraints together.</p>
+   <a class="ap-btn ap-btn--primary" href="/contact/">Discuss a Project <span class="ap-arrow" aria-hidden="true">→</span></a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=9bd1e7d7" defer></script>
+</body>
+</html>
