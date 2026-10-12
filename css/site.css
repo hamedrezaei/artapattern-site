@@ -393,3 +393,16 @@ body { margin: 0; background: var(--surface); }
   .seq__actor { padding: 6px 10px; font-size: 13px; }
   .mono-mods { grid-template-columns: 1fr; }
 }
+
+/* Home: latest engineering note teaser under the hero actions */
+.latest { display: grid; gap: 6px; margin-top: var(--space-6); padding: 18px 20px 18px 22px; max-width: 560px; border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: var(--radius-md); background: var(--surface-paper); text-decoration: none; color: var(--text); transition: border-color .15s ease, background-color .15s ease, transform .15s ease; }
+.latest:hover, .latest:focus-visible { border-color: var(--line-strong); border-left-color: var(--gold-deep); background: var(--surface); transform: translateY(-1px); }
+.latest__label { display: flex; align-items: center; gap: 8px; font: 500 11px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-accent); }
+.latest__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(163,120,79,.18); }
+.latest__title { font-size: 20px; line-height: 27px; font-weight: 600; letter-spacing: -.01em; }
+.latest__dek { font-size: 15px; line-height: 23px; color: var(--text-muted); }
+.latest__cta { margin-top: 4px; font-size: 14px; font-weight: 500; color: var(--text); }
+.latest:hover .ap-arrow { transform: translateX(3px); }
+.latest .ap-arrow { display: inline-block; transition: transform .15s ease; }
+@media (prefers-reduced-motion: reduce) { .latest, .latest .ap-arrow { transition: none; } .latest:hover { transform: none; } }
+@media (max-width: 599px) { .latest { padding: 14px 16px; } .latest__title { font-size: 17px; line-height: 24px; } .latest__dek { display: none; } }
