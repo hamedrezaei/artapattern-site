@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Architecture Consultant — System Design for New Products · ArtaPattern</title>
+<meta name="description" content="Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.">
+<meta name="author" content="Hamed Rezaei">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><link rel="canonical" href="https://artapattern.com/services/software-architecture-consulting/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ArtaPattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Software Architecture Consultant — System Design for New Products · ArtaPattern">
+<meta property="og:description" content="Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.">
+<meta property="og:url" content="https://artapattern.com/services/software-architecture-consulting/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Software Architecture Consultant — System Design for New Products · ArtaPattern">
+<meta name="twitter:description" content="Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.">
+<meta name="twitter:image" content="https://artapattern.com/img/og.jpg">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=c8d3c80d">
+<link rel="stylesheet" href="/css/site.css?v=c8d3c80d">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Software Architecture & System Design Consulting","serviceType":"Software architecture consulting","description":"Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.","url":"https://artapattern.com/services/software-architecture-consulting/","areaServed":"Worldwide","provider":{"@id":"https://artapattern.com/#org"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do I receive from a System Design engagement?","acceptedAnswer":{"@type":"Answer","text":"System boundaries and main flows, architecture decisions written down with their trade-offs, and an initial implementation direction for your team."}},{"@type":"Question","name":"Do you only advise, or also build?","acceptedAnswer":{"@type":"Answer","text":"Both. I stay hands-on: I independently architected and delivered a MetaTrader plugin management platform from concept to V1."}},{"@type":"Question","name":"Which technologies do you work with?","acceptedAnswer":{"@type":"Answer","text":"Mainly C#/.NET, ASP.NET Core, EF Core, SQL Server and PostgreSQL, with DDD, CQRS, modular and distributed architectures."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://artapattern.com/services/"},{"@type":"ListItem","position":3,"name":"Software Architecture & System Design Consulting","item":"https://artapattern.com/services/software-architecture-consulting/"}]}</script>
+</head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/" aria-current="page">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/" aria-current="page">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<section class="page-head">
+ <div class="wrap" style="display:grid;gap:16px">
+  <nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/services/">Services</a> <span aria-hidden="true">/</span> <span aria-current="page">Core service</span></nav>
+  <p class="ap-eyebrow">Core service</p>
+  <h1 class="h1" style="max-width:22ch">Software Architecture &amp; System Design Consulting</h1>
+  <p class="lead">Design new systems and make clearer architectural decisions: boundaries, data ownership, documented trade-offs and an implementation direction your team can follow.</p>
+  <div class="hero__actions"><a class="ap-btn ap-btn--primary" href="/contact/">Discuss Your Challenge <span class="ap-arrow" aria-hidden="true">→</span></a><a class="ap-btn ap-btn--secondary" href="#experience">See the experience</a></div>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="build-title">
+ <div class="wrap split">
+  <header class="ap-section-head">
+   <p class="ap-eyebrow">What I build</p>
+   <h2 id="build-title">Architecture as informed decisions</h2>
+   <p>Good architecture is not about introducing complexity. It is about making informed decisions that support business needs, maintainability and sustainable evolution, and staying close enough to the code to see them through.</p>
+  </header>
+  <ul class="steps">
+<li><span class="mono">01</span><div><h3>System design for new products</h3><p>Context and container views, module and service boundaries, main flows and quality attributes.</p></div></li><li><span class="mono">02</span><div><h3>Architecture Decision Records</h3><p>Options compared, the choice, its trade-offs and what would make you revisit it.</p></div></li><li><span class="mono">03</span><div><h3>Backend and platform architecture</h3><p>API structure, integrations, shared capabilities and service lifecycle for maintainable growth.</p></div></li><li><span class="mono">04</span><div><h3>Implementation direction</h3><p>A first slice and an incremental plan, with hands-on engineering support if useful.</p></div></li>  </ul>
+ </div>
+</section>
+
+<section class="section section--paper" id="experience" aria-labelledby="exp-title">
+ <div class="wrap stack-12">
+  <header class="ap-section-head ap-section-head--split">
+   <p class="ap-eyebrow">Experience</p>
+   <h2 id="exp-title">Related Case Studies</h2>
+   <p>These examples reflect Hamed Rezaei&#39;s professional experience before founding ArtaPattern. They are not presented as ArtaPattern client engagements. Diagrams are conceptual and exclude confidential implementation details.</p>
+  </header>
+  <div class="grid-2" style="gap:24px">
+   <a class="ap-card" href="/work/metatrader-plugin-platform/" style="text-decoration:none;display:grid;gap:10px;align-content:start">
+    <span class="mono" style="color:var(--text-accent)">2025 – 2026</span>
+    <h3 class="h3" style="margin:0;font-size:20px;line-height:27px">MetaTrader Plugin Management Platform</h3>
+    <p class="muted" style="margin:0">Independently architected and delivered a plugin management and licensing platform, connecting backend services, administrative interfaces, and customer-side runtime components.</p>
+    <span class="ap-link" style="justify-self:start">Read the case study <span class="ap-arrow" aria-hidden="true">→</span></span>
+   </a>
+   <a class="ap-card" href="/work/enterprise-platform-modernization/" style="text-decoration:none;display:grid;gap:10px;align-content:start">
+    <span class="mono" style="color:var(--text-accent)">2017 – 2024</span>
+    <h3 class="h3" style="margin:0;font-size:20px;line-height:27px">Enterprise Platform Modernization</h3>
+    <p class="muted" style="margin:0">Contributed to the development and modernization of an enterprise municipal software platform containing more than ten interconnected subsystems.</p>
+    <span class="ap-link" style="justify-self:start">Read the case study <span class="ap-arrow" aria-hidden="true">→</span></span>
+   </a>
+  </div>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="start-title">
+ <div class="wrap stack-12">
+  <header class="ap-section-head ap-section-head--split">
+   <p class="ap-eyebrow">How to start</p>
+   <h2 id="start-title">Start From Your Situation</h2>
+   <p>Every engagement starts small and ends with written outputs. Not UI/UX design or infrastructure provisioning.</p>
+  </header>
+<div class="offers">
+ <article class="offer" id="start-design">
+  <span class="offer__problem">Building something new?</span>
+  <h3 class="offer__title"><span class="mono">01</span> System Design</h3>
+  <p class="offer__text">For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction.</p>
+  <div>
+   <h4 class="offer__label">You receive</h4>
+   <ul class="list-check"><li>System boundaries and main flows</li><li>Architecture decisions, written down with their trade-offs</li><li>An initial implementation direction for the team</li></ul>
+  </div>
+  <p class="offer__ex"><span class="offer__label">Not included</span> Full implementation, UI design and infrastructure provisioning.</p>
+  <a class="ap-link offer__cta" href="/contact/?type=System%20Design">Ask about system design <span class="ap-arrow" aria-hidden="true">→</span></a>
+ </article>
+ <article class="offer" id="start-review">
+  <span class="offer__problem">Working around a difficult legacy system?</span>
+  <h3 class="offer__title"><span class="mono">02</span> Architecture Review</h3>
+  <p class="offer__text">For a team with a running system, often on .NET, that is unsure about its structure or where to take it next: what to improve, what to keep, and where to start.</p>
+  <div>
+   <h4 class="offer__label">You receive</h4>
+   <ul class="list-check"><li>Issues ranked by impact</li><li>Options for improvement, including what to keep</li><li>Recommended next steps and a first slice</li></ul>
+  </div>
+  <p class="offer__ex"><span class="offer__label">Not included</span> Executing the full migration or refactoring, which can follow as a separate engagement.</p>
+  <a class="ap-link offer__cta" href="/contact/?type=Architecture%20Review">Ask about a review <span class="ap-arrow" aria-hidden="true">→</span></a>
+ </article>
+ <article class="offer" id="start-reliability">
+  <span class="offer__problem">Facing backend performance or reliability issues?</span>
+  <h3 class="offer__title"><span class="mono">03</span> Backend Reliability Assessment</h3>
+  <p class="offer__text">For slow responses, recurring errors or failing background processing, investigated before committing to a major rewrite.</p>
+  <div>
+   <h4 class="offer__label">You receive</h4>
+   <ul class="list-check"><li>Findings from the investigation</li><li>Hypotheses tested, and what they showed</li><li>Corrective actions in priority order</li></ul>
+  </div>
+  <p class="offer__ex"><span class="offer__label">Not included</span> Ongoing production support or 24/7 on-call.</p>
+  <a class="ap-link offer__cta" href="/contact/?type=Backend%20Reliability%20Assessment">Ask about an assessment <span class="ap-arrow" aria-hidden="true">→</span></a>
+ </article>
+</div>
+<p class="ap-hint" style="margin:0">Scope, duration and pricing are agreed after a first conversation, once the problem is clear.</p> </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="faq-title">
+ <div class="wrap split">
+  <header class="ap-section-head">
+   <p class="ap-eyebrow">FAQ</p>
+   <h2 id="faq-title">Common Questions</h2>
+  </header>
+  <div class="faq">
+<details open><summary>What do I receive from a System Design engagement?</summary><p>System boundaries and main flows, architecture decisions written down with their trade-offs, and an initial implementation direction for your team.</p></details><details><summary>Do you only advise, or also build?</summary><p>Both. I stay hands-on: I independently architected and delivered a MetaTrader plugin management platform from concept to V1.</p></details><details><summary>Which technologies do you work with?</summary><p>Mainly C#/.NET, ASP.NET Core, EF Core, SQL Server and PostgreSQL, with DDD, CQRS, modular and distributed architectures.</p></details>  </div>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="more-title" style="padding-top:64px;padding-bottom:0">
+ <div class="wrap">
+  <h2 id="more-title" class="mono muted" style="margin:0 0 16px;text-transform:uppercase">Other specialties</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px"><a class="ap-tag" href="/services/metatrader-plugin-development/" style="text-decoration:none">MetaTrader Plugin Development for Forex Brokers</a><a class="ap-tag" href="/services/gis-software-development/" style="text-decoration:none">GIS &amp; WebGIS Software Development</a><a class="ap-tag" href="/services/dotnet-modernization/" style="text-decoration:none">.NET Modernization &amp; Backend Reliability</a></div>
+ </div>
+</section>
+
+<section class="section--tight" style="padding-bottom:96px" aria-labelledby="cta-title">
+ <div class="wrap">
+  <div class="ap-cta-band">
+   <svg class="ap-cta-band__art" aria-hidden="true" viewBox="0 0 300 200" preserveAspectRatio="xMaxYMid meet" fill="none"><path d="M300 30H180v60h-60M300 110H220v70M180 90v80" style="stroke:var(--gold)" stroke-width="1"/><rect x="177" y="87" width="6" height="6" style="fill:var(--gold-light)"/><rect x="217" y="107" width="6" height="6" style="fill:var(--gold-light)"/><rect x="117" y="87" width="6" height="6" style="fill:var(--gold-light)"/></svg>
+   <p class="ap-eyebrow" style="margin-bottom:16px">Start a conversation</p>
+   <h2 id="cta-title">Have a System That Needs Clarity?</h2>
+   <p>Describe the system and the problem. I&#39;ll reply by email with questions or a suggested starting engagement.</p>
+   <div class="ap-cta-band__actions">
+    <a class="ap-btn ap-btn--inverse" href="/contact/">Discuss Your Challenge <span class="ap-arrow" aria-hidden="true">→</span></a>
+<a class="ap-btn ap-btn--ghost-inverse" href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">Connect on LinkedIn</a>   </div>
+  </div>
+ </div>
+</section></main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — specialties" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Specialties</span>
+<a href="/services/metatrader-plugin-development/">MetaTrader Plugin Development</a><a href="/services/gis-software-development/">GIS Software Development</a><a href="/services/software-architecture-consulting/">Software Architecture Consulting</a><a href="/services/dotnet-modernization/">.NET Modernization</a>    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=c8d3c80d" defer></script>
+</body>
+</html>

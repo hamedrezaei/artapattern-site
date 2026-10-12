@@ -1,0 +1,30 @@
+# ArtaPattern
+
+> ArtaPattern is the independent software architecture and backend engineering practice of Hamed Rezaei, a software architect and senior .NET backend engineer with 12+ years of C#/.NET experience. Specialties: software architecture and system design, .NET modernization and backend reliability, MetaTrader MT4/MT5 server plugin development for forex brokers, and GIS/WebGIS software development. Remote, project-based collaboration in English. Contact: hamedrezaei.ez@gmail.com
+
+Past work shown on the site is Hamed Rezaei's professional experience before founding ArtaPattern, not ArtaPattern client engagements.
+
+## Specialties
+- [MetaTrader Plugin Development for Forex Brokers](https://artapattern.com/services/metatrader-plugin-development/): Independent MetaTrader plugin developer for forex brokers: MT4/MT5 server plugins in C++, dealing desk and slippage logic, plugin licensing platforms and .NET broker backends.
+- [GIS & WebGIS Software Development](https://artapattern.com/services/gis-software-development/): GIS software development with .NET, Python and Android: WebGIS applications, spatial queries in SQL Server and PostgreSQL, field apps with offline maps, and ArcGIS, ArcEngine and AutoCAD integrations.
+- [Software Architecture & System Design Consulting](https://artapattern.com/services/software-architecture-consulting/): Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.
+- [.NET Modernization & Backend Reliability](https://artapattern.com/services/dotnet-modernization/): Modernize existing .NET systems without rewriting everything: incremental .NET Framework to modern .NET migration, architecture review, SQL Server performance and backend reliability.
+
+## Starting engagements
+- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction.
+- Architecture Review (Working around a difficult legacy system?): For a team with a running system, often on .NET, that is unsure about its structure or where to take it next: what to improve, what to keep, and where to start.
+- Backend Reliability Assessment (Facing backend performance or reliability issues?): For slow responses, recurring errors or failing background processing, investigated before committing to a major rewrite.
+
+## Case studies
+- [MetaTrader Plugin Management Platform](https://artapattern.com/work/metatrader-plugin-platform/) (2025 – 2026): Independently architected and delivered a plugin management and licensing platform, connecting backend services, administrative interfaces, and customer-side runtime components.
+- [Enterprise Platform Modernization](https://artapattern.com/work/enterprise-platform-modernization/) (2017 – 2024): Contributed to the development and modernization of an enterprise municipal software platform containing more than ten interconnected subsystems.
+- [MetaTrader Dealing Desk Plugin](https://artapattern.com/work/metatrader-dealing-desk-plugin/) (2025 – 2026): Designed and implemented a MetaTrader Dealing Desk plugin with broker-oriented slippage management functionality.
+- [Municipal Services Portal & Violation Commission](https://artapattern.com/work/municipal-services-portal/) (2017 – 2024): Delivered a citizen-facing municipal services portal and Building Violation Commission software, covering online payments, request workflows, property maps, financial calculations, reporting and digital signatures.
+- [Field Sales & Distribution Systems](https://artapattern.com/work/field-sales-distribution-gis/) (2012 – 2015): Two separate projects for two different employers, solving a similar problem: WebGIS and Android sales-management tools (2012–2013), then leading an ASP.NET MVC sales-assistance application with tracking, spatial queries and a mobile API (2014–2015).
+- [Disaster-Response WebGIS](https://artapattern.com/work/disaster-response-webgis/) (2006 – 2014): Contributed to a disaster-response WebGIS for a national humanitarian relief organization, supporting earthquake damage estimates, aid-requirement estimates and identification of the nearest help stations.
+
+## Pages
+- [Services](https://artapattern.com/services/)
+- [Work](https://artapattern.com/work/)
+- [About Hamed Rezaei](https://artapattern.com/about/)
+- [Contact](https://artapattern.com/contact/)

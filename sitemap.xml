@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://artapattern.com/</loc></url>
-  <url><loc>https://artapattern.com/services/</loc></url>
-  <url><loc>https://artapattern.com/work/</loc></url>
-  <url><loc>https://artapattern.com/insights/</loc></url>
-  <url><loc>https://artapattern.com/about/</loc></url>
-  <url><loc>https://artapattern.com/contact/</loc></url>
-  <url><loc>https://artapattern.com/work/metatrader-plugin-platform/</loc></url>
-  <url><loc>https://artapattern.com/work/enterprise-platform-modernization/</loc></url>
-  <url><loc>https://artapattern.com/work/metatrader-dealing-desk-plugin/</loc></url>
-  <url><loc>https://artapattern.com/work/municipal-services-portal/</loc></url>
-  <url><loc>https://artapattern.com/work/field-sales-distribution-gis/</loc></url>
-  <url><loc>https://artapattern.com/work/disaster-response-webgis/</loc></url>
+  <url><loc>https://artapattern.com/</loc><lastmod>2026-10-12</lastmod><priority>1.0</priority></url>
+  <url><loc>https://artapattern.com/services/</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://artapattern.com/work/</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://artapattern.com/insights/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/about/</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://artapattern.com/contact/</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://artapattern.com/work/metatrader-plugin-platform/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/work/enterprise-platform-modernization/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/work/metatrader-dealing-desk-plugin/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/work/municipal-services-portal/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/work/field-sales-distribution-gis/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/work/disaster-response-webgis/</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://artapattern.com/services/metatrader-plugin-development/</loc><lastmod>2026-10-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://artapattern.com/services/gis-software-development/</loc><lastmod>2026-10-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://artapattern.com/services/software-architecture-consulting/</loc><lastmod>2026-10-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://artapattern.com/services/dotnet-modernization/</loc><lastmod>2026-10-12</lastmod><priority>0.9</priority></url>
 </urlset>

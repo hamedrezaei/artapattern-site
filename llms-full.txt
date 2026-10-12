@@ -1,0 +1,105 @@
+# ArtaPattern
+
+> ArtaPattern is the independent software architecture and backend engineering practice of Hamed Rezaei, a software architect and senior .NET backend engineer with 12+ years of C#/.NET experience. Specialties: software architecture and system design, .NET modernization and backend reliability, MetaTrader MT4/MT5 server plugin development for forex brokers, and GIS/WebGIS software development. Remote, project-based collaboration in English. Contact: hamedrezaei.ez@gmail.com
+
+Past work shown on the site is Hamed Rezaei's professional experience before founding ArtaPattern, not ArtaPattern client engagements.
+
+## Specialties
+- [MetaTrader Plugin Development for Forex Brokers](https://artapattern.com/services/metatrader-plugin-development/): Independent MetaTrader plugin developer for forex brokers: MT4/MT5 server plugins in C++, dealing desk and slippage logic, plugin licensing platforms and .NET broker backends.
+- [GIS & WebGIS Software Development](https://artapattern.com/services/gis-software-development/): GIS software development with .NET, Python and Android: WebGIS applications, spatial queries in SQL Server and PostgreSQL, field apps with offline maps, and ArcGIS, ArcEngine and AutoCAD integrations.
+- [Software Architecture & System Design Consulting](https://artapattern.com/services/software-architecture-consulting/): Independent software architecture consulting: system design for new products, boundaries and data ownership, documented architecture decisions and an implementation direction for your team.
+- [.NET Modernization & Backend Reliability](https://artapattern.com/services/dotnet-modernization/): Modernize existing .NET systems without rewriting everything: incremental .NET Framework to modern .NET migration, architecture review, SQL Server performance and backend reliability.
+
+## Starting engagements
+- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction.
+- Architecture Review (Working around a difficult legacy system?): For a team with a running system, often on .NET, that is unsure about its structure or where to take it next: what to improve, what to keep, and where to start.
+- Backend Reliability Assessment (Facing backend performance or reliability issues?): For slow responses, recurring errors or failing background processing, investigated before committing to a major rewrite.
+
+## Case studies
+- [MetaTrader Plugin Management Platform](https://artapattern.com/work/metatrader-plugin-platform/) (2025 – 2026): Independently architected and delivered a plugin management and licensing platform, connecting backend services, administrative interfaces, and customer-side runtime components.
+- [Enterprise Platform Modernization](https://artapattern.com/work/enterprise-platform-modernization/) (2017 – 2024): Contributed to the development and modernization of an enterprise municipal software platform containing more than ten interconnected subsystems.
+- [MetaTrader Dealing Desk Plugin](https://artapattern.com/work/metatrader-dealing-desk-plugin/) (2025 – 2026): Designed and implemented a MetaTrader Dealing Desk plugin with broker-oriented slippage management functionality.
+- [Municipal Services Portal & Violation Commission](https://artapattern.com/work/municipal-services-portal/) (2017 – 2024): Delivered a citizen-facing municipal services portal and Building Violation Commission software, covering online payments, request workflows, property maps, financial calculations, reporting and digital signatures.
+- [Field Sales & Distribution Systems](https://artapattern.com/work/field-sales-distribution-gis/) (2012 – 2015): Two separate projects for two different employers, solving a similar problem: WebGIS and Android sales-management tools (2012–2013), then leading an ASP.NET MVC sales-assistance application with tracking, spatial queries and a mobile API (2014–2015).
+- [Disaster-Response WebGIS](https://artapattern.com/work/disaster-response-webgis/) (2006 – 2014): Contributed to a disaster-response WebGIS for a national humanitarian relief organization, supporting earthquake damage estimates, aid-requirement estimates and identification of the nearest help stations.
+
+## Pages
+- [Services](https://artapattern.com/services/)
+- [Work](https://artapattern.com/work/)
+- [About Hamed Rezaei](https://artapattern.com/about/)
+- [Contact](https://artapattern.com/contact/)
+
+
+## MetaTrader Plugin Development for Forex Brokers
+MT4/MT5 server plugins in C++, plugin management and licensing platforms, and the .NET backends around them, designed and built by an engineer who has shipped them for a forex brokerage.
+
+- MT4/MT5 server plugins in C++: Dealing desk behavior with configurable, broker-oriented slippage management; copy trading; alarm and monitoring plugins for broker operations.
+- Plugin management and licensing platforms: A control plane that holds plugin configuration and licences centrally and keeps customer-side runtimes in sync through a desired-state model.
+- Broker backends and integrations: .NET services, React administration, ABP-based broker CRM work, Hangfire background jobs and SQL reporting.
+- Blockchain payment R&D: BSC/BEP-20 transaction-service R&D with Domain-Driven Design, and architecture review of an existing TRON payment system.
+
+Boundary: Not trading strategies, signals, investment advice or financial regulation compliance.
+
+Q: Do you build MT4 and MT5 server plugins?
+A: Yes. I have designed and built C++ server-side plugins for MT4 and MT5, including a dealing desk plugin with configurable slippage management, a copy trader plugin and an alarm system for broker operations.
+Q: Can you manage plugin configuration and licensing across many servers?
+A: Yes. I architected and delivered a plugin management and licensing platform from concept to V1: a .NET control plane with React administration, where customer-side runtime components converge on a centrally recorded desired state.
+Q: Can you integrate MetaTrader with our backend or CRM?
+A: Yes. My broker work includes .NET backend services, an ABP-based broker CRM, Hangfire job troubleshooting and SQL reporting. I usually start with an Architecture Review or a Backend Reliability Assessment.
+Q: Do you work with brokers remotely?
+A: Yes. I work remotely and project-based, in English. Scope, timeline and terms are agreed in writing before work begins.
+Q: Do you offer trading strategies or investment advice?
+A: No. My focus is server-side plugins and broker backend systems, not trading strategies, signals or investment advice.
+
+## GIS & WebGIS Software Development
+WebGIS applications, spatial data and map-based field tools that connect location data to real workflows, from an engineer who has built GIS software since 2006.
+
+- WebGIS applications: Browser-based GIS for municipal services and emergency response, including damage and aid estimation and nearest-facility analysis.
+- Spatial data and queries: Spatial queries and stored procedures in SQL Server, PostgreSQL synchronization, and property maps tied to business workflows.
+- Field and mobile apps: Android and Kotlin apps with offline maps, tracking and photo or video capture; offline tile caching with MapProxy.
+- Desktop GIS and CAD integrations: ArcGIS plugins with Oracle synchronization, ArcEngine vehicle tracking, and AutoCAD automation for land-parcel boundaries.
+
+Boundary: Software engineering with spatial data, not surveying or cartographic production.
+
+Q: Do you build WebGIS applications?
+A: Yes. I have built and contributed to WebGIS applications for municipal platforms, emergency response and sales distribution, using ASP.NET, Django and PostgreSQL.
+Q: Can you add maps and spatial queries to an existing .NET system?
+A: Yes. On a municipal platform I optimized SQL Server spatial queries, stored procedures and triggers, and tied requests and cases to property maps.
+Q: Do you build field apps that work offline?
+A: Yes. I have built Android apps with offline maps for city data collection, and offline tile caching with MapProxy.
+Q: Do you work with ArcGIS?
+A: Yes. I have developed ArcGIS plugins synchronized with an Oracle database and ArcEngine-based Windows applications for vehicle tracking.
+
+## Software Architecture & System Design Consulting
+Design new systems and make clearer architectural decisions: boundaries, data ownership, documented trade-offs and an implementation direction your team can follow.
+
+- System design for new products: Context and container views, module and service boundaries, main flows and quality attributes.
+- Architecture Decision Records: Options compared, the choice, its trade-offs and what would make you revisit it.
+- Backend and platform architecture: API structure, integrations, shared capabilities and service lifecycle for maintainable growth.
+- Implementation direction: A first slice and an incremental plan, with hands-on engineering support if useful.
+
+Boundary: Not UI/UX design or infrastructure provisioning.
+
+Q: What do I receive from a System Design engagement?
+A: System boundaries and main flows, architecture decisions written down with their trade-offs, and an initial implementation direction for your team.
+Q: Do you only advise, or also build?
+A: Both. I stay hands-on: I independently architected and delivered a MetaTrader plugin management platform from concept to V1.
+Q: Which technologies do you work with?
+A: Mainly C#/.NET, ASP.NET Core, EF Core, SQL Server and PostgreSQL, with DDD, CQRS, modular and distributed architectures.
+
+## .NET Modernization & Backend Reliability
+Improve existing .NET systems without rewriting everything: incremental migration from .NET Framework, less complexity, and backend performance and reliability problems investigated to their cause.
+
+- Incremental .NET migration: .NET Framework to modern .NET, subsystem by subsystem, with shared data and integrations kept stable.
+- Architecture review and refactoring: Where complexity comes from, which changes pay off first, and a staged path to get there.
+- SQL Server performance: Stored procedures, triggers and spatial queries optimized where the time is actually spent.
+- Backend reliability: Failing background jobs, slow APIs and unreliable integrations investigated before committing to a rewrite.
+
+Boundary: Not 24/7 on-call support or managed operations.
+
+Q: Do we have to rewrite our .NET Framework application?
+A: Usually not. I prefer migrating subsystem by subsystem while the system stays in use, as I did for five related subsystems moving to .NET 7.
+Q: Where does a modernization engagement start?
+A: With an Architecture Review: issues ranked by impact, options including what to keep, and recommended next steps with a first slice.
+Q: Can you help with slow SQL Server queries or failing background jobs?
+A: Yes. A Backend Reliability Assessment investigates the problem, tests hypotheses and gives corrective actions in priority order.

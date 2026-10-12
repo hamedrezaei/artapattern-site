@@ -355,3 +355,16 @@ body { margin: 0; background: var(--surface); }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .form-card { position: relative; }
 .ap-note--ok { border-color: var(--success, #2E7D4F); }
+
+/* Specialty pages: breadcrumbs and FAQ */
+.crumbs { font-size: 14px; color: var(--text-muted); }
+.crumbs a { color: var(--text-muted); }
+.crumbs [aria-current] { color: var(--text); }
+.faq details { border-top: 1px solid var(--line); padding: var(--space-4) 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 18px; line-height: 26px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 500 20px/26px var(--font-mono); color: var(--text-accent); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: var(--space-3) 0 0; color: var(--text-muted); max-width: 68ch; }
+.faq summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
