@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work — Selected Engineering Case Studies · ArtaPattern</title>
-<meta name="description" content="Case studies in trading infrastructure, platform architecture and enterprise modernization.">
+<meta name="description" content="Case studies and projects in trading infrastructure, enterprise modernization, public-sector platforms, WebGIS and mobile field applications.">
 <link rel="canonical" href="https://artapattern.com/work/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Work — Selected Engineering Case Studies · ArtaPattern">
-<meta property="og:description" content="Case studies in trading infrastructure, platform architecture and enterprise modernization.">
+<meta property="og:description" content="Case studies and projects in trading infrastructure, enterprise modernization, public-sector platforms, WebGIS and mobile field applications.">
 <meta property="og:url" content="https://artapattern.com/work/">
 <meta property="og:image" content="https://artapattern.com/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,8 +16,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=9bd1e7d7">
-<link rel="stylesheet" href="/css/site.css?v=9bd1e7d7">
+<link rel="stylesheet" href="/css/components.css?v=ee51a6d0">
+<link rel="stylesheet" href="/css/site.css?v=ee51a6d0">
 </head>
 <body>
 <div class="ap">
@@ -52,60 +52,108 @@
 
 <main id="main">
 <section class="page-head">
- <div class="wrap">
-  <p class="ap-eyebrow">Case studies</p>
-  <h1 class="h1">Selected Engineering Work</h1>
-  <p class="lead">Real-world experience designing, modernizing, and delivering production systems. Diagrams are conceptual and non-confidential; client names and outcomes are shared only with permission.</p>
+ <div class="wrap" style="display:grid;gap:32px">
+  <div style="display:grid;gap:16px">
+   <p class="ap-eyebrow">Work</p>
+   <h1 class="h1">Selected Engineering Work</h1>
+   <p class="lead">From GIS and field applications to enterprise platforms and trading infrastructure: case studies and projects from across my career. Diagrams are conceptual and non-confidential; client names and outcomes are shared only with permission.</p>
+  </div>
+  <dl class="ap-facts stat-band" style="--cols:4;margin:0">
+<div><dt>Years building C#/.NET systems</dt><dd>12+</dd></div><div><dt>Subsystems on one municipal platform</dt><dd>10+</dd></div><div><dt>Subsystems modernized to .NET 7</dt><dd>5</dd></div><div><dt>Domains</dt><dd>4</dd></div>  </dl>
  </div>
 </section>
 
-<section class="section" style="padding-top:48px" aria-label="Case study index">
+<section class="section" style="padding-top:48px" aria-labelledby="cases-title">
  <div class="wrap" style="display:grid;gap:32px">
-  <div class="ap-filter" role="group" aria-label="Filter by domain" data-filter-group="work">
-   <button type="button" data-filter="all" aria-pressed="true">All work</button>
-   <button type="button" data-filter="trading" aria-pressed="false">Trading infrastructure</button>
-   <button type="button" data-filter="enterprise" aria-pressed="false">Enterprise systems</button>
+  <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px">
+   <h2 id="cases-title" class="h2" style="margin:0">Case studies</h2>
+   <span class="mono muted" data-filter-count="work" data-filter-unit="item|items" aria-live="polite">16 items</span>
   </div>
+  <div class="ap-filter" role="group" aria-label="Filter work by domain" data-filter-group="work">
+   <button type="button" data-filter="all" aria-pressed="true">All work</button>
+<button type="button" data-filter="trading" aria-pressed="false">Trading &amp; FinTech</button><button type="button" data-filter="enterprise" aria-pressed="false">Enterprise &amp; public sector</button><button type="button" data-filter="geospatial" aria-pressed="false">GIS &amp; geospatial</button><button type="button" data-filter="mobile" aria-pressed="false">Mobile &amp; field apps</button>  </div>
   <article class="ap-card work-row" data-filter-item="work" data-tags="trading">
    <div class="work-row__side">
-    <span class="mono" style="color:var(--text-accent)">CASE 01</span>
+    <span class="mono" style="color:var(--text-accent)">CASE 01 · 2025 – 2026</span>
     <span class="ap-case-card__cat">Platform Architecture / Trading Infrastructure</span>
-    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-plugin-platform/" style="text-decoration:none">MetaTrader Plugin Management Platform</a></h2>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-plugin-platform/" style="text-decoration:none">MetaTrader Plugin Management Platform</a></h3>
     <ul class="ap-tags"><li class="ap-tag">.NET</li><li class="ap-tag">React</li><li class="ap-tag">Licensing</li><li class="ap-tag">Desired-State Architecture</li><li class="ap-tag">Automated Verification</li></ul>
    </div>
    <div class="work-row__main">
-    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">Broker-side MetaTrader plugins needed central configuration, licensing and a reliable way to keep customer-side runtime components in sync.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Sole architect and engineer from concept to V1: domain and data modeling, .NET services, React administration, runtime/worker integration, licensing, automated tests and release.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">A backend control plane separated from customer-side runtimes; runtimes converge on a desired state for configuration and licensing.</p></div>
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">Broker-side MetaTrader plugins needed central configuration, licensing and a reliable way to keep customer-side runtime components in sync.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">Sole architect and engineer from concept to V1: domain and data modeling, .NET services, React administration, runtime/worker integration, licensing, automated tests and release.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">A backend control plane separated from customer-side runtimes; runtimes converge on a desired state for configuration and licensing.</p></div>
     <div style="grid-column:1/-1"><a class="ap-link" href="/work/metatrader-plugin-platform/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="trading">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 02 · 2025 – 2026</span>
+    <span class="ap-case-card__cat">C++ / FinTech / Trading Systems</span>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-dealing-desk-plugin/" style="text-decoration:none">MetaTrader Dealing Desk Plugin</a></h3>
+    <ul class="ap-tags"><li class="ap-tag">C++</li><li class="ap-tag">MT4/MT5</li><li class="ap-tag">Plugin Architecture</li><li class="ap-tag">Slippage Management</li><li class="ap-tag">Testing</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">A broker needed dealing-desk behavior with configurable slippage management running inside the MetaTrader server.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">Independently designed and developed the plugin: architecture, implementation, configuration, debugging, testing and MT4/MT5 integration.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">A server-side plugin applying broker-defined slippage rules within the trading server&#39;s plugin interface.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/metatrader-dealing-desk-plugin/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
    </div>
   </article>
   <article class="ap-card work-row" data-filter-item="work" data-tags="enterprise">
    <div class="work-row__side">
-    <span class="mono" style="color:var(--text-accent)">CASE 02</span>
+    <span class="mono" style="color:var(--text-accent)">CASE 03 · 2017 – 2024</span>
     <span class="ap-case-card__cat">Brownfield Modernization / Enterprise Systems</span>
-    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/enterprise-platform-modernization/" style="text-decoration:none">Enterprise Platform Modernization</a></h2>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/enterprise-platform-modernization/" style="text-decoration:none">Enterprise Platform Modernization</a></h3>
     <ul class="ap-tags"><li class="ap-tag">.NET Framework → .NET 7</li><li class="ap-tag">SQL Server</li><li class="ap-tag">PostgreSQL</li><li class="ap-tag">WebGIS</li><li class="ap-tag">Workflows</li></ul>
    </div>
    <div class="work-row__main">
-    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">A municipal automation platform of more than ten interconnected subsystems had to keep running while parts of it moved to a modern .NET stack.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Senior developer and team lead: led modernization of five related subsystems, developed five complex subsystems, and coordinated development, support and stakeholder requirements.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">Incremental migration subsystem by subsystem; SQL Server procedures, triggers and spatial queries optimized; synchronization with PostgreSQL maintained.</p></div>
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">A municipal automation platform of more than ten interconnected subsystems had to keep running while parts of it moved to a modern .NET stack.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">Senior developer and team lead: led modernization of five related subsystems, developed five complex subsystems, and coordinated development, support and stakeholder requirements.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">Incremental migration subsystem by subsystem; SQL Server procedures, triggers and spatial queries optimized; synchronization with PostgreSQL maintained.</p></div>
     <div style="grid-column:1/-1"><a class="ap-link" href="/work/enterprise-platform-modernization/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
    </div>
   </article>
-  <article class="ap-card work-row" data-filter-item="work" data-tags="trading">
+  <article class="ap-card work-row" data-filter-item="work" data-tags="enterprise">
    <div class="work-row__side">
-    <span class="mono" style="color:var(--text-accent)">CASE 03</span>
-    <span class="ap-case-card__cat">C++ / FinTech / Trading Systems</span>
-    <h2 class="h3" style="font-size:26px;line-height:32px"><a href="/work/metatrader-dealing-desk-plugin/" style="text-decoration:none">MetaTrader Dealing Desk Plugin</a></h2>
-    <ul class="ap-tags"><li class="ap-tag">C++</li><li class="ap-tag">MT4/MT5</li><li class="ap-tag">Plugin Architecture</li><li class="ap-tag">Slippage Management</li><li class="ap-tag">Testing</li></ul>
+    <span class="mono" style="color:var(--text-accent)">CASE 04 · 2017 – 2024</span>
+    <span class="ap-case-card__cat">Public Sector / Digital Services</span>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/municipal-services-portal/" style="text-decoration:none">Municipal Services Portal &amp; Violation Commission</a></h3>
+    <ul class="ap-tags"><li class="ap-tag">.NET</li><li class="ap-tag">SQL Server</li><li class="ap-tag">WebGIS</li><li class="ap-tag">Online Payments</li><li class="ap-tag">Digital Signatures</li></ul>
    </div>
    <div class="work-row__main">
-    <div style="grid-column:1/-1"><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h3><p style="margin:0;font-size:17px;line-height:28px">A broker needed dealing-desk behavior with configurable slippage management running inside the MetaTrader server.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h3><p class="muted" style="margin:0">Independently designed and developed the plugin: architecture, implementation, configuration, debugging, testing and MT4/MT5 integration.</p></div>
-    <div><h3 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h3><p class="muted" style="margin:0">A server-side plugin applying broker-defined slippage rules within the trading server&#39;s plugin interface.</p></div>
-    <div style="grid-column:1/-1"><a class="ap-link" href="/work/metatrader-dealing-desk-plugin/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">Municipal service requests and building-violation cases combine payments, property data, financial calculations and signed decisions, and all of them have to stay consistent in one traceable flow.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">Delivered both products as part of the platform work I led: request workflows, online payments, property maps, financial calculations, reporting and digital signatures, coordinated with municipal stakeholders.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">Built as subsystems of the shared municipal platform, using its workflow, WebGIS, reporting and digital-signature capabilities alongside the SQL Server data model.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/municipal-services-portal/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="geospatial mobile">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 05 · 2012 – 2015</span>
+    <span class="ap-case-card__cat">GIS Integration / Field Operations</span>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/field-sales-distribution-gis/" style="text-decoration:none">Field Sales &amp; Distribution Platform</a></h3>
+    <ul class="ap-tags"><li class="ap-tag">ASP.NET MVC</li><li class="ap-tag">Android</li><li class="ap-tag">WebGIS</li><li class="ap-tag">Spatial Queries</li><li class="ap-tag">Mobile API</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">Distribution companies needed field staff to place orders and record visits remotely, while managers followed distribution and sales activity on a map.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">Lead web application developer for the sales-assistance application (2014–2015); earlier, GIS and software developer on WebGIS and Android sales-management tools (2012–2013).</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">A web application with map views and spatial queries, with a dedicated mobile API serving field apps for order entry, data collection and tracking.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/field-sales-distribution-gis/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
+   </div>
+  </article>
+  <article class="ap-card work-row" data-filter-item="work" data-tags="geospatial">
+   <div class="work-row__side">
+    <span class="mono" style="color:var(--text-accent)">CASE 06 · 2006 – 2014</span>
+    <span class="ap-case-card__cat">WebGIS / Humanitarian Response</span>
+    <h3 class="h3" style="font-size:26px;line-height:32px"><a href="/work/disaster-response-webgis/" style="text-decoration:none">Disaster-Response WebGIS</a></h3>
+    <ul class="ap-tags"><li class="ap-tag">WebGIS</li><li class="ap-tag">Spatial Analysis</li><li class="ap-tag">ArcGIS</li><li class="ap-tag">Oracle</li></ul>
+   </div>
+   <div class="work-row__main">
+    <div style="grid-column:1/-1"><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Problem</h4><p style="margin:0;font-size:17px;line-height:28px">After an earthquake, responders need to see quickly where damage is likely, what aid is needed and which help stations are closest.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Responsibilities</h4><p class="muted" style="margin:0">GIS developer contributing to the disaster-response WebGIS; in the same role, developed ArcGIS plugins for utility subscriber information synchronized with an Oracle database and took part in requirements analysis with project owners.</p></div>
+    <div><h4 class="mono" style="margin:0 0 8px;color:var(--text-muted);text-transform:uppercase">Architecture highlights</h4><p class="muted" style="margin:0">A web-based GIS combining spatial data with estimation logic for damage and aid requirements, and proximity analysis to locate nearby help stations.</p></div>
+    <div style="grid-column:1/-1"><a class="ap-link" href="/work/disaster-response-webgis/">Read Case Study <span class="ap-arrow" aria-hidden="true">→</span></a></div>
    </div>
   </article>
  </div>
@@ -113,13 +161,93 @@
 
 <section class="section section--paper" aria-labelledby="more-title">
  <div class="wrap split">
-  <header class="ap-section-head">
-   <p class="ap-eyebrow">Additional engineering work</p>
-   <h2 id="more-title">Other Work Across the Stack</h2>
-   <p>Shorter engagements and contributions, described without client detail.</p>
+  <header class="ap-section-head sticky-col">
+   <p class="ap-eyebrow">Project archive</p>
+   <h2 id="more-title">More Projects Across the Stack</h2>
+   <p>Shorter engagements, R&amp;D and earlier projects — from C++ trading plugins and blockchain R&amp;D to WebGIS, mobile field apps and CAD automation. Described without client detail.</p>
   </header>
-  <div>
-<div class="ap-decision"><span class="ap-decision__id">BLOCKCHAIN R&amp;D</span><div><h4>BSC / BEP-20 transaction service</h4><p>R&amp;D using DDD; established a test environment and implemented the architecture through the application layer before handoff.</p></div></div><div class="ap-decision"><span class="ap-decision__id">ANALYSIS</span><div><h4>TRON payment system review</h4><p>Documented an existing system&#39;s architecture with C4, supported deployment, identified security concerns and resolved selected defects.</p></div></div><div class="ap-decision"><span class="ap-decision__id">CRM</span><div><h4>ABP-based broker CRM</h4><p>Architecture investigation, backend debugging, Hangfire issue resolution and SQL reporting maintenance.</p></div></div><div class="ap-decision"><span class="ap-decision__id">PUBLIC SECTOR</span><div><h4>Municipal services portal</h4><p>Online payments, request workflows, property maps, financial calculations, reporting and digital signatures.</p></div></div>  </div>
+  <ul class="archive" role="list">
+   <li class="archive__item" data-filter-item="work" data-tags="trading">
+    <span class="archive__meta mono"><span>2025 – 2026</span><span>Blockchain R&amp;D</span></span>
+    <div>
+     <h3>BSC / BEP-20 transaction service</h3>
+     <p>R&amp;D using Domain-Driven Design: set up a test environment and implemented the architecture through the application layer before handing it over.</p>
+     <ul class="ap-tags"><li class="ap-tag">DDD</li><li class="ap-tag">.NET</li><li class="ap-tag">BSC / BEP-20</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="trading">
+    <span class="archive__meta mono"><span>2025 – 2026</span><span>Analysis &amp; security</span></span>
+    <div>
+     <h3>TRON payment system review</h3>
+     <p>Documented an existing payment system&#39;s architecture with C4, supported deployment, identified security concerns and resolved selected defects.</p>
+     <ul class="ap-tags"><li class="ap-tag">C4 Modeling</li><li class="ap-tag">Security Review</li><li class="ap-tag">Deployment</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="trading enterprise">
+    <span class="archive__meta mono"><span>2025 – 2026</span><span>CRM</span></span>
+    <div>
+     <h3>ABP-based broker CRM</h3>
+     <p>Architecture investigation, backend debugging, Hangfire job issue resolution and SQL reporting maintenance.</p>
+     <ul class="ap-tags"><li class="ap-tag">ABP Framework</li><li class="ap-tag">Hangfire</li><li class="ap-tag">SQL Server</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="trading">
+    <span class="archive__meta mono"><span>Project</span><span>MetaTrader</span></span>
+    <div>
+     <h3>Copy Trader plugin &amp; Alarm Broker System</h3>
+     <p>Additional MetaTrader work: trade-copying plugin and an alarm system for broker operations.</p>
+     <ul class="ap-tags"><li class="ap-tag">Visual C++</li><li class="ap-tag">.NET</li><li class="ap-tag">MT4 / MT5</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="geospatial mobile">
+    <span class="archive__meta mono"><span>2016 – 2017</span><span>WebGIS &amp; mobile</span></span>
+    <div>
+     <h3>City data collection with offline maps</h3>
+     <p>Django/PostgreSQL WebGIS applications with Android apps that work on offline maps for collecting city data in the field.</p>
+     <ul class="ap-tags"><li class="ap-tag">Django</li><li class="ap-tag">PostgreSQL</li><li class="ap-tag">Android</li><li class="ap-tag">Offline Maps</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="geospatial">
+    <span class="archive__meta mono"><span>2016 – 2017</span><span>Desktop GIS</span></span>
+    <div>
+     <h3>Vehicle tracking with offline tile caching</h3>
+     <p>ArcEngine-based Windows applications for vehicle tracking, with offline map tiles cached through MapProxy.</p>
+     <ul class="ap-tags"><li class="ap-tag">ArcEngine</li><li class="ap-tag">MapProxy</li><li class="ap-tag">Windows</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="enterprise">
+    <span class="archive__meta mono"><span>2014</span><span>Web application</span></span>
+    <div>
+     <h3>Printing-services ordering platform</h3>
+     <p>Contributed to an ASP.NET MVC application with online ordering, a template library and a B2B panel.</p>
+     <ul class="ap-tags"><li class="ap-tag">ASP.NET MVC</li><li class="ap-tag">B2B</li><li class="ap-tag">E-commerce</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="geospatial enterprise">
+    <span class="archive__meta mono"><span>2006 – 2014</span><span>GIS integration</span></span>
+    <div>
+     <h3>Utility subscriber plugins for ArcGIS</h3>
+     <p>ArcGIS plugins that bring utility subscriber information into the map and keep it synchronized with an Oracle database.</p>
+     <ul class="ap-tags"><li class="ap-tag">ArcGIS</li><li class="ap-tag">Oracle</li><li class="ap-tag">Data Synchronization</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="mobile geospatial">
+    <span class="archive__meta mono"><span>Project</span><span>Field reporting</span></span>
+    <div>
+     <h3>Urban violation reporting app</h3>
+     <p>Android app for submitting location data, photographs and videos of urban violations from the field.</p>
+     <ul class="ap-tags"><li class="ap-tag">Kotlin</li><li class="ap-tag">Android</li><li class="ap-tag">Location &amp; Media</li></ul>
+    </div>
+   </li>
+   <li class="archive__item" data-filter-item="work" data-tags="geospatial">
+    <span class="archive__meta mono"><span>Project</span><span>CAD automation</span></span>
+    <div>
+     <h3>AutoCAD parcel-boundary extraction</h3>
+     <p>Plugin that automatically extracts boundaries from agricultural land-parcel layouts.</p>
+     <ul class="ap-tags"><li class="ap-tag">C#</li><li class="ap-tag">.NET Framework</li><li class="ap-tag">AutoCAD</li></ul>
+    </div>
+   </li>
+  </ul>
  </div>
 </section>
 
@@ -160,6 +288,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=9bd1e7d7" defer></script>
+<script src="/js/main.js?v=ee51a6d0" defer></script>
 </body>
 </html>

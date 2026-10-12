@@ -34,6 +34,7 @@
     var items = document.querySelectorAll('[data-filter-item="' + name + '"]');
     var empty = document.querySelector('[data-filter-empty="' + name + '"]');
     var count = document.querySelector('[data-filter-count="' + name + '"]');
+    var unit = ((count && count.getAttribute('data-filter-unit')) || 'planned note|planned notes').split('|');
     group.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-filter]');
       if (!b) return;
@@ -45,7 +46,7 @@
         it.hidden = !ok; if (ok) shown++;
       });
       if (empty) empty.hidden = shown > 0;
-      if (count) count.textContent = shown + (shown === 1 ? ' planned note' : ' planned notes');
+      if (count) count.textContent = shown + ' ' + (shown === 1 ? unit[0] : unit[1]);
     });
   });
 
