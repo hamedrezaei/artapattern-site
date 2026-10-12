@@ -16,8 +16,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=74f4d64e">
-<link rel="stylesheet" href="/css/site.css?v=74f4d64e">
+<link rel="stylesheet" href="/css/components.css?v=99496f82">
+<link rel="stylesheet" href="/css/site.css?v=99496f82">
 </head>
 <body>
 <div class="ap">
@@ -68,8 +68,8 @@
   </div>
  </div>
 
- <form class="form-card" aria-labelledby="form-title" data-inquiry data-to="hamedrezaei.ez@gmail.com" novalidate>
-  <div style="display:grid;gap:6px"><h2 class="h3" id="form-title" style="margin:0">Prepare an email inquiry</h2><p class="ap-hint" style="margin:0">This form opens your email app with your message filled in. Nothing is sent until you press send there.</p></div>
+ <form class="form-card" aria-labelledby="form-title" data-inquiry data-to="hamedrezaei.ez@gmail.com" data-endpoint="https://script.google.com/macros/s/AKfycby6xBZ1LZRbVJToUDRoo5wJhxXbc57F-jP0zxQODHPSwxQ_yBVV3VC_omgNqP_99eiV/exec" novalidate>
+  <div style="display:grid;gap:6px"><h2 class="h3" id="form-title" style="margin:0">Send an inquiry</h2><p class="ap-hint" style="margin:0">Your message comes straight to me. I reply by email.</p></div>
   <div class="form-row">
    <div class="ap-field"><label class="ap-label" for="name">Full Name</label><input class="ap-input" id="name" name="name" autocomplete="name" required><span class="ap-error">Please enter your name.</span></div>
    <div class="ap-field"><label class="ap-label" for="email">Work Email</label><input class="ap-input" id="email" name="email" type="email" autocomplete="email" required><span class="ap-error">Enter a complete email address, e.g. name@company.com.</span></div>
@@ -81,10 +81,13 @@
   </div>
   <div class="ap-field"><label class="ap-label" for="desc">Project Description</label><textarea class="ap-textarea" id="desc" name="description" aria-describedby="desc-hint" required></textarea><span class="ap-hint" id="desc-hint">The context, the current system if there is one, and the decision or problem in front of you.</span><span class="ap-error">Please describe the project briefly.</span></div>
   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
-   <button class="ap-btn ap-btn--primary" type="submit">Prepare Email Inquiry <span class="ap-arrow" aria-hidden="true">→</span></button>
+   <button class="ap-btn ap-btn--primary" type="submit" data-inquiry-submit>Send Inquiry <span class="ap-arrow" aria-hidden="true">→</span></button>
    <span class="ap-hint">Prefer email? <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a></span>
   </div>
-  <p class="ap-note" role="status" data-inquiry-note hidden style="margin:0"><strong>Your email draft is ready.</strong> Review it in your email app and press send. If the app didn't open, <a href="mailto:hamedrezaei.ez@gmail.com">open the draft here</a> or write to hamedrezaei.ez@gmail.com.</p>
+  <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+  <p class="ap-hint" style="margin:0">Your details are used only to reply to this inquiry and are not shared.</p>
+  <p class="ap-note ap-note--ok" role="status" data-inquiry-ok hidden style="margin:0"><strong>Thank you, your inquiry was received.</strong> I'll reply by email, usually with a few questions or a suggested next step.</p>
+  <p class="ap-note" role="status" data-inquiry-note hidden style="margin:0"><strong>The form couldn't send your message.</strong> Your email app should open with the inquiry filled in; press send there. If it didn't open, <a href="mailto:hamedrezaei.ez@gmail.com">open the draft here</a> or write to hamedrezaei.ez@gmail.com.</p>
  </form>
 </div>
 </main>
@@ -116,6 +119,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=74f4d64e" defer></script>
+<script src="/js/main.js?v=99496f82" defer></script>
 </body>
 </html>

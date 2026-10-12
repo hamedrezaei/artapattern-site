@@ -350,3 +350,8 @@ body { margin: 0; background: var(--surface); }
   .hero .h1 { font-size: 28px; line-height: 34px; }
   .hero__by { font-size: 14px; line-height: 20px; }
 }
+
+/* Contact: honeypot field (hidden from people, visible to naive bots) and success note */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-card { position: relative; }
+.ap-note--ok { border-color: var(--success, #2E7D4F); }

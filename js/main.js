@@ -50,16 +50,34 @@
     });
   });
 
-  // Contact form: prototype only — never pretend it was sent.
+  // Contact form: sends to the inquiry endpoint; shows success only after a confirmed response.
+  // If sending fails, falls back to a prefilled email draft, so no inquiry is lost.
   var form = document.querySelector('[data-inquiry]');
   if (form) {
     // Preselect the topic when arriving from a starting-engagement link (?type=...)
     var want = new URLSearchParams(window.location.search).get('type');
     var sel = form.querySelector('select[name="engagement"]');
     if (want && sel) { Array.prototype.forEach.call(sel.options, function (o) { if (o.text === want) sel.value = o.value; }); }
+    var btn = form.querySelector('[data-inquiry-submit]');
+    var btnHtml = btn ? btn.innerHTML : '';
+    var ok = form.querySelector('[data-inquiry-ok]');
+    var note = form.querySelector('[data-inquiry-note]');
+    var sending = false;
+
+    function mailtoFallback(d) {
+      var body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nOrganization: ' + (d.organization || '-') +
+        '\nTopic: ' + d.engagement + '\n\n' + d.description;
+      var subject = d.engagement && d.engagement !== 'Not sure yet' ? 'Project inquiry — ' + d.engagement : 'Project inquiry';
+      var href = 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      if (note) { note.hidden = false; note.querySelector('a').setAttribute('href', href); }
+      window.location.href = href;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var note = form.querySelector('[data-inquiry-note]');
+      if (sending) return;
+      if (ok) ok.hidden = true;
+      if (note) note.hidden = true;
       var invalid = form.querySelector(':invalid');
       form.querySelectorAll('.ap-field').forEach(function (f) { f.classList.remove('is-invalid'); });
       if (invalid) {
@@ -67,15 +85,32 @@
         invalid.focus();
         return;
       }
-      // Build a mailto draft so the visitor can still reach out until a form endpoint is connected.
-      var d = new FormData(form);
-      var body = 'Name: ' + d.get('name') + '\nEmail: ' + d.get('email') + '\nOrganization: ' + (d.get('organization') || '-') +
-        '\nEngagement: ' + d.get('engagement') + '\n\n' + d.get('description');
-      var topic = d.get('engagement');
-      var subject = topic && topic !== 'Not sure yet' ? 'Project inquiry — ' + topic : 'Project inquiry';
-      var href = 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      if (note) { note.hidden = false; note.querySelector('a').setAttribute('href', href); }
-      window.location.href = href;
+      var fd = new FormData(form);
+      var d = {
+        name: fd.get('name'), email: fd.get('email'), organization: fd.get('organization') || '',
+        engagement: fd.get('engagement'), description: fd.get('description'),
+        website: fd.get('website') || '', page: window.location.pathname + window.location.search
+      };
+      var endpoint = form.getAttribute('data-endpoint');
+      if (!endpoint || !window.fetch) { mailtoFallback(d); return; }
+      sending = true;
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+      // text/plain keeps this a simple CORS request (no preflight), which Apps Script requires
+      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res && res.ok) {
+            form.querySelectorAll('input:not([type=hidden]), textarea').forEach(function (el) { el.value = ''; });
+            if (ok) { ok.hidden = false; ok.setAttribute('tabindex', '-1'); ok.focus(); }
+          } else { mailtoFallback(d); }
+        })
+        .catch(function () { mailtoFallback(d); })
+        .then(function () {
+          clearTimeout(timer); sending = false;
+          if (btn) { btn.disabled = false; btn.innerHTML = btnHtml; }
+        });
     });
   }
 })();
