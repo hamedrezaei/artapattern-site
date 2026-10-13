@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSE vs SignalR vs WebSockets for Real-Time Log Monitoring in ASP.NET Core · ArtaPattern</title>
+<meta name="description" content="Why Server-Sent Events fit real-time log monitoring across remote .NET Worker Services: separate command and event paths, lifecycle isolation, and the trade-offs SSE leaves to your application.">
+<meta name="author" content="Hamed Rezaei">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><link rel="canonical" href="https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ArtaPattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="SSE vs SignalR vs WebSockets for Real-Time Log Monitoring in ASP.NET Core · ArtaPattern">
+<meta property="og:description" content="Why Server-Sent Events fit real-time log monitoring across remote .NET Worker Services: separate command and event paths, lifecycle isolation, and the trade-offs SSE leaves to your application.">
+<meta property="og:url" content="https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SSE vs SignalR vs WebSockets for Real-Time Log Monitoring in ASP.NET Core · ArtaPattern">
+<meta name="twitter:description" content="Why Server-Sent Events fit real-time log monitoring across remote .NET Worker Services: separate command and event paths, lifecycle isolation, and the trade-offs SSE leaves to your application.">
+<meta name="twitter:image" content="https://artapattern.com/img/og.jpg">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=b3b86fda">
+<link rel="stylesheet" href="/css/site.css?v=b3b86fda">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"SSE vs. SignalR","item":"https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"SSE vs. SignalR for Real-Time Log Monitoring","description":"Why Server-Sent Events fit real-time log monitoring across remote .NET Worker Services: separate command and event paths, lifecycle isolation, and the trade-offs SSE leaves to your application.","datePublished":"2026-10-11","dateModified":"2026-10-11","url":"https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/","mainEntityOfPage":"https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"articleSection":"Distributed Systems","keywords":"Server-Sent Events, SSE vs SignalR, SSE vs WebSockets, ASP.NET Core, .NET Worker Service, real-time log monitoring, React fetch ReadableStream, distributed systems, server push","sameAs":"https://www.linkedin.com/feed/update/urn:li:share:7515011314792964096/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I choose SSE instead of SignalR?","acceptedAnswer":{"@type":"Answer","text":"When browser clients only need server-to-client updates and commands already travel over ordinary HTTP APIs. SSE is plain HTTP with the text/event-stream format. SignalR is a better fit when you need two-way messaging, hub-style method calls, groups or transport fallback managed for you."}},{"@type":"Question","name":"Can Server-Sent Events send an Authorization header?","acceptedAnswer":{"@type":"Answer","text":"The browser's built-in EventSource API cannot set custom headers. Common options are cookie-based authentication, or reading the stream with fetch and a ReadableStream, which allows headers and cancellation but makes parsing and reconnection your responsibility."}},{"@type":"Question","name":"Is SSE a reliable messaging system?","acceptedAnswer":{"@type":"Answer","text":"No. SSE is a streaming transport. Durability, replay of missed events and ordering guarantees have to be designed at the application level, for example with event ids, sequence numbers and a bounded replay buffer, or with a real message broker behind the stream."}},{"@type":"Question","name":"Does a browser disconnect stop the worker?","acceptedAnswer":{"@type":"Answer","text":"It shouldn't. In this design the operation, the worker's log collection and the browser stream have separate lifecycles, so a closed tab only ends that one stream."}}]}</script>
+<script data-goatcounter="https://artapattern.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<header class="wrap" style="padding-top:72px;padding-bottom:48px;display:grid;gap:20px;max-width:1008px">
+ <nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/insights/">Engineering Notes</a> <span aria-hidden="true">/</span> <span aria-current="page">Distributed Systems</span></nav>
+ <div class="ap-article-card__meta"><span class="ap-badge">Distributed Systems</span><span><time datetime="2026-10-11">Oct 11, 2026</time></span><span>·</span><span>9 min read</span></div>
+ <h1 class="h1" style="font-size:clamp(32px,5vw,50px);line-height:1.1">SSE vs. SignalR for Real-Time Log Monitoring</h1>
+ <p class="lead">For real-time log monitoring across remote .NET workers, I evaluated WebSockets, SignalR and Server-Sent Events. SSE was the transport, server push was the pattern, and decoupling was the goal.</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px"><a href="/about/" style="font-weight:600;color:var(--text)">Hamed Rezaei</a><span class="muted">Software Architect &amp; Senior .NET Backend Engineer</span><span class="muted">·</span><a class="muted" href="https://www.linkedin.com/feed/update/urn:li:share:7515011314792964096/" rel="noopener">Expanded from my LinkedIn post</a></div>
+</header>
+
+<section style="padding-bottom:96px">
+ <div class="wrap cs-body">
+  <nav class="ap-toc" aria-label="On this page">
+   <h4>On this page</h4>
+<a href="#context" aria-current="true">The system and the need</a>
+<a href="#paths">Two paths, distinct responsibilities</a>
+<a href="#compare">WebSockets, SignalR or SSE</a>
+<a href="#why">Why SSE at this boundary</a>
+<a href="#lifecycles">Lifecycle isolation</a>
+<a href="#tradeoffs">The trade-off</a>
+<a href="#react">Consuming the stream in React</a>
+<a href="#decision">The right abstraction</a>
+<a href="#faq">Quick answers</a>
+  </nav>
+  <article class="ap-prose">
+<p><strong>SSE was the transport. Server push was the pattern. Decoupling was the goal.</strong></p>
+<p>This is a decision note from a real-time log monitoring feature in a distributed system: why I chose Server-Sent Events over SignalR and WebSockets, and why the more important decision wasn't the transport at all.</p>
+
+<h2 id="context">The system and the need</h2>
+<p>The system had three parts:</p>
+<ul class="list-check">
+ <li>Remote <strong>.NET Worker Services</strong> running as Windows Services, each monitoring local log files.</li>
+ <li>An <strong>ASP.NET Core</strong> backend coordinating the workers.</li>
+ <li>A <strong>React</strong> admin panel used by operators.</li>
+</ul>
+<p>Operators needed to follow new log entries as they were written, without the browser repeatedly polling for changes. The key decision turned out to be about <strong>communication boundaries</strong>.</p>
+
+<h2 id="paths">Two paths, distinct responsibilities</h2>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="paths-cap">
+ <span class="ap-diagram__label">Command path and event path</span>
+ <div class="lane">
+  <span class="lane__label">Command path · control plane</span>
+  <div class="lane__flow"><span class="ap-node"><span class="ap-node__title">React</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node"><span class="ap-node__title">Backend</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node"><span class="ap-node__title">Worker</span></span></div>
+  <p class="lane__note">Authenticated HTTP APIs start administrative actions. The backend coordinates execution with the worker.</p>
+ </div>
+ <div class="lane">
+  <span class="lane__label">Event path · server push</span>
+  <div class="lane__flow"><span class="ap-node"><span class="ap-node__title">Worker</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node"><span class="ap-node__title">HTTP callback</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node"><span class="ap-node__title">Backend</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node ap-node--accent"><span class="ap-node__title">SSE stream</span></span><span class="lane__arrow" aria-hidden="true">→</span><span class="ap-node"><span class="ap-node__title">React</span></span></div>
+  <p class="lane__note">Workers report log events independently of browser connections. The backend distributes events to authorized clients.</p>
+ </div>
+ <figcaption id="paths-cap" class="ap-hint" style="margin-top:16px">Commands and events travel on different paths with different owners. Conceptual diagram.</figcaption>
+</figure>
+<p>Separating the two paths meant each one could use the simplest mechanism that fit. Commands are request/response, so ordinary HTTP APIs with authentication were already the right tool. Only the event path needed push.</p>
+
+<h2 id="compare">WebSockets, SignalR or Server-Sent Events</h2>
+<p>I evaluated three options for the browser-facing event path:</p>
+<div class="cmp-wrap">
+ <table class="cmp">
+  <thead><tr><th scope="col"></th><th scope="col">WebSockets</th><th scope="col">SignalR</th><th scope="col" class="is-pick">Server-Sent Events</th></tr></thead>
+  <tbody>
+   <tr><th scope="row">Direction</th><td>Full-duplex</td><td>Two-way, via hubs</td><td class="is-pick">Server to client</td></tr>
+   <tr><th scope="row">Protocol</th><td>Upgraded from HTTP to its own framing</td><td>Abstraction over WebSockets, SSE or long polling</td><td class="is-pick">Plain HTTP, <code>text/event-stream</code></td></tr>
+   <tr><th scope="row">What you get</th><td>A raw bidirectional channel</td><td>Hubs, connection management, groups, transport fallback</td><td class="is-pick">A simple one-way event stream</td></tr>
+   <tr><th scope="row">Client</th><td>Browser WebSocket API</td><td>SignalR client library</td><td class="is-pick">EventSource, or <code>fetch</code> streaming</td></tr>
+   <tr><th scope="row">Fit at this boundary</th><td>More than needed</td><td>Valid, but a broader model than needed</td><td class="is-pick">Matched the one-way requirement</td></tr>
+  </tbody>
+  <caption>Comparison for this specific boundary: browser clients that only receive log events.</caption>
+ </table>
+</div>
+
+<h2 id="why">Why SSE instead of SignalR?</h2>
+<p>WebSockets support full-duplex communication. SignalR provides a higher-level real-time abstraction with hubs and connection management, and supports multiple transports.</p>
+<p>Our browser clients only needed <strong>server-to-client</strong> log events. Commands already had dedicated HTTP APIs. SSE matched that one-way requirement over standard HTTP using <code>text/event-stream</code>, without introducing a hub-based messaging abstraction.</p>
+<p>SignalR remained a valid alternative. Its broader interaction model simply wasn't required at this boundary.</p>
+<p>On the backend, an SSE endpoint is an ordinary HTTP endpoint that keeps the response open and writes events in the SSE text format. A minimal sketch:</p>
+<div class="ap-code"><pre><span class="c">// Illustrative sketch: an authorized SSE endpoint in ASP.NET Core</span>
+app.MapGet("/api/logs/stream", <span class="k">async</span> (
+    HttpContext http, ILogEventFeed feed, CancellationToken ct) =>
+{
+    http.Response.ContentType = "text/event-stream";
+    http.Response.Headers.CacheControl = "no-cache";
+
+    <span class="c">// the loop ends when the browser disconnects</span>
+    <span class="k">await foreach</span> (var e <span class="k">in</span> feed.Subscribe(ct))
+    {
+        <span class="k">await</span> http.Response.WriteAsync($"id: {e.Sequence}\ndata: {e.Json}\n\n", ct);
+        <span class="k">await</span> http.Response.Body.FlushAsync(ct);
+    }
+}).RequireAuthorization();</pre></div>
+<p><code>ILogEventFeed</code> stands in for whatever distributes events inside the backend. Recent ASP.NET Core versions also include a built-in result type for Server-Sent Events; the principle is the same.</p>
+
+<h2 id="lifecycles">The more important decision: lifecycle isolation</h2>
+<p>The transport was the visible choice. The decision that mattered more was keeping three lifecycles independent:</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="life-cap">
+ <span class="ap-diagram__label">Three independent lifecycles</span>
+ <div class="mono-mods">
+  <div class="ap-node"><span class="ap-node__title">Operation execution</span><span class="ap-node__meta">starts and finishes on its own schedule</span></div>
+  <div class="ap-node"><span class="ap-node__title">Worker log collection</span><span class="ap-node__meta">keeps watching files, browser or not</span></div>
+  <div class="ap-node ap-node--accent"><span class="ap-node__title">Browser streaming</span><span class="ap-node__meta">opens and closes with the operator's tab</span></div>
+ </div>
+ <figcaption id="life-cap" class="ap-hint" style="margin-top:16px">None of the three waits for, or stops, the others.</figcaption>
+</figure>
+<ul class="list-check">
+ <li>An operation could finish <em>before</em> its final logs reached the UI.</li>
+ <li>A browser disconnect didn't stop the worker or its log monitoring.</li>
+</ul>
+<p>This separation reduced coupling between runtime execution and UI connectivity. The UI became an observer of the system, not a dependency of it.</p>
+
+<h2 id="tradeoffs">The trade-off</h2>
+<p><strong>SSE is a streaming transport, not a durable messaging system.</strong> Worker-side file tracking doesn't guarantee backend event retention or browser replay.</p>
+<p>Connection recovery, missed events and ordering require explicit application-level handling. Authorization and stream resource management are separate operational concerns. In practice that means deciding, deliberately:</p>
+<div class="cmp-wrap">
+ <table class="cmp">
+  <thead><tr><th scope="col">Concern</th><th scope="col">Question to answer</th><th scope="col">Typical options</th></tr></thead>
+  <tbody>
+   <tr><th scope="row">Recovery</th><td>What happens after a dropped connection?</td><td>Reconnect with backoff; resume from the last event id.</td></tr>
+   <tr><th scope="row">Missed events</th><td>Must the UI see every line?</td><td>A bounded replay buffer on the backend, or accept gaps for a live view.</td></tr>
+   <tr><th scope="row">Ordering</th><td>Does order matter across workers?</td><td>Sequence numbers per source; order within a source only.</td></tr>
+   <tr><th scope="row">Authorization</th><td>Who may see which worker's logs?</td><td>Check on connect and filter per client.</td></tr>
+   <tr><th scope="row">Resources</th><td>How many open streams can the backend hold?</td><td>Limits per user, timeouts, cleanup on disconnect.</td></tr>
+  </tbody>
+  <caption>What SSE leaves to the application. The options are general patterns, not a description of one implementation.</caption>
+ </table>
+</div>
+
+<h2 id="react">Consuming the stream in React</h2>
+<p>The browser's built-in <code>EventSource</code> handles reconnection for you, but it can't set custom headers such as <code>Authorization</code>. In React, we used <strong><code>fetch</code> with a <code>ReadableStream</code></strong> for authorization headers and cancellation, and took responsibility for stream parsing and reconnection ourselves.</p>
+<div class="ap-code"><pre><span class="c">// Illustrative sketch: reading an SSE stream with fetch</span>
+<span class="k">const</span> controller = <span class="k">new</span> AbortController(); <span class="c">// abort on unmount</span>
+<span class="k">const</span> res = <span class="k">await</span> fetch("/api/logs/stream", {
+  headers: { Authorization: `Bearer ${token}` },
+  signal: controller.signal,
+});
+<span class="k">const</span> reader = res.body.pipeThrough(<span class="k">new</span> TextDecoderStream()).getReader();
+<span class="k">let</span> buffer = "";
+<span class="k">for</span> (;;) {
+  <span class="k">const</span> { value, done } = <span class="k">await</span> reader.read();
+  <span class="k">if</span> (done) <span class="k">break</span>; <span class="c">// stream ended: reconnect is on us</span>
+  buffer += value;
+  <span class="k">const</span> events = buffer.split("\n\n");
+  buffer = events.pop(); <span class="c">// keep the incomplete tail</span>
+  events.forEach((raw) => onEvent(parseSse(raw)));
+}</pre></div>
+<p>It's more code than <code>new EventSource(url)</code>, and that's the honest cost: the flexibility of headers and cancellation comes with ownership of parsing and recovery.</p>
+
+<h2 id="decision">Choosing the right abstraction</h2>
+<p>The decision wasn't about choosing the most powerful technology.</p>
+<blockquote>It was about choosing the right abstraction for the problem.</blockquote>
+<p>SignalR or WebSockets would have worked. SSE fit the boundary with the least machinery, and the separation of command and event paths, plus independent lifecycles, is what kept the system decoupled. That part would have mattered whichever transport we chose.</p>
+<p><strong>How do you choose between SSE and SignalR for real-time monitoring?</strong> <a href="https://www.linkedin.com/feed/update/urn:li:share:7515011314792964096/" rel="noopener">Join the discussion on LinkedIn</a>, or <a href="/services/software-architecture-consulting/">see how I approach system design</a>.</p>
+   <h2 id="faq">Quick answers</h2>
+   <div class="faq">
+<details open><summary>When should I choose SSE instead of SignalR?</summary><p>When browser clients only need server-to-client updates and commands already travel over ordinary HTTP APIs. SSE is plain HTTP with the text/event-stream format. SignalR is a better fit when you need two-way messaging, hub-style method calls, groups or transport fallback managed for you.</p></details>
+<details><summary>Can Server-Sent Events send an Authorization header?</summary><p>The browser&#39;s built-in EventSource API cannot set custom headers. Common options are cookie-based authentication, or reading the stream with fetch and a ReadableStream, which allows headers and cancellation but makes parsing and reconnection your responsibility.</p></details>
+<details><summary>Is SSE a reliable messaging system?</summary><p>No. SSE is a streaming transport. Durability, replay of missed events and ordering guarantees have to be designed at the application level, for example with event ids, sequence numbers and a bounded replay buffer, or with a real message broker behind the stream.</p></details>
+<details><summary>Does a browser disconnect stop the worker?</summary><p>It shouldn&#39;t. In this design the operation, the worker&#39;s log collection and the browser stream have separate lifecycles, so a closed tab only ends that one stream.</p></details>
+   </div>
+   <ul class="ap-tags" style="margin-top:40px"><li class="ap-tag">Distributed Systems</li><li class="ap-tag">Server-Sent Events</li><li class="ap-tag">SignalR</li><li class="ap-tag">WebSockets</li><li class="ap-tag">ASP.NET Core</li><li class="ap-tag">.NET Worker Services</li><li class="ap-tag">React</li></ul>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="rel-title">
+ <div class="wrap stack-12">
+  <h2 class="h2" id="rel-title">Related</h2>
+  <div class="grid-3">
+<a class="ap-card ap-article-card" href="/insights/when-software-becomes-alive/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Note</span><span>Software Architecture</span></div><h3>When Does a Software Idea Become Alive?</h3></a>
+<a class="ap-card ap-article-card" href="/services/software-architecture-consulting/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Service</span><span>Architecture</span></div><h3>Software Architecture &amp; System Design Consulting</h3></a>
+<div class="ap-card" style="justify-content:space-between"><p style="color:var(--text)">Designing real-time features across services or workers?</p><a class="ap-btn ap-btn--primary" href="/contact/?type=Backend%20Reliability%20Assessment">Discuss Your Challenge</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — specialties" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Specialties</span>
+<a href="/services/metatrader-plugin-development/">MetaTrader Plugin Development</a><a href="/services/gis-software-development/">GIS Software Development</a><a href="/services/software-architecture-consulting/">Software Architecture Consulting</a><a href="/services/ai-agent-systems/">AI Agent Systems</a><a href="/services/dotnet-modernization/">.NET Modernization</a>    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=b3b86fda" defer></script>
+</body>
+</html>

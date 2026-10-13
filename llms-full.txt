@@ -24,6 +24,13 @@ Past work shown on the site is Hamed Rezaei's professional experience before fou
 - [Field Sales & Distribution Systems](https://artapattern.com/work/field-sales-distribution-gis/) (2012 – 2015): Two separate projects for two different employers, solving a similar problem: WebGIS and Android sales-management tools (2012–2013), then leading an ASP.NET MVC sales-assistance application with tracking, spatial queries and a mobile API (2014–2015).
 - [Disaster-Response WebGIS](https://artapattern.com/work/disaster-response-webgis/) (2006 – 2014): Contributed to a disaster-response WebGIS for a national humanitarian relief organization, supporting earthquake damage estimates, aid-requirement estimates and identification of the nearest help stations.
 
+## Engineering Notes
+- [When Does a Software Idea Become Alive?](https://artapattern.com/insights/when-software-becomes-alive/) (2026-10-12): Start with the first meaningful scenario, enough architecture to reduce uncertainty, and room to evolve.
+- [SSE vs. SignalR for Real-Time Log Monitoring](https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/) (2026-10-11): Server-Sent Events, separate command and event paths, and lifecycle isolation between workers, backend and browser.
+- [Capability Is Not Authority: Who Decides What AI Agents May Do?](https://artapattern.com/insights/ai-agent-capability-vs-authority/) (2026-10-10): Probabilistic, deterministic and hybrid execution paths, and a governance plane that decides approvals independently of model reasoning.
+- [AI Agents Can Write Production Code. Can They Prove It Works?](https://artapattern.com/insights/harness-engineering-verified-ai-code/) (2026-10-10): Harness engineering: explicit contracts, isolated environments, closed feedback loops and verification gates around coding agents.
+- [AI Can Accelerate Implementation. It Cannot Define Your Business Rules.](https://artapattern.com/insights/ai-coding-agents-business-rules/) (2026-10-07): Specify intent, establish domain language and build verification in before delegating work to a coding agent.
+
 ## Pages
 - [Services](https://artapattern.com/services/)
 - [Work](https://artapattern.com/work/)
@@ -127,3 +134,51 @@ Q: Where does a modernization engagement start?
 A: With an Architecture Review: issues ranked by impact, options including what to keep, and recommended next steps with a first slice.
 Q: Can you help with slow SQL Server queries or failing background jobs?
 A: Yes. A Backend Reliability Assessment investigates the problem, tests hypotheses and gives corrective actions in priority order.
+
+## SSE vs. SignalR for Real-Time Log Monitoring (https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/)
+For real-time log monitoring across remote .NET workers, I evaluated WebSockets, SignalR and Server-Sent Events. SSE was the transport, server push was the pattern, and decoupling was the goal.
+
+Q: When should I choose SSE instead of SignalR?
+A: When browser clients only need server-to-client updates and commands already travel over ordinary HTTP APIs. SSE is plain HTTP with the text/event-stream format. SignalR is a better fit when you need two-way messaging, hub-style method calls, groups or transport fallback managed for you.
+Q: Can Server-Sent Events send an Authorization header?
+A: The browser's built-in EventSource API cannot set custom headers. Common options are cookie-based authentication, or reading the stream with fetch and a ReadableStream, which allows headers and cancellation but makes parsing and reconnection your responsibility.
+Q: Is SSE a reliable messaging system?
+A: No. SSE is a streaming transport. Durability, replay of missed events and ordering guarantees have to be designed at the application level, for example with event ids, sequence numbers and a bounded replay buffer, or with a real message broker behind the stream.
+Q: Does a browser disconnect stop the worker?
+A: It shouldn't. In this design the operation, the worker's log collection and the browser stream have separate lifecycles, so a closed tab only ends that one stream.
+
+## Capability Is Not Authority: Who Decides What AI Agents May Do? (https://artapattern.com/insights/ai-agent-capability-vs-authority/)
+AI agents are getting better at doing the work. The harder question is who decides what they are allowed to do, and where explicit human approval stays necessary.
+
+Q: What is the difference between an agent's capability and its authority?
+A: Capability is what an agent can do with its model, tools and context. Authority is what it is permitted to do: which identity it acts under, what it may change, and which steps still need a human decision. Better capability doesn't grant more authority on its own.
+Q: What is an Agentic Development Platform (ADP)?
+A: It's the direction I see for extending Internal Developer Platforms and Golden Paths so that AI agents are first-class consumers: an agent harness for context, tools and isolated execution, and a governance plane for identities, permissions, gates and approvals.
+Q: Should an AI agent be allowed to approve its own release?
+A: In the workflows I design, no. An agent can prepare changes and gather evidence, and passing checks is necessary, but release authority sits with an explicit approval boundary enforced outside the model.
+Q: What is a bounded retry budget?
+A: A limit on how many times an agent may try to fix a failing check on its own. When the budget runs out, the work escalates to a person instead of looping indefinitely.
+
+## AI Agents Can Write Production Code. Can They Prove It Works? (https://artapattern.com/insights/harness-engineering-verified-ai-code/)
+Generating code with AI agents keeps getting easier. Establishing confidence in that code doesn't. That gap moved my focus from writing better prompts to engineering better environments around agents.
+
+Q: What is harness engineering?
+A: Designing the tools, context, constraints and feedback loops around an AI agent so it can work reliably: explicit contracts, decisions that persist between sessions, isolated environments, the ability to observe failures, and verification gates before production.
+Q: How is harness engineering different from prompt engineering?
+A: Prompting shapes a single instruction. A harness shapes the environment the agent works in, so behavior can be checked against evidence rather than assumed from the instruction.
+Q: What is a Last Known Good configuration?
+A: The most recent configuration a component validated and stored locally. If the backend becomes unavailable, the component can keep running on it safely instead of failing or running unconfigured.
+Q: How can an AI agent verify its own changes?
+A: By working in an environment where it can run tests, reproduce failure scenarios such as an unavailable dependency, read the resulting logs and state, and submit changes through defined gates, rather than declaring success from the code alone.
+
+## AI Can Accelerate Implementation. It Cannot Define Your Business Rules. (https://artapattern.com/insights/ai-coding-agents-business-rules/)
+A coding agent can implement license validation in minutes. It cannot decide what should happen when a license expires. That decision is a business policy with architectural consequences.
+
+Q: Can an AI coding agent decide business rules?
+A: It will often fill gaps with plausible defaults, but those are guesses. Rules such as expiry behavior, offline use or renewal timing are business policies. Someone accountable for the domain has to decide them and make them explicit.
+Q: What should a specification for a coding agent include?
+A: Expected behavior, constraints, system boundaries and acceptance criteria, including failure scenarios. A task description says what to work on; a specification says what a correct result must do.
+Q: Why does DDD's Ubiquitous Language matter for AI-assisted development?
+A: Terms like active subscription, valid license and authorized runtime can mean different things in different bounded contexts. Making those distinctions explicit helps people and agents implement the same rule.
+Q: Is passing tests enough to accept code written by an agent?
+A: Passing tests are evidence, not proof. If the tests were written from the same misunderstanding as the code, both will agree and still be wrong. Domain clarification, review and regression checks close that gap.

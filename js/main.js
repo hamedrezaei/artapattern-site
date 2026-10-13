@@ -132,3 +132,11 @@
     });
   }
 })();
+
+// Comparison tables: copy column headers onto cells so stacked rows stay readable on phones
+document.querySelectorAll("table.cmp").forEach((t) => {
+  const heads = [...t.querySelectorAll("thead th")].map((th) => th.textContent.trim());
+  t.querySelectorAll("tbody tr").forEach((tr) => {
+    [...tr.children].forEach((cell, i) => { if (cell.tagName === "TD" && heads[i]) cell.setAttribute("data-label", heads[i]); });
+  });
+});

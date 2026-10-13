@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capability vs. Authority: Governing AI Agents with an Agentic Development Platform · ArtaPattern</title>
+<meta name="description" content="AI agents are getting better at the work, but who decides what they may do? Probabilistic, deterministic and hybrid execution paths, bounded retries, and a governance plane for approvals.">
+<meta name="author" content="Hamed Rezaei">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><link rel="canonical" href="https://artapattern.com/insights/ai-agent-capability-vs-authority/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ArtaPattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Capability vs. Authority: Governing AI Agents with an Agentic Development Platform · ArtaPattern">
+<meta property="og:description" content="AI agents are getting better at the work, but who decides what they may do? Probabilistic, deterministic and hybrid execution paths, bounded retries, and a governance plane for approvals.">
+<meta property="og:url" content="https://artapattern.com/insights/ai-agent-capability-vs-authority/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Capability vs. Authority: Governing AI Agents with an Agentic Development Platform · ArtaPattern">
+<meta name="twitter:description" content="AI agents are getting better at the work, but who decides what they may do? Probabilistic, deterministic and hybrid execution paths, bounded retries, and a governance plane for approvals.">
+<meta name="twitter:image" content="https://artapattern.com/img/og.jpg">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=b3b86fda">
+<link rel="stylesheet" href="/css/site.css?v=b3b86fda">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"Capability vs. Authority","item":"https://artapattern.com/insights/ai-agent-capability-vs-authority/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Capability Is Not Authority: Who Decides What AI Agents May Do?","description":"AI agents are getting better at the work, but who decides what they may do? Probabilistic, deterministic and hybrid execution paths, bounded retries, and a governance plane for approvals.","datePublished":"2026-10-10","dateModified":"2026-10-10","url":"https://artapattern.com/insights/ai-agent-capability-vs-authority/","mainEntityOfPage":"https://artapattern.com/insights/ai-agent-capability-vs-authority/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"articleSection":"AI-Native Engineering","keywords":"AI agents governance, agentic development platform, ADP, agent harness, governance plane, human-in-the-loop approval, platform engineering, internal developer platform, golden paths, AI-native engineering, Codex","sameAs":"https://www.linkedin.com/feed/update/urn:li:share:7514736319072210944/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between an agent's capability and its authority?","acceptedAnswer":{"@type":"Answer","text":"Capability is what an agent can do with its model, tools and context. Authority is what it is permitted to do: which identity it acts under, what it may change, and which steps still need a human decision. Better capability doesn't grant more authority on its own."}},{"@type":"Question","name":"What is an Agentic Development Platform (ADP)?","acceptedAnswer":{"@type":"Answer","text":"It's the direction I see for extending Internal Developer Platforms and Golden Paths so that AI agents are first-class consumers: an agent harness for context, tools and isolated execution, and a governance plane for identities, permissions, gates and approvals."}},{"@type":"Question","name":"Should an AI agent be allowed to approve its own release?","acceptedAnswer":{"@type":"Answer","text":"In the workflows I design, no. An agent can prepare changes and gather evidence, and passing checks is necessary, but release authority sits with an explicit approval boundary enforced outside the model."}},{"@type":"Question","name":"What is a bounded retry budget?","acceptedAnswer":{"@type":"Answer","text":"A limit on how many times an agent may try to fix a failing check on its own. When the budget runs out, the work escalates to a person instead of looping indefinitely."}}]}</script>
+<script data-goatcounter="https://artapattern.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<header class="wrap" style="padding-top:72px;padding-bottom:48px;display:grid;gap:20px;max-width:1008px">
+ <nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/insights/">Engineering Notes</a> <span aria-hidden="true">/</span> <span aria-current="page">AI-Native Engineering</span></nav>
+ <div class="ap-article-card__meta"><span class="ap-badge">AI-Native Engineering</span><span><time datetime="2026-10-10">Oct 10, 2026</time></span><span>·</span><span>8 min read</span></div>
+ <h1 class="h1" style="font-size:clamp(32px,5vw,50px);line-height:1.1">Capability Is Not Authority: Who Decides What AI Agents May Do?</h1>
+ <p class="lead">AI agents are getting better at doing the work. The harder question is who decides what they are allowed to do, and where explicit human approval stays necessary.</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px"><a href="/about/" style="font-weight:600;color:var(--text)">Hamed Rezaei</a><span class="muted">Software Architect &amp; Senior .NET Backend Engineer</span><span class="muted">·</span><a class="muted" href="https://www.linkedin.com/feed/update/urn:li:share:7514736319072210944/" rel="noopener">Expanded from my LinkedIn post</a></div>
+</header>
+
+<section style="padding-bottom:96px">
+ <div class="wrap cs-body">
+  <nav class="ap-toc" aria-label="On this page">
+   <h4>On this page</h4>
+<a href="#shift" aria-current="true">Where the effort moved</a>
+<a href="#release">A release workflow</a>
+<a href="#authority">Capability vs. authority</a>
+<a href="#paths">Three execution paths</a>
+<a href="#hybrid">The hybrid loop</a>
+<a href="#adp">An Agentic Development Platform</a>
+<a href="#throughput">Measuring success</a>
+<a href="#faq">Quick answers</a>
+  </nav>
+  <article class="ap-prose">
+<p>AI agents are getting better at doing the work. <strong>But who decides what they're allowed to do?</strong></p>
+
+<h2 id="shift">Where the engineering effort moved</h2>
+<p>Working with OpenAI Codex across complex, multi-service systems has changed where I spend my engineering effort. Less of it goes into typing the implementation. More of it goes into four things:</p>
+<ul class="list-check">
+ <li><strong>Defining boundaries:</strong> what a task may touch, and what it may not.</li>
+ <li><strong>Delegating implementation:</strong> handing a well-specified task to an agent.</li>
+ <li><strong>Evaluating evidence:</strong> deciding whether the result is actually demonstrated, not just claimed.</li>
+ <li><strong>Deciding where human approval is necessary.</strong></li>
+</ul>
+
+<h2 id="release">A release workflow made the shift tangible</h2>
+<p>An agent could prepare changes and support technical verification. Yet some verification remained incomplete. The release status had to <strong>preserve that uncertainty</strong>, instead of rounding it up to &ldquo;ready&rdquo;, and advancing the changes required explicit approval.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="rel-cap">
+ <span class="ap-diagram__label">Release status that keeps uncertainty visible</span>
+ <ol class="ap-flow" style="--steps:4;margin-top:8px">
+  <li><span class="ap-flow__n">01</span><h4>Prepared</h4><p>The agent assembles the changes.</p></li>
+  <li><span class="ap-flow__n">02</span><h4>Partially verified</h4><p>What was checked, and what wasn't, stays on record.</p></li>
+  <li><span class="ap-flow__n">03</span><h4>Awaiting approval</h4><p>A person sees the evidence and the gaps.</p></li>
+  <li><span class="ap-flow__n">04</span><h4>Approved to advance</h4><p>Only by an explicit decision.</p></li>
+ </ol>
+ <figcaption id="rel-cap" class="ap-hint" style="margin-top:16px">The agent can move the work forward. It can't promote its own uncertainty into a release. Illustrative states.</figcaption>
+</figure>
+
+<h2 id="authority">Capability and authority are two different things</h2>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="ca-cap">
+ <span class="ap-diagram__label">Two separate questions</span>
+ <div class="duo">
+  <div class="ap-node"><span class="ap-node__title">Capability · what the agent can do</span><span class="ap-node__meta">Model quality, tools, context, execution environment. It keeps improving.</span></div>
+  <div class="ap-node ap-node--accent"><span class="ap-node__title">Authority · what the agent may do</span><span class="ap-node__meta">Identity, scoped permissions, quality gates, approval boundaries. It has to be designed.</span></div>
+ </div>
+ <figcaption id="ca-cap" class="ap-hint" style="margin-top:16px">A more capable agent is not automatically a more trusted one.</figcaption>
+</figure>
+<p>That distinction matters more as we move from assistance inside an IDE toward autonomous, platform-managed workflows. Inside an IDE, a person approves almost every step implicitly. In a platform-managed workflow, nobody is watching each step, so authority has to be explicit.</p>
+
+<h2 id="paths">Three execution paths</h2>
+<p>I see three kinds of execution path in an agentic delivery workflow:</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="paths-cap">
+ <span class="ap-diagram__label">Execution paths</span>
+ <div class="mono-mods">
+  <div class="ap-node"><span class="ap-node__title">Probabilistic</span><span class="ap-node__meta">agents interpret requirements, explore solutions, investigate failures</span></div>
+  <div class="ap-node"><span class="ap-node__title">Deterministic</span><span class="ap-node__meta">pipelines run defined checks; policies enforce permissions, gates, approvals</span></div>
+  <div class="ap-node ap-node--accent"><span class="ap-node__title">Hybrid</span><span class="ap-node__meta">agent reasoning and deterministic checkpoints in a controlled loop</span></div>
+ </div>
+ <figcaption id="paths-cap" class="ap-hint" style="margin-top:16px">Use reasoning where the problem is open. Use rules where the answer must not vary.</figcaption>
+</figure>
+<h3>Probabilistic paths</h3>
+<p>This is where agents add the most: reading an ambiguous requirement, trying alternatives, tracing a failure through logs. The output varies from run to run, which is fine for exploration and not fine for enforcement.</p>
+<h3>Deterministic paths</h3>
+<p>Pipelines run defined checks. Policy controls enforce permissions, quality gates and release approvals. The same input gives the same decision every time, whatever the model believes.</p>
+<h3>Hybrid paths</h3>
+<p>Agent reasoning and deterministic checkpoints form a controlled feedback loop. This is where most real delivery work sits.</p>
+
+<h2 id="hybrid">The hybrid loop, with a budget</h2>
+<p>In a hybrid path, an agent proposes a change, CI evaluates it, and failure signals guide the next correction. A <strong>bounded retry budget</strong> limits the loop, and unresolved failures require escalation.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="loop-cap">
+ <span class="ap-diagram__label">Hybrid path</span>
+ <ol class="ap-flow" style="--steps:4;margin-top:8px">
+  <li><span class="ap-flow__n">01</span><h4>Agent proposes</h4><p>A change, with its reasoning.</p></li>
+  <li><span class="ap-flow__n">02</span><h4>CI evaluates</h4><p>Defined checks, the same for every author.</p></li>
+  <li><span class="ap-flow__n">03</span><h4>Signals guide</h4><p>Failures feed the next correction.</p></li>
+  <li><span class="ap-flow__n">04</span><h4>Gate or escalate</h4><p>Pass to approval, or hand to a person when the budget runs out.</p></li>
+ </ol>
+ <p class="life-loop"><span aria-hidden="true">↺</span> Retry within the budget. Passing a check still doesn't grant release authority.</p>
+ <figcaption id="loop-cap" class="ap-hint" style="margin-top:8px">The loop is allowed to be automatic. Its exits are not.</figcaption>
+</figure>
+<p>Written as policy, the idea is small. The syntax below is illustrative, not a specific product's:</p>
+<div class="ap-code"><pre><span class="c"># Illustrative policy: limits live outside the model</span>
+<span class="k">agent_loop:</span>
+  max_attempts: 3
+  on_exhausted: escalate_to_owner
+<span class="k">release:</span>
+  requires: [ci_passed, security_gates_passed, human_approval]
+  agent_may_approve: false</pre></div>
+
+<h2 id="adp">Toward an Agentic Development Platform</h2>
+<p>This is the direction I see for an <strong>Agentic Development Platform (ADP)</strong>: extending existing Internal Developer Platforms and Golden Paths to support agents as first-class consumers. The architecture needs a clear separation of responsibilities.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="adp-cap">
+ <span class="ap-diagram__label">Agentic Development Platform · separation of responsibilities</span>
+ <div class="planes">
+  <div class="ap-boundary" style="background:var(--surface)"><span class="ap-boundary__name">agent harness · how work gets done</span>
+   <div class="mono-mods">
+    <div class="ap-node"><span class="ap-node__title">Context</span><span class="ap-node__meta">specs, contracts, decisions</span></div>
+    <div class="ap-node"><span class="ap-node__title">Tools</span><span class="ap-node__meta">build, test, inspect</span></div>
+    <div class="ap-node"><span class="ap-node__title">Isolated execution</span><span class="ap-node__meta">one environment per task</span></div>
+   </div>
+  </div>
+  <div class="ap-boundary" style="background:var(--surface)"><span class="ap-boundary__name">governance plane · what is allowed</span>
+   <div class="mono-mods">
+    <div class="ap-node ap-node--accent"><span class="ap-node__title">Non-human identities</span><span class="ap-node__meta">every agent acts as someone</span></div>
+    <div class="ap-node ap-node--accent"><span class="ap-node__title">Scoped permissions</span><span class="ap-node__meta">least privilege per task</span></div>
+    <div class="ap-node ap-node--accent"><span class="ap-node__title">Gates &amp; approvals</span><span class="ap-node__meta">quality, security, release</span></div>
+   </div>
+  </div>
+ </div>
+ <figcaption id="adp-cap" class="ap-hint" style="margin-top:16px">The governance plane enforces its rules independently of model reasoning. An agent can't argue its way past a gate.</figcaption>
+</figure>
+<p>The <strong>agent harness</strong> provides context, tools and execution capabilities, ideally within isolated environments. I wrote more about it in <a href="/insights/harness-engineering-verified-ai-code/">AI Agents Can Write Production Code. Can They Prove It Works?</a></p>
+<p>The <strong>governance plane</strong> manages non-human identities and enforces scoped permissions, quality and security gates, and approval boundaries independently of model reasoning.</p>
+
+<h2 id="throughput">Measuring success: engineering throughput</h2>
+<p>At scale, the measure of success is engineering throughput: independent tasks progressing concurrently and meeting defined acceptance criteria, with traceable decisions and controlled access. Not lines of code, and not the number of agents running.</p>
+<blockquote>More parallel work needs clearer authority boundaries.</blockquote>
+<p>For me, AI-native engineering increasingly means designing the systems that govern execution, alongside the software being delivered.</p>
+<p><strong>Which actions in your workflow should always require explicit human approval?</strong> <a href="https://www.linkedin.com/feed/update/urn:li:share:7514736319072210944/" rel="noopener">Join the discussion on LinkedIn</a>, or <a href="/services/ai-agent-systems/">see how I approach agent-based systems</a>.</p>
+   <h2 id="faq">Quick answers</h2>
+   <div class="faq">
+<details open><summary>What is the difference between an agent&#39;s capability and its authority?</summary><p>Capability is what an agent can do with its model, tools and context. Authority is what it is permitted to do: which identity it acts under, what it may change, and which steps still need a human decision. Better capability doesn&#39;t grant more authority on its own.</p></details>
+<details><summary>What is an Agentic Development Platform (ADP)?</summary><p>It&#39;s the direction I see for extending Internal Developer Platforms and Golden Paths so that AI agents are first-class consumers: an agent harness for context, tools and isolated execution, and a governance plane for identities, permissions, gates and approvals.</p></details>
+<details><summary>Should an AI agent be allowed to approve its own release?</summary><p>In the workflows I design, no. An agent can prepare changes and gather evidence, and passing checks is necessary, but release authority sits with an explicit approval boundary enforced outside the model.</p></details>
+<details><summary>What is a bounded retry budget?</summary><p>A limit on how many times an agent may try to fix a failing check on its own. When the budget runs out, the work escalates to a person instead of looping indefinitely.</p></details>
+   </div>
+   <ul class="ap-tags" style="margin-top:40px"><li class="ap-tag">AI-Native Engineering</li><li class="ap-tag">Agentic Development</li><li class="ap-tag">Platform Engineering</li><li class="ap-tag">Governance</li><li class="ap-tag">Human Approval</li><li class="ap-tag">Codex</li></ul>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="rel-title">
+ <div class="wrap stack-12">
+  <h2 class="h2" id="rel-title">Related</h2>
+  <div class="grid-3">
+<a class="ap-card ap-article-card" href="/insights/harness-engineering-verified-ai-code/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Note</span><span>AI-Native Engineering</span></div><h3>AI Agents Can Write Production Code. Can They Prove It Works?</h3></a>
+<a class="ap-card ap-article-card" href="/services/ai-agent-systems/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Service</span><span>AI Systems</span></div><h3>Agent-Based Systems &amp; AI Integration</h3></a>
+<div class="ap-card" style="justify-content:space-between"><p style="color:var(--text)">Bringing coding agents into a delivery workflow?</p><a class="ap-btn ap-btn--primary" href="/contact/?type=Architecture%20Review">Discuss Your Challenge</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — specialties" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Specialties</span>
+<a href="/services/metatrader-plugin-development/">MetaTrader Plugin Development</a><a href="/services/gis-software-development/">GIS Software Development</a><a href="/services/software-architecture-consulting/">Software Architecture Consulting</a><a href="/services/ai-agent-systems/">AI Agent Systems</a><a href="/services/dotnet-modernization/">.NET Modernization</a>    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=b3b86fda" defer></script>
+</body>
+</html>

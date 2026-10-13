@@ -24,6 +24,13 @@ Past work shown on the site is Hamed Rezaei's professional experience before fou
 - [Field Sales & Distribution Systems](https://artapattern.com/work/field-sales-distribution-gis/) (2012 – 2015): Two separate projects for two different employers, solving a similar problem: WebGIS and Android sales-management tools (2012–2013), then leading an ASP.NET MVC sales-assistance application with tracking, spatial queries and a mobile API (2014–2015).
 - [Disaster-Response WebGIS](https://artapattern.com/work/disaster-response-webgis/) (2006 – 2014): Contributed to a disaster-response WebGIS for a national humanitarian relief organization, supporting earthquake damage estimates, aid-requirement estimates and identification of the nearest help stations.
 
+## Engineering Notes
+- [When Does a Software Idea Become Alive?](https://artapattern.com/insights/when-software-becomes-alive/) (2026-10-12): Start with the first meaningful scenario, enough architecture to reduce uncertainty, and room to evolve.
+- [SSE vs. SignalR for Real-Time Log Monitoring](https://artapattern.com/insights/sse-vs-signalr-real-time-log-monitoring/) (2026-10-11): Server-Sent Events, separate command and event paths, and lifecycle isolation between workers, backend and browser.
+- [Capability Is Not Authority: Who Decides What AI Agents May Do?](https://artapattern.com/insights/ai-agent-capability-vs-authority/) (2026-10-10): Probabilistic, deterministic and hybrid execution paths, and a governance plane that decides approvals independently of model reasoning.
+- [AI Agents Can Write Production Code. Can They Prove It Works?](https://artapattern.com/insights/harness-engineering-verified-ai-code/) (2026-10-10): Harness engineering: explicit contracts, isolated environments, closed feedback loops and verification gates around coding agents.
+- [AI Can Accelerate Implementation. It Cannot Define Your Business Rules.](https://artapattern.com/insights/ai-coding-agents-business-rules/) (2026-10-07): Specify intent, establish domain language and build verification in before delegating work to a coding agent.
+
 ## Pages
 - [Services](https://artapattern.com/services/)
 - [Work](https://artapattern.com/work/)

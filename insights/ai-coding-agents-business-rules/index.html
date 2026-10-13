@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Coding Agents and Business Rules: Specify Intent Before You Delegate · ArtaPattern</title>
+<meta name="description" content="AI can accelerate implementation but cannot resolve business rules you haven&#39;t defined. Specification, DDD&#39;s Ubiquitous Language and verification for AI-assisted engineering.">
+<meta name="author" content="Hamed Rezaei">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><link rel="canonical" href="https://artapattern.com/insights/ai-coding-agents-business-rules/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ArtaPattern">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="AI Coding Agents and Business Rules: Specify Intent Before You Delegate · ArtaPattern">
+<meta property="og:description" content="AI can accelerate implementation but cannot resolve business rules you haven&#39;t defined. Specification, DDD&#39;s Ubiquitous Language and verification for AI-assisted engineering.">
+<meta property="og:url" content="https://artapattern.com/insights/ai-coding-agents-business-rules/">
+<meta property="og:image" content="https://artapattern.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Coding Agents and Business Rules: Specify Intent Before You Delegate · ArtaPattern">
+<meta name="twitter:description" content="AI can accelerate implementation but cannot resolve business rules you haven&#39;t defined. Specification, DDD&#39;s Ubiquitous Language and verification for AI-assisted engineering.">
+<meta name="twitter:image" content="https://artapattern.com/img/og.jpg">
+<meta name="theme-color" content="#0B1A26">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/css/components.css?v=b3b86fda">
+<link rel="stylesheet" href="/css/site.css?v=b3b86fda">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"AI Agents & Business Rules","item":"https://artapattern.com/insights/ai-coding-agents-business-rules/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI Can Accelerate Implementation. It Cannot Define Your Business Rules.","description":"AI can accelerate implementation but cannot resolve business rules you haven't defined. Specification, DDD's Ubiquitous Language and verification for AI-assisted engineering.","datePublished":"2026-10-07","dateModified":"2026-10-07","url":"https://artapattern.com/insights/ai-coding-agents-business-rules/","mainEntityOfPage":"https://artapattern.com/insights/ai-coding-agents-business-rules/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"articleSection":"AI-Native Engineering","keywords":"AI coding agents, business rules, specification, domain-driven design, ubiquitous language, bounded context, harness engineering, TDD, acceptance criteria, Codex, AI-assisted software engineering","sameAs":"https://www.linkedin.com/feed/update/urn:li:share:7513631472704962560/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can an AI coding agent decide business rules?","acceptedAnswer":{"@type":"Answer","text":"It will often fill gaps with plausible defaults, but those are guesses. Rules such as expiry behavior, offline use or renewal timing are business policies. Someone accountable for the domain has to decide them and make them explicit."}},{"@type":"Question","name":"What should a specification for a coding agent include?","acceptedAnswer":{"@type":"Answer","text":"Expected behavior, constraints, system boundaries and acceptance criteria, including failure scenarios. A task description says what to work on; a specification says what a correct result must do."}},{"@type":"Question","name":"Why does DDD's Ubiquitous Language matter for AI-assisted development?","acceptedAnswer":{"@type":"Answer","text":"Terms like active subscription, valid license and authorized runtime can mean different things in different bounded contexts. Making those distinctions explicit helps people and agents implement the same rule."}},{"@type":"Question","name":"Is passing tests enough to accept code written by an agent?","acceptedAnswer":{"@type":"Answer","text":"Passing tests are evidence, not proof. If the tests were written from the same misunderstanding as the code, both will agree and still be wrong. Domain clarification, review and regression checks close that gap."}}]}</script>
+<script data-goatcounter="https://artapattern.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head>
+<body>
+<div class="ap">
+<a class="skip" href="#main">Skip to content</a>
+<header class="ap-header" id="top">
+ <div class="ap-header__inner">
+  <a class="ap-brand" href="/" aria-label="ArtaPattern — home">
+   <img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34">
+   <img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15">
+  </a>
+  <nav class="ap-nav" aria-label="Primary">
+   <ul>
+<li><a class="ap-nav__link" href="/">Home</a></li>
+<li><a class="ap-nav__link" href="/services/">Services</a></li>
+<li><a class="ap-nav__link" href="/work/">Work</a></li>
+<li><a class="ap-nav__link" href="/insights/" aria-current="page">Insights</a></li>
+<li><a class="ap-nav__link" href="/about/">About</a></li>
+   </ul>
+   <a class="ap-btn ap-btn--primary ap-btn--sm" href="/contact/">Discuss a Project</a>
+  </nav>
+  <button class="ap-menu-btn" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" data-menu><span></span></button>
+ </div>
+</header>
+<nav class="ap-mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+<a href="/">Home <span aria-hidden="true">→</span></a>
+<a href="/services/">Services <span aria-hidden="true">→</span></a>
+<a href="/work/">Work <span aria-hidden="true">→</span></a>
+<a href="/insights/" aria-current="page">Insights <span aria-hidden="true">→</span></a>
+<a href="/about/">About <span aria-hidden="true">→</span></a>
+ <a class="ap-btn ap-btn--primary" href="/contact/" style="justify-content:center">Discuss a Project</a>
+</nav>
+
+<main id="main">
+<header class="wrap" style="padding-top:72px;padding-bottom:48px;display:grid;gap:20px;max-width:1008px">
+ <nav aria-label="Breadcrumb" class="crumbs"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/insights/">Engineering Notes</a> <span aria-hidden="true">/</span> <span aria-current="page">AI-Native Engineering</span></nav>
+ <div class="ap-article-card__meta"><span class="ap-badge">AI-Native Engineering</span><span><time datetime="2026-10-07">Oct 7, 2026</time></span><span>·</span><span>8 min read</span></div>
+ <h1 class="h1" style="font-size:clamp(32px,5vw,50px);line-height:1.1">AI Can Accelerate Implementation. It Cannot Define Your Business Rules.</h1>
+ <p class="lead">A coding agent can implement license validation in minutes. It cannot decide what should happen when a license expires. That decision is a business policy with architectural consequences.</p>
+ <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:16px;border-top:1px solid var(--line);font-size:14px"><a href="/about/" style="font-weight:600;color:var(--text)">Hamed Rezaei</a><span class="muted">Software Architect &amp; Senior .NET Backend Engineer</span><span class="muted">·</span><a class="muted" href="https://www.linkedin.com/feed/update/urn:li:share:7513631472704962560/" rel="noopener">Expanded from my LinkedIn post</a></div>
+</header>
+
+<section style="padding-bottom:96px">
+ <div class="wrap cs-body">
+  <nav class="ap-toc" aria-label="On this page">
+   <h4>On this page</h4>
+<a href="#example" aria-current="true">“Implement license validation”</a>
+<a href="#wrong">Correct code, wrong policy</a>
+<a href="#intent">1 · Define intent first</a>
+<a href="#language">2 · Shared domain language</a>
+<a href="#verification">3 · Build verification in</a>
+<a href="#workflow">My workflow with Codex</a>
+<a href="#evidence">Evidence, not proof</a>
+<a href="#faq">Quick answers</a>
+  </nav>
+  <article class="ap-prose">
+<p>AI can accelerate implementation. <strong>It cannot resolve business rules we have not defined.</strong></p>
+<p>Coding agents are now good enough that the bottleneck has moved. Writing the code is rarely the slow part anymore. Knowing exactly what the code should do, and being able to show that it does it, is.</p>
+
+<h2 id="example">A simple request: &ldquo;Implement license validation&rdquo;</h2>
+<p>Consider a short task given to a coding agent: <em>implement license validation</em>. It sounds complete. Before any code is written, though, several decisions need to be clear:</p>
+<div class="cmp-wrap">
+ <table class="cmp">
+  <thead><tr><th scope="col">Open question</th><th scope="col">Why it's a policy, not a detail</th><th scope="col">Options someone has to choose between</th></tr></thead>
+  <tbody>
+   <tr><th scope="row">What happens when a license expires?</th><td>It decides whether a customer's running system stops.</td><td>Stop immediately, allow a grace period, or degrade to read-only.</td></tr>
+   <tr><th scope="row">Can the runtime keep operating offline?</th><td>It trades availability against enforcement.</td><td>Block without a check, or trust a cached validation for a limited time.</td></tr>
+   <tr><th scope="row">Can one license authorize multiple instances?</th><td>It defines what the customer actually bought.</td><td>One instance per license, a seat count, or per-environment rules.</td></tr>
+   <tr><th scope="row">When does a renewal take effect?</th><td>It decides when a paying customer is unblocked.</td><td>On payment, on the next check-in, or after manual confirmation.</td></tr>
+  </tbody>
+  <caption>One short task hides four business decisions. The options are illustrative; the point is that someone accountable has to pick.</caption>
+ </table>
+</div>
+<p>These are business policies with architectural consequences. An offline grace period, for example, means the runtime needs a signed, cached validation result and a clock it can trust. That's not a detail to leave for the agent to infer.</p>
+
+<h2 id="wrong">Correct code, wrong policy</h2>
+<p>When a requirement leaves gaps, an agent fills them with plausible defaults. The tests it writes usually come from the same assumptions. The result can compile, pass every test, and still enforce the wrong policy.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="gap-cap">
+ <span class="ap-diagram__label">How an undefined rule reaches production</span>
+ <ol class="ap-flow" style="--steps:4;margin-top:8px">
+  <li><span class="ap-flow__n">01</span><h4>Gap in the requirement</h4><p>&ldquo;Validate the license&rdquo;, with no rule for expiry or offline use.</p></li>
+  <li><span class="ap-flow__n">02</span><h4>Agent infers a default</h4><p>A reasonable-looking choice, made silently.</p></li>
+  <li><span class="ap-flow__n">03</span><h4>Tests share the assumption</h4><p>Code and tests agree, because they come from the same guess.</p></li>
+  <li><span class="ap-flow__n">04</span><h4>Green build, wrong behavior</h4><p>The policy is discovered by a customer, not a reviewer.</p></li>
+ </ol>
+ <figcaption id="gap-cap" class="ap-hint" style="margin-top:16px">Green checks only confirm what was specified. They can't flag a rule nobody wrote down.</figcaption>
+</figure>
+<p>In AI-assisted engineering, I see three practices becoming increasingly important.</p>
+
+<h2 id="intent">1 · Define intent before implementation</h2>
+<p>Specify expected behavior, constraints, system boundaries and acceptance criteria before delegating.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="spec-cap">
+ <span class="ap-diagram__label">Task description vs. specification</span>
+ <div class="duo">
+  <div class="ap-node"><span class="ap-node__title">Task description</span><span class="ap-node__meta">Tells the agent what to work on. &ldquo;Implement license validation.&rdquo;</span></div>
+  <div class="ap-node ap-node--accent"><span class="ap-node__title">Specification</span><span class="ap-node__meta">Explains what a correct result must do: behavior, constraints, boundaries, acceptance criteria and failure cases.</span></div>
+ </div>
+ <figcaption id="spec-cap" class="ap-hint" style="margin-top:16px">Both are useful. Only the second gives the agent something to be checked against.</figcaption>
+</figure>
+<p>A specification doesn't have to be long. Acceptance criteria written as observable behavior are often enough:</p>
+<div class="ap-code"><pre><span class="c"># Illustrative acceptance criteria for one decided policy</span>
+<span class="k">Given</span> a license that expired less than 72 hours ago
+<span class="k">When</span>  the runtime validates it at startup
+<span class="k">Then</span>  it keeps running and reports "grace period" to the operator
+
+<span class="k">Given</span> the licensing service is unreachable
+<span class="k">And</span>   the last signed validation is older than 24 hours
+<span class="k">When</span>  the runtime starts
+<span class="k">Then</span>  it refuses to start and logs the reason</pre></div>
+<p>The numbers in that example are placeholders. What matters is that they were decided by someone accountable for the business, written down, and made testable.</p>
+
+<h2 id="language">2 · Establish a shared domain language</h2>
+<p>An &ldquo;active subscription&rdquo;, a &ldquo;valid license&rdquo; and an &ldquo;authorized runtime&rdquo; are not necessarily the same thing.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="ctx-cap">
+ <span class="ap-diagram__label">Same customer, three different terms</span>
+ <div class="mono-mods">
+  <div class="ap-node"><span class="ap-node__title">Active subscription</span><span class="ap-node__meta">Billing context: the customer is paying.</span></div>
+  <div class="ap-node ap-node--accent"><span class="ap-node__title">Valid license</span><span class="ap-node__meta">Licensing context: entitlement exists and hasn't expired.</span></div>
+  <div class="ap-node"><span class="ap-node__title">Authorized runtime</span><span class="ap-node__meta">Runtime context: this instance may run right now.</span></div>
+ </div>
+ <figcaption id="ctx-cap" class="ap-hint" style="margin-top:16px">A customer can have an active subscription while a specific runtime isn't authorized. Conflating the terms is how wrong rules get implemented. Illustrative definitions.</figcaption>
+</figure>
+<p>DDD's <strong>Ubiquitous Language</strong> helps engineers and domain experts make those distinctions explicit within each bounded context. That clarity supports both human collaboration and agent execution: an agent given precise terms and their rules is far less likely to merge two concepts that the business keeps separate.</p>
+<p>Precise terminology matters. So do the rules behind it. A glossary without the rules is just vocabulary.</p>
+
+<h2 id="verification">3 · Build verification into the workflow</h2>
+<p>Harness engineering is not just better prompting. It is designing the environment around the agent: relevant context, scoped tools and permissions, progress tracking, and actionable feedback. I explore that idea further in <a href="/insights/harness-engineering-verified-ai-code/">AI Agents Can Write Production Code. Can They Prove It Works?</a></p>
+<p>Before delegating a coding task, I ask:</p>
+<ul class="list-check">
+ <li>Which domain rules must remain true?</li>
+ <li>What is the agent allowed to change?</li>
+ <li>Which failure scenarios must be covered?</li>
+ <li>What evidence is required to accept the result?</li>
+</ul>
+<p>If I can't answer those four questions, the task isn't ready for an agent. Usually it isn't ready for a person either.</p>
+
+<h2 id="workflow">Verification starts before implementation</h2>
+<p>In my workflow with OpenAI Codex, verification starts before implementation, with domain clarification and architectural boundaries, and continues through TDD, code review and regression checks.</p>
+<figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="wf-cap">
+ <span class="ap-diagram__label">Where verification happens</span>
+ <ol class="ap-flow" style="--steps:5;margin-top:8px">
+  <li><span class="ap-flow__n">01</span><h4>Clarify the domain</h4><p>Rules, terms and open policy questions answered.</p></li>
+  <li><span class="ap-flow__n">02</span><h4>Set boundaries</h4><p>What the change may touch, and what it may not.</p></li>
+  <li><span class="ap-flow__n">03</span><h4>TDD</h4><p>Acceptance and failure cases first, where TDD fits.</p></li>
+  <li><span class="ap-flow__n">04</span><h4>Review</h4><p>Does the code enforce the rule we meant?</p></li>
+  <li><span class="ap-flow__n">05</span><h4>Regression</h4><p>Existing behavior still holds.</p></li>
+ </ol>
+ <p class="life-loop"><span aria-hidden="true">↺</span> A failed check goes back to the step that owns it: sometimes the code, sometimes the requirement.</p>
+ <figcaption id="wf-cap" class="ap-hint" style="margin-top:8px">The agent implements; the evidence is designed around it.</figcaption>
+</figure>
+
+<h2 id="evidence">Passing tests are evidence, not proof</h2>
+<p>Passing tests provide evidence. They do not, by themselves, prove that we understood the requirement.</p>
+<blockquote>The opportunity is not simply to produce more code. It is to shorten the path from a well-understood business problem to a verified implementation, without outsourcing engineering judgment.</blockquote>
+<p><strong>What is one requirement you now make explicit before delegating work to a coding agent?</strong> <a href="https://www.linkedin.com/feed/update/urn:li:share:7513631472704962560/" rel="noopener">Join the discussion on LinkedIn</a>, or <a href="/services/ai-agent-systems/">see how I approach agent-based systems</a>.</p>
+   <h2 id="faq">Quick answers</h2>
+   <div class="faq">
+<details open><summary>Can an AI coding agent decide business rules?</summary><p>It will often fill gaps with plausible defaults, but those are guesses. Rules such as expiry behavior, offline use or renewal timing are business policies. Someone accountable for the domain has to decide them and make them explicit.</p></details>
+<details><summary>What should a specification for a coding agent include?</summary><p>Expected behavior, constraints, system boundaries and acceptance criteria, including failure scenarios. A task description says what to work on; a specification says what a correct result must do.</p></details>
+<details><summary>Why does DDD&#39;s Ubiquitous Language matter for AI-assisted development?</summary><p>Terms like active subscription, valid license and authorized runtime can mean different things in different bounded contexts. Making those distinctions explicit helps people and agents implement the same rule.</p></details>
+<details><summary>Is passing tests enough to accept code written by an agent?</summary><p>Passing tests are evidence, not proof. If the tests were written from the same misunderstanding as the code, both will agree and still be wrong. Domain clarification, review and regression checks close that gap.</p></details>
+   </div>
+   <ul class="ap-tags" style="margin-top:40px"><li class="ap-tag">AI-Native Engineering</li><li class="ap-tag">Domain-Driven Design</li><li class="ap-tag">Ubiquitous Language</li><li class="ap-tag">Specification</li><li class="ap-tag">TDD</li><li class="ap-tag">Harness Engineering</li><li class="ap-tag">Codex</li></ul>
+  </article>
+ </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="rel-title">
+ <div class="wrap stack-12">
+  <h2 class="h2" id="rel-title">Related</h2>
+  <div class="grid-3">
+<a class="ap-card ap-article-card" href="/insights/harness-engineering-verified-ai-code/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Note</span><span>AI-Native Engineering</span></div><h3>AI Agents Can Write Production Code. Can They Prove It Works?</h3></a>
+<a class="ap-card ap-article-card" href="/services/ai-agent-systems/" style="text-decoration:none"><div class="ap-article-card__meta"><span class="ap-badge ap-badge--muted">Service</span><span>AI Systems</span></div><h3>Agent-Based Systems &amp; AI Integration</h3></a>
+<div class="ap-card" style="justify-content:space-between"><p style="color:var(--text)">Delegating more work to coding agents?</p><a class="ap-btn ap-btn--primary" href="/contact/?type=Architecture%20Review">Discuss Your Challenge</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="ap-footer">
+ <div class="wrap" style="display:grid;gap:40px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+   <div style="display:grid;gap:14px;max-width:360px">
+    <a class="ap-brand" href="/" aria-label="ArtaPattern — home"><img class="ap-brand__mark" src="/img/mark.png" alt="" width="42" height="34" loading="lazy"><img class="ap-brand__word" src="/img/wordmark.png" alt="ArtaPattern" width="118" height="15" loading="lazy"></a>
+    <p style="margin:0;font-size:14px;line-height:21px">Software architecture and engineering consulting by Hamed Rezaei. Available for remote consulting, project-based engagements, and selected long-term collaborations.</p>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:56px">
+    <nav aria-label="Footer — site" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Site</span>
+     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/insights/">Engineering Notes</a><a href="/about/">About</a>
+    </nav>
+    <nav aria-label="Footer — specialties" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Specialties</span>
+<a href="/services/metatrader-plugin-development/">MetaTrader Plugin Development</a><a href="/services/gis-software-development/">GIS Software Development</a><a href="/services/software-architecture-consulting/">Software Architecture Consulting</a><a href="/services/ai-agent-systems/">AI Agent Systems</a><a href="/services/dotnet-modernization/">.NET Modernization</a>    </nav>
+    <nav aria-label="Footer — contact" style="display:grid;gap:10px;align-content:start">
+     <span class="mono" style="color:var(--text);text-transform:uppercase">Contact</span>
+     <a href="mailto:hamedrezaei.ez@gmail.com">hamedrezaei.ez@gmail.com</a>
+     <a href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">LinkedIn</a>
+     <a href="/contact/">Discuss a Project</a>
+    </nav>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--line)">
+   <span>© 2026 ArtaPattern · Hamed Rezaei</span>
+   <span class="mono" style="text-transform:uppercase;letter-spacing:.14em">Patterns of thought. Systems of tomorrow.</span>
+  </div>
+ </div>
+</footer>
+</div>
+<script src="/js/main.js?v=b3b86fda" defer></script>
+</body>
+</html>
