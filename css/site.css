@@ -409,8 +409,13 @@ body { margin: 0; background: var(--surface); }
 @media (max-width: 599px) { .latest { padding: 14px 16px; } .latest__title { font-size: 17px; line-height: 24px; } .latest__dek { display: none; } }
 
 /* Home panel: AI row */
-.xp__card--ai { border-color: rgba(232,201,160,.45); background: linear-gradient(135deg, rgba(232,201,160,.10), rgba(232,201,160,0) 70%); }
-.xp__card--ai:hover, .xp__card--ai:focus-visible { border-color: var(--gold-light); }
+.xp__card--ai { border-color: var(--gold-light); background: linear-gradient(135deg, rgba(232,201,160,.18), rgba(232,201,160,.04) 75%); box-shadow: 0 0 0 1px rgba(232,201,160,.12), 0 8px 24px -12px rgba(232,201,160,.35); }
+.xp__card--ai:hover, .xp__card--ai:focus-visible { border-color: var(--gold-light); background: linear-gradient(135deg, rgba(232,201,160,.24), rgba(232,201,160,.06) 75%); }
+.xp__card--ai h3 { font-size: 18px; line-height: 25px; }
+.xp__card--ai .xp__tag { display: inline-flex; align-items: center; gap: 7px; }
+.xp__pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 0 3px rgba(232,201,160,.22); animation: xp-pulse 2.4s ease-in-out infinite; }
+@keyframes xp-pulse { 50% { box-shadow: 0 0 0 5px rgba(232,201,160,.06); } }
+@media (prefers-reduced-motion: reduce) { .xp__pulse { animation: none; } }
 
 /* Engineering notes: comparison tables, two-up panels, message lanes */
 .cmp-wrap { margin: var(--space-8) 0; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
