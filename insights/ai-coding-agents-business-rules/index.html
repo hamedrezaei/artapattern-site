@@ -22,8 +22,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=60916222">
-<link rel="stylesheet" href="/css/site.css?v=60916222">
+<link rel="stylesheet" href="/css/components.css?v=ce690906">
+<link rel="stylesheet" href="/css/site.css?v=ce690906">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"AI Agents & Business Rules","item":"https://artapattern.com/insights/ai-coding-agents-business-rules/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI Can Accelerate Implementation. It Cannot Define Your Business Rules.","description":"AI can accelerate implementation but cannot resolve business rules you haven't defined. Specification, DDD's Ubiquitous Language and verification for AI-assisted engineering.","datePublished":"2026-10-07","dateModified":"2026-10-07","url":"https://artapattern.com/insights/ai-coding-agents-business-rules/","mainEntityOfPage":"https://artapattern.com/insights/ai-coding-agents-business-rules/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"articleSection":"AI-Native Engineering","keywords":"AI coding agents, business rules, specification, domain-driven design, ubiquitous language, bounded context, harness engineering, TDD, acceptance criteria, Codex, AI-assisted software engineering","sameAs":"https://www.linkedin.com/feed/update/urn:li:share:7513631472704962560/"}</script>
@@ -72,7 +72,7 @@
 <section style="padding-bottom:96px">
  <div class="wrap cs-body">
   <nav class="ap-toc" aria-label="On this page">
-   <h4>On this page</h4>
+   <p class="ap-toc__title">On this page</p>
 <a href="#example" aria-current="true">“Implement license validation”</a>
 <a href="#wrong">Correct code, wrong policy</a>
 <a href="#intent">1 · Define intent first</a>
@@ -83,7 +83,10 @@
 <a href="#faq">Quick answers</a>
   </nav>
   <article class="ap-prose">
-<p>AI can accelerate implementation. <strong>It cannot resolve business rules we have not defined.</strong></p>
+<details class="toc-m">
+ <summary>On this page</summary>
+ <nav aria-label="On this page (compact)"><a href="#example">“Implement license validation”</a><a href="#wrong">Correct code, wrong policy</a><a href="#intent">1 · Define intent first</a><a href="#language">2 · Shared domain language</a><a href="#verification">3 · Build verification in</a><a href="#workflow">My workflow with Codex</a><a href="#evidence">Evidence, not proof</a><a href="#faq">Quick answers</a></nav>
+</details><p>AI can accelerate implementation. <strong>It cannot resolve business rules we have not defined.</strong></p>
 <p>Coding agents are now good enough that the bottleneck has moved. Writing the code is rarely the slow part anymore. Knowing exactly what the code should do, and being able to show that it does it, is.</p>
 
 <h2 id="example">A simple request: &ldquo;Implement license validation&rdquo;</h2>
@@ -107,10 +110,10 @@
 <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="gap-cap">
  <span class="ap-diagram__label">How an undefined rule reaches production</span>
  <ol class="ap-flow" style="--steps:4;margin-top:8px">
-  <li><span class="ap-flow__n">01</span><h4>Gap in the requirement</h4><p>&ldquo;Validate the license&rdquo;, with no rule for expiry or offline use.</p></li>
-  <li><span class="ap-flow__n">02</span><h4>Agent infers a default</h4><p>A reasonable-looking choice, made silently.</p></li>
-  <li><span class="ap-flow__n">03</span><h4>Tests share the assumption</h4><p>Code and tests agree, because they come from the same guess.</p></li>
-  <li><span class="ap-flow__n">04</span><h4>Green build, wrong behavior</h4><p>The policy is discovered by a customer, not a reviewer.</p></li>
+  <li><span class="ap-flow__n">01</span><h3>Gap in the requirement</h3><p>&ldquo;Validate the license&rdquo;, with no rule for expiry or offline use.</p></li>
+  <li><span class="ap-flow__n">02</span><h3>Agent infers a default</h3><p>A reasonable-looking choice, made silently.</p></li>
+  <li><span class="ap-flow__n">03</span><h3>Tests share the assumption</h3><p>Code and tests agree, because they come from the same guess.</p></li>
+  <li><span class="ap-flow__n">04</span><h3>Green build, wrong behavior</h3><p>The policy is discovered by a customer, not a reviewer.</p></li>
  </ol>
  <figcaption id="gap-cap" class="ap-hint" style="margin-top:16px">Green checks only confirm what was specified. They can't flag a rule nobody wrote down.</figcaption>
 </figure>
@@ -168,11 +171,11 @@
 <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="wf-cap">
  <span class="ap-diagram__label">Where verification happens</span>
  <ol class="ap-flow" style="--steps:5;margin-top:8px">
-  <li><span class="ap-flow__n">01</span><h4>Clarify the domain</h4><p>Rules, terms and open policy questions answered.</p></li>
-  <li><span class="ap-flow__n">02</span><h4>Set boundaries</h4><p>What the change may touch, and what it may not.</p></li>
-  <li><span class="ap-flow__n">03</span><h4>TDD</h4><p>Acceptance and failure cases first, where TDD fits.</p></li>
-  <li><span class="ap-flow__n">04</span><h4>Review</h4><p>Does the code enforce the rule we meant?</p></li>
-  <li><span class="ap-flow__n">05</span><h4>Regression</h4><p>Existing behavior still holds.</p></li>
+  <li><span class="ap-flow__n">01</span><h3>Clarify the domain</h3><p>Rules, terms and open policy questions answered.</p></li>
+  <li><span class="ap-flow__n">02</span><h3>Set boundaries</h3><p>What the change may touch, and what it may not.</p></li>
+  <li><span class="ap-flow__n">03</span><h3>TDD</h3><p>Acceptance and failure cases first, where TDD fits.</p></li>
+  <li><span class="ap-flow__n">04</span><h3>Review</h3><p>Does the code enforce the rule we meant?</p></li>
+  <li><span class="ap-flow__n">05</span><h3>Regression</h3><p>Existing behavior still holds.</p></li>
  </ol>
  <p class="life-loop"><span aria-hidden="true">↺</span> A failed check goes back to the step that owns it: sometimes the code, sometimes the requirement.</p>
  <figcaption id="wf-cap" class="ap-hint" style="margin-top:8px">The agent implements; the evidence is designed around it.</figcaption>
@@ -236,6 +239,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=60916222" defer></script>
+<script src="/js/main.js?v=ce690906" defer></script>
 </body>
 </html>

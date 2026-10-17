@@ -12,7 +12,8 @@ Past work shown on the site is Hamed Rezaei's professional experience before fou
 - [.NET Modernization & Backend Reliability](https://artapattern.com/services/dotnet-modernization/): Modernize existing .NET systems without rewriting everything: incremental .NET Framework to modern .NET migration, architecture review, SQL Server performance and backend reliability.
 
 ## Starting engagements
-- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction.
+- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction. Often the first step of a Design & Build engagement.
+- Design & Build (Need it designed and built?): For product teams that need a backend service, an integration or a narrow end-to-end capability delivered: scoped, designed and built in .NET, then handed over.
 - Architecture Review (Working around a difficult legacy system?): For a team with a running system, often on .NET, that is unsure about its structure or where to take it next: what to improve, what to keep, and where to start.
 - Backend Reliability Assessment (Facing backend performance or reliability issues?): For slow responses, recurring errors or failing background processing, investigated before committing to a major rewrite.
 

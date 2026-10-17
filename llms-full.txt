@@ -12,7 +12,8 @@ Past work shown on the site is Hamed Rezaei's professional experience before fou
 - [.NET Modernization & Backend Reliability](https://artapattern.com/services/dotnet-modernization/): Modernize existing .NET systems without rewriting everything: incremental .NET Framework to modern .NET migration, architecture review, SQL Server performance and backend reliability.
 
 ## Starting engagements
-- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction.
+- System Design (Building something new?): For a new product or major capability, before serious development starts: clear system boundaries and an implementation direction. Often the first step of a Design & Build engagement.
+- Design & Build (Need it designed and built?): For product teams that need a backend service, an integration or a narrow end-to-end capability delivered: scoped, designed and built in .NET, then handed over.
 - Architecture Review (Working around a difficult legacy system?): For a team with a running system, often on .NET, that is unsure about its structure or where to take it next: what to improve, what to keep, and where to start.
 - Backend Reliability Assessment (Facing backend performance or reliability issues?): For slow responses, recurring errors or failing background processing, investigated before committing to a major rewrite.
 
@@ -84,14 +85,14 @@ Design new systems and make clearer architectural decisions: boundaries, data ow
 - System design for new products: Context and container views, module and service boundaries, main flows and quality attributes.
 - Architecture Decision Records: Options compared, the choice, its trade-offs and what would make you revisit it.
 - Backend and platform architecture: API structure, integrations, shared capabilities and service lifecycle for maintainable growth.
-- Implementation direction: A first slice and an incremental plan, with hands-on engineering support if useful.
+- Implementation direction: A first slice and an incremental plan; the implementation itself can follow as a Design & Build engagement.
 
 Boundary: Not UI/UX design or infrastructure provisioning.
 
 Q: What do I receive from a System Design engagement?
 A: System boundaries and main flows, architecture decisions written down with their trade-offs, and an initial implementation direction for your team.
 Q: Do you only advise, or also build?
-A: Both. I stay hands-on: I independently architected and delivered a MetaTrader plugin management platform from concept to V1.
+A: Both. Design & Build is a separate engagement for a scoped .NET backend increment: architecture, implementation, tests and handover. Before ArtaPattern I independently architected and delivered a MetaTrader plugin management platform from concept to V1.
 Q: Which technologies do you work with?
 A: Mainly C#/.NET, ASP.NET Core, EF Core, SQL Server and PostgreSQL, with DDD, CQRS, modular and distributed architectures.
 
@@ -112,7 +113,9 @@ A: Well-defined tools over your systems, permission checks per tool, human appro
 Q: Can AI agents work with our existing .NET backend?
 A: Yes. The usual approach is to expose narrow tools over your existing services, through function calling or an MCP server, instead of giving the agent direct database access.
 Q: Do you build MCP servers?
-A: Yes. I design and build Model Context Protocol servers and tool APIs that let agents use your systems with explicit permissions and logging.
+A: Yes, as part of a scoped engagement: Model Context Protocol servers and tool APIs that let agents use your systems with explicit permissions and logging.
+Q: Have you delivered agent systems for clients?
+A: There is no client agent case study on this site yet. What is documented is my own AI-assisted engineering workflow and the backend platforms above. A new agent project starts as a scoped pilot around one scenario, with its guardrails and success criteria agreed up front.
 Q: Where should an agent project start?
 A: With one meaningful scenario: a single task the agent completes end to end, with its tools, guardrails and failure handling in place. A System Design engagement covers that first scenario.
 Q: Do you use AI in your own delivery?

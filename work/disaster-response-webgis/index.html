@@ -22,8 +22,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=60916222">
-<link rel="stylesheet" href="/css/site.css?v=60916222">
+<link rel="stylesheet" href="/css/components.css?v=ce690906">
+<link rel="stylesheet" href="/css/site.css?v=ce690906">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Disaster-Response WebGIS","description":"Contributed to a disaster-response WebGIS for a national humanitarian relief organization, supporting earthquake damage estimates, aid-requirement estimates and identification of the nearest help stations.","url":"https://artapattern.com/work/disaster-response-webgis/","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"about":"WebGIS / Humanitarian Response","inLanguage":"en","image":"https://artapattern.com/img/og.jpg"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://artapattern.com/work/"},{"@type":"ListItem","position":3,"name":"Disaster-Response WebGIS","item":"https://artapattern.com/work/disaster-response-webgis/"}]}</script>
@@ -75,7 +75,7 @@
 <section style="padding-bottom:96px">
  <div class="wrap cs-body">
   <nav class="ap-toc" aria-label="Case study sections">
-   <h4>Contents</h4>
+   <p class="ap-toc__title">Contents</p>
 <a href="#overview" aria-current="true">1. Project Overview</a><a href="#context">2. Engineering Context</a><a href="#problem">3. Problem &amp; Constraints</a><a href="#approach">4. Architecture Approach</a><a href="#decisions">5. Key Decisions</a><a href="#delivery">6. Implementation &amp; Delivery</a><a href="#tech">7. Technologies</a><a href="#related">8. Related Services</a>  </nav>
   <div>
    <section class="cs-section" id="overview">
@@ -107,14 +107,14 @@
    <section class="cs-section" id="decisions">
     <span class="mono">05 / Key engineering decisions</span>
     <h2 class="h2">Key engineering decisions</h2>
-    <div><div class="ap-decision"><span class="ap-decision__id">DECISION 01</span><div><h4>Deliver GIS through the web</h4><p>A WebGIS put the analysis in front of response staff without desktop GIS software.</p></div></div><div class="ap-decision"><span class="ap-decision__id">DECISION 02</span><div><h4>Combine estimation with proximity</h4><p>Damage and aid estimates were shown together with the nearest help stations to support response planning.</p></div></div></div>
+    <div><div class="ap-decision"><span class="ap-decision__id">DECISION 01</span><div><h3>Deliver GIS through the web</h3><p>A WebGIS put the analysis in front of response staff without desktop GIS software.</p></div></div><div class="ap-decision"><span class="ap-decision__id">DECISION 02</span><div><h3>Combine estimation with proximity</h3><p>Damage and aid estimates were shown together with the nearest help stations to support response planning.</p></div></div></div>
    </section>
 
    <section class="cs-section" id="delivery">
     <span class="mono">06 / Implementation &amp; delivery</span>
     <h2 class="h2">Implementation &amp; delivery</h2>
     <ol class="ap-flow" style="--steps:4;margin-top:8px">
-<li><span class="ap-flow__n">01</span><h4>Requirements</h4><p>With project owners.</p></li><li><span class="ap-flow__n">02</span><h4>Data</h4><p>Spatial layers and stations.</p></li><li><span class="ap-flow__n">03</span><h4>Analysis</h4><p>Damage, aid, proximity.</p></li><li><span class="ap-flow__n">04</span><h4>WebGIS</h4><p>Browser-based views.</p></li>    </ol>
+<li><span class="ap-flow__n">01</span><h3>Requirements</h3><p>With project owners.</p></li><li><span class="ap-flow__n">02</span><h3>Data</h3><p>Spatial layers and stations.</p></li><li><span class="ap-flow__n">03</span><h3>Analysis</h3><p>Damage, aid, proximity.</p></li><li><span class="ap-flow__n">04</span><h3>WebGIS</h3><p>Browser-based views.</p></li>    </ol>
    </section>
 
 
@@ -127,7 +127,7 @@
    <section class="cs-section" id="related">
     <span class="mono">08 / Related services &amp; experience</span>
     <div class="grid-2" style="gap:24px">
-<a class="ap-card" href="/services/#greenfield" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 01</span><h3>Software Architecture &amp; System Design</h3></a><a class="ap-card" href="/services/#leadership" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 07</span><h3>Technical Leadership &amp; Engineering Advisory</h3></a>    </div>
+<a class="ap-card" href="/services/software-architecture-consulting/" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 01</span><h3>Software Architecture &amp; System Design</h3></a><a class="ap-card" href="/services/#leadership" style="text-decoration:none"><span class="mono" style="color:var(--text-accent)">SERVICE 07</span><h3>Technical Leadership &amp; Engineering Advisory</h3></a>    </div>
    </section>
 
    <nav aria-label="More case studies" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--text)">
@@ -137,7 +137,19 @@
   </div>
  </div>
 </section>
-</main>
+<section class="section--tight" style="padding-bottom:96px" aria-labelledby="cta-title">
+ <div class="wrap">
+  <div class="ap-cta-band">
+   <svg class="ap-cta-band__art" aria-hidden="true" viewBox="0 0 300 200" preserveAspectRatio="xMaxYMid meet" fill="none"><path d="M300 30H180v60h-60M300 110H220v70M180 90v80" style="stroke:var(--gold)" stroke-width="1"/><rect x="177" y="87" width="6" height="6" style="fill:var(--gold-light)"/><rect x="217" y="107" width="6" height="6" style="fill:var(--gold-light)"/><rect x="117" y="87" width="6" height="6" style="fill:var(--gold-light)"/></svg>
+   <p class="ap-eyebrow" style="margin-bottom:16px">Next step</p>
+   <h2 id="cta-title">Working with spatial data in a web application?</h2>
+   <p>Start with System Design for the spatial data flows, or describe the problem and I&#39;ll suggest a first step.</p>
+   <div class="ap-cta-band__actions">
+<a class="ap-btn ap-btn--inverse" href="/contact/?type=System%20Design">Ask about system design <span class="ap-arrow" aria-hidden="true">→</span></a>
+<a class="ap-btn ap-btn--ghost-inverse" href="https://www.linkedin.com/in/hamedrezaei/" rel="noopener">Connect on LinkedIn</a>   </div>
+  </div>
+ </div>
+</section></main>
 
 <footer class="ap-footer">
  <div class="wrap" style="display:grid;gap:40px">
@@ -169,6 +181,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=60916222" defer></script>
+<script src="/js/main.js?v=ce690906" defer></script>
 </body>
 </html>

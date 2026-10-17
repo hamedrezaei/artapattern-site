@@ -22,8 +22,8 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Inter-Regular.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="/css/components.css?v=60916222">
-<link rel="stylesheet" href="/css/site.css?v=60916222">
+<link rel="stylesheet" href="/css/components.css?v=ce690906">
+<link rel="stylesheet" href="/css/site.css?v=ce690906">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://artapattern.com/#org","name":"ArtaPattern","url":"https://artapattern.com/","logo":"https://artapattern.com/img/mark.png","image":"https://artapattern.com/img/og.jpg","email":"hamedrezaei.ez@gmail.com","description":"Independent software architecture and backend engineering practice of Hamed Rezaei: system design, agent-based AI systems, .NET modernization, MetaTrader plugin development for forex brokers, and GIS software development.","founder":{"@id":"https://artapattern.com/#hamed"},"areaServed":"Worldwide","sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["Software Architecture","System Design",".NET Modernization","MetaTrader 4","MetaTrader 5","MT4/MT5 Server Plugins","Forex Broker Software","AI Agents","Agentic Systems","Model Context Protocol","WebGIS","Geographic Information Systems","Domain-Driven Design"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MetaTrader Plugin Development for Forex Brokers","url":"https://artapattern.com/services/metatrader-plugin-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"GIS & WebGIS Software Development","url":"https://artapattern.com/services/gis-software-development/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software Architecture & System Design Consulting","url":"https://artapattern.com/services/software-architecture-consulting/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Agent-Based Systems & AI Integration","url":"https://artapattern.com/services/ai-agent-systems/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":".NET Modernization & Backend Reliability","url":"https://artapattern.com/services/dotnet-modernization/"}}]}},{"@type":"Person","@id":"https://artapattern.com/#hamed","name":"Hamed Rezaei","url":"https://artapattern.com/about/","jobTitle":"Software Architect & Senior .NET Backend Engineer","worksFor":{"@id":"https://artapattern.com/#org"},"sameAs":["https://www.linkedin.com/in/hamedrezaei/"],"knowsAbout":["C#",".NET","Software Architecture","Domain-Driven Design","AI Agents","AI-Assisted Software Engineering","MetaTrader","C++","WebGIS","SQL Server","PostgreSQL"]},{"@type":"WebSite","@id":"https://artapattern.com/#website","url":"https://artapattern.com/","name":"ArtaPattern","publisher":{"@id":"https://artapattern.com/#org"},"inLanguage":"en"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artapattern.com/"},{"@type":"ListItem","position":2,"name":"Engineering Notes","item":"https://artapattern.com/insights/"},{"@type":"ListItem","position":3,"name":"Capability vs. Authority","item":"https://artapattern.com/insights/ai-agent-capability-vs-authority/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Capability Is Not Authority: Who Decides What AI Agents May Do?","description":"AI agents are getting better at the work, but who decides what they may do? Probabilistic, deterministic and hybrid execution paths, bounded retries, and a governance plane for approvals.","datePublished":"2026-10-10","dateModified":"2026-10-10","url":"https://artapattern.com/insights/ai-agent-capability-vs-authority/","mainEntityOfPage":"https://artapattern.com/insights/ai-agent-capability-vs-authority/","inLanguage":"en","image":"https://artapattern.com/img/og.jpg","author":{"@id":"https://artapattern.com/#hamed"},"publisher":{"@id":"https://artapattern.com/#org"},"articleSection":"AI-Native Engineering","keywords":"AI agents governance, agentic development platform, ADP, agent harness, governance plane, human-in-the-loop approval, platform engineering, internal developer platform, golden paths, AI-native engineering, Codex","sameAs":"https://www.linkedin.com/feed/update/urn:li:share:7514736319072210944/"}</script>
@@ -72,7 +72,7 @@
 <section style="padding-bottom:96px">
  <div class="wrap cs-body">
   <nav class="ap-toc" aria-label="On this page">
-   <h4>On this page</h4>
+   <p class="ap-toc__title">On this page</p>
 <a href="#shift" aria-current="true">Where the effort moved</a>
 <a href="#release">A release workflow</a>
 <a href="#authority">Capability vs. authority</a>
@@ -83,7 +83,10 @@
 <a href="#faq">Quick answers</a>
   </nav>
   <article class="ap-prose">
-<p>AI agents are getting better at doing the work. <strong>But who decides what they're allowed to do?</strong></p>
+<details class="toc-m">
+ <summary>On this page</summary>
+ <nav aria-label="On this page (compact)"><a href="#shift">Where the effort moved</a><a href="#release">A release workflow</a><a href="#authority">Capability vs. authority</a><a href="#paths">Three execution paths</a><a href="#hybrid">The hybrid loop</a><a href="#adp">An Agentic Development Platform</a><a href="#throughput">Measuring success</a><a href="#faq">Quick answers</a></nav>
+</details><p>AI agents are getting better at doing the work. <strong>But who decides what they're allowed to do?</strong></p>
 
 <h2 id="shift">Where the engineering effort moved</h2>
 <p>Working with OpenAI Codex across complex, multi-service systems has changed where I spend my engineering effort. Less of it goes into typing the implementation. More of it goes into four things:</p>
@@ -99,10 +102,10 @@
 <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="rel-cap">
  <span class="ap-diagram__label">Release status that keeps uncertainty visible</span>
  <ol class="ap-flow" style="--steps:4;margin-top:8px">
-  <li><span class="ap-flow__n">01</span><h4>Prepared</h4><p>The agent assembles the changes.</p></li>
-  <li><span class="ap-flow__n">02</span><h4>Partially verified</h4><p>What was checked, and what wasn't, stays on record.</p></li>
-  <li><span class="ap-flow__n">03</span><h4>Awaiting approval</h4><p>A person sees the evidence and the gaps.</p></li>
-  <li><span class="ap-flow__n">04</span><h4>Approved to advance</h4><p>Only by an explicit decision.</p></li>
+  <li><span class="ap-flow__n">01</span><h3>Prepared</h3><p>The agent assembles the changes.</p></li>
+  <li><span class="ap-flow__n">02</span><h3>Partially verified</h3><p>What was checked, and what wasn't, stays on record.</p></li>
+  <li><span class="ap-flow__n">03</span><h3>Awaiting approval</h3><p>A person sees the evidence and the gaps.</p></li>
+  <li><span class="ap-flow__n">04</span><h3>Approved to advance</h3><p>Only by an explicit decision.</p></li>
  </ol>
  <figcaption id="rel-cap" class="ap-hint" style="margin-top:16px">The agent can move the work forward. It can't promote its own uncertainty into a release. Illustrative states.</figcaption>
 </figure>
@@ -141,10 +144,10 @@
 <figure class="ap-diagram" style="margin:32px 0;padding-top:44px" aria-labelledby="loop-cap">
  <span class="ap-diagram__label">Hybrid path</span>
  <ol class="ap-flow" style="--steps:4;margin-top:8px">
-  <li><span class="ap-flow__n">01</span><h4>Agent proposes</h4><p>A change, with its reasoning.</p></li>
-  <li><span class="ap-flow__n">02</span><h4>CI evaluates</h4><p>Defined checks, the same for every author.</p></li>
-  <li><span class="ap-flow__n">03</span><h4>Signals guide</h4><p>Failures feed the next correction.</p></li>
-  <li><span class="ap-flow__n">04</span><h4>Gate or escalate</h4><p>Pass to approval, or hand to a person when the budget runs out.</p></li>
+  <li><span class="ap-flow__n">01</span><h3>Agent proposes</h3><p>A change, with its reasoning.</p></li>
+  <li><span class="ap-flow__n">02</span><h3>CI evaluates</h3><p>Defined checks, the same for every author.</p></li>
+  <li><span class="ap-flow__n">03</span><h3>Signals guide</h3><p>Failures feed the next correction.</p></li>
+  <li><span class="ap-flow__n">04</span><h3>Gate or escalate</h3><p>Pass to approval, or hand to a person when the budget runs out.</p></li>
  </ol>
  <p class="life-loop"><span aria-hidden="true">↺</span> Retry within the budget. Passing a check still doesn't grant release authority.</p>
  <figcaption id="loop-cap" class="ap-hint" style="margin-top:8px">The loop is allowed to be automatic. Its exits are not.</figcaption>
@@ -242,6 +245,6 @@
  </div>
 </footer>
 </div>
-<script src="/js/main.js?v=60916222" defer></script>
+<script src="/js/main.js?v=ce690906" defer></script>
 </body>
 </html>

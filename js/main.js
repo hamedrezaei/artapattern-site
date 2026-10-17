@@ -1,4 +1,4 @@
-/* ArtaPattern — small progressive enhancements. Everything works without JS. */
+/* ArtaPattern — small progressive enhancements. Pages work without JS; the contact form then offers email instead. */
 (function () {
   // Analytics events (GoatCounter, cookieless). No-ops when the counter is not loaded (local builds, blockers).
   function track(name, title) {
@@ -57,37 +57,89 @@
       var f = b.getAttribute('data-filter');
       group.querySelectorAll('button[data-filter]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       var shown = 0;
+      var only = count && count.getAttribute('data-filter-only');
       items.forEach(function (it) {
         var ok = f === 'all' || (' ' + it.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') > -1;
-        it.hidden = !ok; if (ok) shown++;
+        it.hidden = !ok; if (ok && (!only || it.getAttribute('data-status') === only)) shown++;
       });
       if (empty) empty.hidden = shown > 0;
       if (count) count.textContent = shown + ' ' + (shown === 1 ? unit[0] : unit[1]);
     });
   });
 
-  // Contact form: sends to the inquiry endpoint; shows success only after a confirmed response.
-  // If sending fails, falls back to a prefilled email draft, so no inquiry is lost.
+  // Contact form (A01–A07). Sends the unchanged payload to the inquiry endpoint as text/plain (a simple CORS
+  // request, no preflight) and shows success only when the response body says {"ok":true}.
+  // The submit button ships disabled in the HTML and is enabled only after this handler is attached, so without
+  // JavaScript (or if this script fails before this point) neither a click nor Enter can submit the form, and no
+  // inquiry text can end up in a URL. On any failure the entry is kept and an "Email instead" link is offered;
+  // the email app is never opened automatically.
   var form = document.querySelector('[data-inquiry]');
   if (form) {
-    // Preselect the topic when arriving from a starting-engagement link (?type=...)
-    var want = new URLSearchParams(window.location.search).get('type');
     var sel = form.querySelector('select[name="engagement"]');
+    // Preselect the topic from ?type=... (URLSearchParams decodes %26 etc.); unknown values leave the default.
+    var want = null;
+    try { want = new URLSearchParams(window.location.search).get('type'); } catch (err) {}
     if (want && sel) { Array.prototype.forEach.call(sel.options, function (o) { if (o.text === want) sel.value = o.value; }); }
+
     var btn = form.querySelector('[data-inquiry-submit]');
     var btnHtml = btn ? btn.innerHTML : '';
     var ok = form.querySelector('[data-inquiry-ok]');
     var note = form.querySelector('[data-inquiry-note]');
+    var mailLink = form.querySelector('[data-inquiry-mailto]');
+    var descLabel = form.querySelector('[data-desc-label]');
+    var descHint = form.querySelector('[data-desc-hint]');
     var sending = false;
 
-    function mailtoFallback(d) {
-      track('inquiry-fallback-mailto', 'Inquiry fell back to email draft');
+    // A07: the description wording follows the selected topic; the payload field stays "description".
+    function updateDesc() {
+      if (!sel || !descLabel || !descHint) return;
+      var recruiting = sel.value === 'Remote Engineering Opportunity';
+      descLabel.textContent = recruiting ? 'Role Details' : 'Project Description';
+      descHint.textContent = recruiting
+        ? 'The role, the team and the systems involved, and how you would like to proceed.'
+        : 'The context, the current system if there is one, and the decision or problem in front of you.';
+    }
+    if (sel) sel.addEventListener('change', updateDesc);
+    updateDesc();
+
+    // A03: mark every invalid field (aria-invalid + visible message), focus the first one.
+    function validate() {
+      var first = null;
+      form.querySelectorAll('.ap-field').forEach(function (f) {
+        var el = f.querySelector('input, textarea, select');
+        if (!el || !el.willValidate) return;
+        var bad = !el.checkValidity();
+        f.classList.toggle('is-invalid', bad);
+        el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+        if (bad && !first) first = el;
+      });
+      if (first) first.focus();
+      return !first;
+    }
+    form.addEventListener('input', function (e) {
+      var f = e.target.closest && e.target.closest('.ap-field');
+      if (f && f.classList.contains('is-invalid') && e.target.checkValidity()) {
+        f.classList.remove('is-invalid'); e.target.setAttribute('aria-invalid', 'false');
+      }
+    });
+
+    function payload() {
+      var fd = new FormData(form);
+      return {
+        name: fd.get('name'), email: fd.get('email'), organization: fd.get('organization') || '',
+        engagement: fd.get('engagement'), description: fd.get('description'),
+        website: fd.get('website') || '', page: window.location.pathname + window.location.search
+      };
+    }
+
+    // A04: user-initiated email fallback; fields stay as typed for a retry.
+    function showFallback(d) {
+      track('inquiry-fallback-mailto', 'Inquiry could not be sent; email fallback offered');
       var body = 'Name: ' + d.name + '\nEmail: ' + d.email + '\nOrganization: ' + (d.organization || '-') +
         '\nTopic: ' + d.engagement + '\n\n' + d.description;
       var subject = d.engagement && d.engagement !== 'Not sure yet' ? 'Project inquiry — ' + d.engagement : 'Project inquiry';
-      var href = 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      if (note) { note.hidden = false; note.querySelector('a').setAttribute('href', href); }
-      window.location.href = href;
+      if (mailLink) mailLink.setAttribute('href', 'mailto:' + form.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body));
+      if (note) { note.hidden = false; note.setAttribute('tabindex', '-1'); note.focus(); }
     }
 
     form.addEventListener('submit', function (e) {
@@ -95,41 +147,33 @@
       if (sending) return;
       if (ok) ok.hidden = true;
       if (note) note.hidden = true;
-      var invalid = form.querySelector(':invalid');
-      form.querySelectorAll('.ap-field').forEach(function (f) { f.classList.remove('is-invalid'); });
-      if (invalid) {
-        var field = invalid.closest('.ap-field'); if (field) field.classList.add('is-invalid');
-        invalid.focus();
-        return;
-      }
-      var fd = new FormData(form);
-      var d = {
-        name: fd.get('name'), email: fd.get('email'), organization: fd.get('organization') || '',
-        engagement: fd.get('engagement'), description: fd.get('description'),
-        website: fd.get('website') || '', page: window.location.pathname + window.location.search
-      };
+      if (!validate()) return;
+      var d = payload();
       var endpoint = form.getAttribute('data-endpoint');
-      if (!endpoint || !window.fetch) { mailtoFallback(d); return; }
+      if (!endpoint || !window.fetch) { showFallback(d); return; }
       sending = true;
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
       var ctrl = window.AbortController ? new AbortController() : null;
       var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
-      // text/plain keeps this a simple CORS request (no preflight), which Apps Script requires
       fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), signal: ctrl ? ctrl.signal : undefined })
         .then(function (r) { return r.json(); })
         .then(function (res) {
-          if (res && res.ok) {
+          if (res && res.ok === true) {
             form.querySelectorAll('input:not([type=hidden]), textarea').forEach(function (el) { el.value = ''; });
             if (ok) { ok.hidden = false; ok.setAttribute('tabindex', '-1'); ok.focus(); }
             track('inquiry-sent', 'Inquiry sent: ' + (d.engagement || 'unknown'));
-          } else { mailtoFallback(d); }
+          } else { showFallback(d); }
         })
-        .catch(function () { mailtoFallback(d); })
+        .catch(function () { showFallback(d); })
         .then(function () {
           clearTimeout(timer); sending = false;
           if (btn) { btn.disabled = false; btn.innerHTML = btnHtml; }
         });
     });
+
+    // A02: enable submission only now that the handler above is attached.
+    if (btn) btn.disabled = false;
+    form.setAttribute('data-ready', '');
   }
 })();
 
